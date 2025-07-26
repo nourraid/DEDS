@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { Table, Modal, Button, Form } from "react-bootstrap";
-import {FaPrint,FaFileAlt  ,  FaCalendarAlt, FaPhoneAlt, FaBell, FaCommentDots, FaCalendarPlus } from "react-icons/fa";
+import {
+  FaPrint,
+  FaFileAlt,
+  FaCalendarAlt,
+  FaPhoneAlt,
+  FaBell,
+  FaCommentDots,
+  FaCalendarPlus,
+} from "react-icons/fa";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
-
 
 
 const AiTestsPage = () => {
@@ -45,42 +52,32 @@ const AiTestsPage = () => {
     },
   ];
 
-    const [showCalenderModal, setShowCalenderModal] = useState(false);
-const handlecalender = (test) => {
-    setSelectedTest(test);
-    setShowCalenderModal(true);
-  };
-  const closeCalenderModal = () => {
-    setShowCalenderModal(false);
-    setSelectedTest(null);
-    setNote("");
-    setSelectedId(null);
-  };
-
-    const [selectedProvider, setSelectedProvider] = useState("");
+  const [showCalendarModal, setShowCalendarModal] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState("");
   const providersList = [
     { id: "1", name: "Provider One" },
     { id: "2", name: "Provider Two" },
   ];
-const [selectedAppointmentDate, setSelectedAppointmentDate] = useState(new Date());
-const [hour, setHour] = useState("10");
-const [ampm, setAmpm] = useState("AM");
-const [appointmentnote, setAppointmentNote] = useState("");
+
+  const [selectedAppointmentDate, setSelectedAppointmentDate] = useState(new Date());
+  const [hour, setHour] = useState("10");
+  const [ampm, setAmpm] = useState("AM");
+  const [appointmentNote, setAppointmentNote] = useState("");
 
   const handleSaveAppointment = (data) => {
     console.log("Appointment saved:", data);
-    // نفذ اي دالة ثانية مثل إرسال البيانات للسيرفر هنا
+    alert("Appointment saved successfully!");
+    // هنا يمكن إرسال البيانات للسيرفر أو معالجتها
   };
-
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedResult, setSelectedResult] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [selectedTest, setSelectedTest] = useState(null);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
-
-    const handleOpenDetailsModal = (test) => {
+  const handleOpenDetailsModal = (test) => {
     setSelectedTest(test);
     setShowDetailsModal(true);
   };
@@ -90,11 +87,7 @@ const [appointmentnote, setAppointmentNote] = useState("");
     setSelectedTest(null);
   };
 
-    const [showDetailsModal, setShowDetailsModal] = useState(false);
-
-  // دالة لفتح مودال التفاصيل وتمرير بيانات الفحص
-
-   const allTests = [
+  const allTests = [
     {
       id: 1,
       date: "2025-07-20",
@@ -118,8 +111,6 @@ const [appointmentnote, setAppointmentNote] = useState("");
         { name: "PH", standard: "7.0" },
         { name: "Ascorbate", standard: "0" },
         { name: "Calcium", standard: "0-3.0" },
-
-
       ],
     },
     {
@@ -131,7 +122,7 @@ const [appointmentnote, setAppointmentNote] = useState("");
       caseId: "B034",
       reportDate: "2025-07-20",
       results: [
-      { name: "Urobilinogen", standard: "3.2-16" },
+        { name: "Urobilinogen", standard: "3.2-16" },
         { name: "Bilirubin", standard: "Negative" },
         { name: "Ketone", standard: "Negative" },
         { name: "creatinine", standard: ">0.9" },
@@ -144,7 +135,8 @@ const [appointmentnote, setAppointmentNote] = useState("");
         { name: "Specific Gravity", standard: "1000" },
         { name: "PH", standard: "7.0" },
         { name: "Ascorbate", standard: "0" },
-        { name: "Calcium", standard: "0-3.0" },],
+        { name: "Calcium", standard: "0-3.0" },
+      ],
     },
     {
       id: 3,
@@ -155,7 +147,7 @@ const [appointmentnote, setAppointmentNote] = useState("");
       caseId: "C056",
       reportDate: "2025-07-21",
       results: [
-       { name: "Urobilinogen", standard: "3.2-16" },
+        { name: "Urobilinogen", standard: "3.2-16" },
         { name: "Bilirubin", standard: "Negative" },
         { name: "Ketone", standard: "Negative" },
         { name: "creatinine", standard: ">0.9" },
@@ -168,7 +160,8 @@ const [appointmentnote, setAppointmentNote] = useState("");
         { name: "Specific Gravity", standard: "1000" },
         { name: "PH", standard: "7.0" },
         { name: "Ascorbate", standard: "0" },
-        { name: "Calcium", standard: "0-3.0" }, ],
+        { name: "Calcium", standard: "0-3.0" },
+      ],
     },
   ];
 
@@ -188,16 +181,29 @@ const [appointmentnote, setAppointmentNote] = useState("");
     setSelectedTest(test);
     setShowNotificationModal(true);
   };
-
-  
   const handleChat = (id) => alert(`Chat about test #${id}`);
-  const handleAppointment = (id) => alert(`Set appointment for test #${id}`);
+  const handlecalender = (test) => {
+    setSelectedTest(test);
+    setShowCalendarModal(true);
+  };
 
   const closeModal = () => {
     setShowNotificationModal(false);
     setSelectedTest(null);
     setNote("");
     setSelectedId(null);
+  };
+
+  const closeCalendarModal = () => {
+    setShowCalendarModal(false);
+    setSelectedTest(null);
+    setNote("");
+    setSelectedId(null);
+    setAppointmentNote("");
+    setSelectedProvider("");
+    setSelectedAppointmentDate(new Date());
+    setHour("10");
+    setAmpm("AM");
   };
 
   const handleAddNote = () => {
@@ -214,8 +220,12 @@ const [appointmentnote, setAppointmentNote] = useState("");
   };
 
   return (
-    <div className="container py-4" style={{ backgroundColor: "white", borderRadius: "10px", padding: "50px" }}>
+    <div
+      className="container py-4"
+      style={{ backgroundColor: "white", borderRadius: "10px", padding: "50px" }}
+    >
       <h4 className="mb-4">🧪 AI Tests</h4>
+
       <input
         type="text"
         placeholder="Search here"
@@ -224,7 +234,9 @@ const [appointmentnote, setAppointmentNote] = useState("");
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+
       <hr style={{ color: "#ccc" }} />
+
       <div className="d-flex flex-wrap gap-3 mb-3 align-items-center">
         <h6>Filter</h6>
         <select
@@ -278,30 +290,57 @@ const [appointmentnote, setAppointmentNote] = useState("");
             fontSize: "0.95rem",
           }}
         >
-          <thead className="text-center" style={{ backgroundColor: "#f0f0f0", color: "#4a4a4a" }}>
+          <thead
+            className="text-center"
+            style={{ backgroundColor: "#f0f0f0", color: "#4a4a4a" }}
+          >
             <tr>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 Test Number
               </th>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 Test Date
               </th>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 AI Result
               </th>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 AI Details
               </th>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 Call
               </th>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 Notification
               </th>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 Chat
               </th>
-              <th className="py-3" style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}>
+              <th
+                className="py-3"
+                style={{ color: "#a8a5a5ff", backgroundColor: "#f0f0f0", borderBottom: "none" }}
+              >
                 Appointment
               </th>
             </tr>
@@ -320,21 +359,24 @@ const [appointmentnote, setAppointmentNote] = useState("");
                   <td className="py-3">{test.id}</td>
                   <td className="py-3">{test.date}</td>
                   <td className="py-3">
-                    <span className={`badge ${test.result === "Positive" ? "bg-danger" : "bg-success"}`}>
+                    <span
+                      className={`badge ${
+                        test.result === "Positive" ? "bg-danger" : "bg-success"
+                      }`}
+                    >
                       {test.result}
                     </span>
                   </td>
-                  <td className="py-3"><p
-                   style={{ cursor: "pointer" }}
+                  <td className="py-3">
+                    <p
+                      style={{ cursor: "pointer" }}
                       size={20}
-                    onClick={() => handleOpenDetailsModal(test)}
+                      onClick={() => handleOpenDetailsModal(test)}
                       title="details"
-                      >
-
-                         {test.details}
-                      </p>
-                     
-                      </td>
+                    >
+                      {test.details}
+                    </p>
+                  </td>
                   <td className="py-3">
                     <FaPhoneAlt
                       style={{ cursor: "pointer" }}
@@ -382,8 +424,14 @@ const [appointmentnote, setAppointmentNote] = useState("");
 
       {/* Modal for Notification */}
       <Modal show={showNotificationModal} onHide={closeModal} centered size="lg">
-        <Modal.Header closeButton className="flex-column align-items-start" style={{border:"none"}}>
-          <Modal.Title className="fs-4 fw-bold mb-1">Notification {selectedTest?.id}</Modal.Title>
+        <Modal.Header
+          closeButton
+          className="flex-column align-items-start"
+          style={{ border: "none" }}
+        >
+          <Modal.Title className="fs-4 fw-bold mb-1">
+            Notification {selectedTest?.id}
+          </Modal.Title>
           <p className="text-muted mb-0">Please fill out the note</p>
         </Modal.Header>
 
@@ -436,7 +484,10 @@ const [appointmentnote, setAppointmentNote] = useState("");
                       style={{
                         width: "20px",
                         height: "20px",
-                        border: selectedId === msg.id ? "2px solid #28a745" : "2px solid #6c757d",
+                        border:
+                          selectedId === msg.id
+                            ? "2px solid #28a745"
+                            : "2px solid #6c757d",
                         backgroundColor: selectedId === msg.id ? "#28a745" : "transparent",
                         borderRadius: "4px",
                         display: "flex",
@@ -452,7 +503,11 @@ const [appointmentnote, setAppointmentNote] = useState("");
                     </div>
 
                     {/* نص كلمة Select */}
-                    <span style={{ color: selectedId === msg.id ? "#28a745" : "#6c757d" }}>Select</span>
+                    <span
+                      style={{ color: selectedId === msg.id ? "#28a745" : "#6c757d" }}
+                    >
+                      Select
+                    </span>
                   </div>
                 </div>
               ))}
@@ -460,25 +515,30 @@ const [appointmentnote, setAppointmentNote] = useState("");
           </div>
         </Modal.Body>
 
-      <Modal.Footer className="d-flex justify-content-center" style={{border:"none" , marginTop:"40px"}}>
-  <Button
-    style={{color:"#ebedefff", backgroundColor: "#668db4ff", borderRadius:"20px",    height: "44px",
-    width: "50%" }}
-    onClick={handleAddNote}
-  >
-    Add
-  </Button>
-</Modal.Footer>
-
+        <Modal.Footer className="justify-content-center">
+          <Button
+            style={{
+              padding: "10px",
+              width: "25%",
+              borderRadius: "50px",
+              backgroundColor: "#558abeff",
+              borderColor: "#558abeff",
+              fontWeight: "600",
+            }}
+            className="me-2"
+            onClick={handleAddNote}
+          >
+            <FaFileAlt className="me-1" /> Add
+          </Button>
+          
+        </Modal.Footer>
       </Modal>
 
 
-   <Modal
-        show={showDetailsModal}
-        onHide={handleCloseModal}
-        size="lg"
-        centered
-      >
+
+{/* Modal for Details */}
+<Modal show={showDetailsModal} onHide={handleCloseModal} centered size="lg">
+ 
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
@@ -491,6 +551,9 @@ const [appointmentnote, setAppointmentNote] = useState("");
                 <p>Report Date: {selectedTest.reportDate}</p>
                 <hr/>
               </div>
+
+
+              
     <Table
   bordered={false}
   style={{
@@ -565,9 +628,7 @@ const [appointmentnote, setAppointmentNote] = useState("");
   </tbody>
 </Table>
 
-
-
-            </>
+          </>
           )}
         </Modal.Body>
         <Modal.Footer className="justify-content-center">
@@ -598,109 +659,194 @@ const [appointmentnote, setAppointmentNote] = useState("");
               <FaPrint className="me-1" /> Print
             </Button>
         </Modal.Footer>
-      </Modal>
+</Modal>
 
 
-  <Modal show={showCalenderModal} onHide={closeCalenderModal} centered size="md">
-        <Modal.Header closeButton className="flex-column align-items-start" style={{border:"none"}}>
-          <Modal.Title className="fs-4 fw-bold mb-1">Appointment {selectedTest?.id}</Modal.Title>
+
+
+
+
+      {/* Modal for Appointment */}
+      <Modal show={showCalendarModal} onHide={closeCalendarModal} centered size="md">
+        <Modal.Header
+          closeButton
+          className="flex-column align-items-start"
+          style={{ border: "none" }}
+        >
+          <Modal.Title className="fs-4 fw-bold mb-1">
+            Appointment {selectedTest?.id}
+          </Modal.Title>
         </Modal.Header>
 
-      <Modal.Body>
+    <Modal.Body>
+  {/* Calendar */}
   <div className="mb-4">
     <h6 className="mb-2 fw-bold">Calendar</h6>
-    <div
-      style={{
-        borderRadius: "16px",
-        overflow: "hidden",
-        border: "1px solid #dee2e6",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
-        padding: "12px",
-      }}
-    >
-      <DatePicker
-        selected={selectedDate}
-        onChange={(date) => setSelectedAppointmentDate(date)}
-        inline
-      />
+   
+<>
+  <style>{`
+    .appointment-calendar-wrapper {
+      width: 100%;
+    }
+
+    .appointment-calendar {
+      width: 100%;
+      border-radius: 16px;
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 8px;
+    }
+
+    .appointment-calendar .react-datepicker {
+      width: 100%;
+      display: block;
+    }
+
+    .appointment-calendar .react-datepicker__header {
+      background-color: #fff;
+      border-bottom: 1px solid #dee2e6;
+      padding: 12px 0;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .appointment-calendar .react-datepicker__current-month {
+      color: #000;
+      font-weight: 600;
+    }
+
+    .appointment-calendar .react-datepicker__day-name,
+    .appointment-calendar .react-datepicker__day {
+      color: #000;
+    }
+
+    .appointment-calendar .react-datepicker__day--selected,
+    .appointment-calendar .react-datepicker__day--keyboard-selected {
+      background-color: rgba(130, 165, 200, 0.6);
+      color: #fff;
+      border-radius: 50%;
+    }
+
+    .appointment-calendar .react-datepicker__day--today {
+      font-weight: 700;
+    }
+
+    .appointment-calendar .react-datepicker__navigation-icon::before {
+      border-color: #000;
+    }
+
+    .appointment-calendar .react-datepicker__navigation--previous,
+    .appointment-calendar .react-datepicker__navigation--next {
+      top: 12px;
+    }
+      .react-datepicker__month-container {
+  width: 100%;
+}
+  `}</style>
+
+  <div className="appointment-calendar-wrapper">
+    <DatePicker
+      selected={selectedAppointmentDate}
+      onChange={setSelectedAppointmentDate}
+      inline
+      calendarClassName="appointment-calendar"
+    />
+  </div> 
+</>
+
+
+
+  </div>
+
+  {/* Time */}
+  <div className="mb-4">
+    <h6 className="mb-2 fw-bold">Time</h6>
+    <div className="row g-2">
+      <div className="col-8">
+        <Form.Select
+          value={hour}
+          onChange={(e) => setHour(e.target.value)}
+          style={{ borderRadius: "12px" }}
+        >
+          {[...Array(12)].map((_, i) => (
+            <option key={i}>{i + 1}</option>
+          ))}
+        </Form.Select>
+      </div>
+      <div className="col-4">
+        <Form.Select
+          value={ampm}
+          onChange={(e) => setAmpm(e.target.value)}
+          style={{ borderRadius: "12px" }}
+        >
+          <option>AM</option>
+          <option>PM</option>
+        </Form.Select>
+      </div>
     </div>
   </div>
 
-<div className="row g-2">
-      <h6 className="mb-3 fw-bold">Time</h6>
- 
-  <div className="col-8">
-    <Form.Select
-      value={hour}
-      onChange={(e) => setHour(e.target.value)}
-      style={{ borderRadius: "12px" }}
-    >
-      {[...Array(12)].map((_, i) => (
-        <option key={i}>{i + 1}</option>
-      ))}
-    </Form.Select>
-  </div>
-  <div className="col-4">
-    <Form.Select
-      value={ampm}
-      onChange={(e) => setAmpm(e.target.value)}
-      style={{ borderRadius: "12px" }}
-    >
-      <option>AM</option>
-      <option>PM</option>
-    </Form.Select>
-  </div>
-</div>
-
-
-  <div>
+  {/* Note */}
+  <div className="mb-4">
     <h6 className="mb-2 fw-bold">Note</h6>
     <Form.Control
       as="textarea"
       rows={7}
       placeholder="Write here"
       style={{ borderRadius: "12px", resize: "none" }}
-      value={note}
+      value={appointmentNote}
       onChange={(e) => setAppointmentNote(e.target.value)}
     />
   </div>
 
-
-    <div>
+  {/* Providers */}
+  <div className="mb-4">
     <h6 className="mb-2 fw-bold">Providers</h6>
-<Form.Select
-  value={selectedProvider}
-  onChange={(e) => setSelectedProvider(e.target.value)}
-  style={{ borderRadius: "12px" }}
->
-  <option value="">Select provider</option>
-  {providersList.map((provider) => (
-    <option key={provider.id} value={provider.id}>
-      {provider.name}
-    </option>
-  ))}
-</Form.Select>
-    
+    <Form.Select
+      value={selectedProvider}
+      onChange={(e) => setSelectedProvider(e.target.value)}
+      style={{ borderRadius: "12px" }}
+    >
+      <option value="">Select provider</option>
+      {providersList.map((provider) => (
+        <option key={provider.id} value={provider.id}>
+          {provider.name}
+        </option>
+      ))}
+    </Form.Select>
   </div>
 </Modal.Body>
 
-      <Modal.Footer className="d-flex justify-content-center" style={{border:"none" , marginTop:"40px"}}>
+<Modal.Footer
+  className="d-flex justify-content-center"
+  style={{ border: "none", marginTop: "40px" }}
+>
   <Button
-    style={{color:"#ebedefff", backgroundColor: "#668db4ff", borderRadius:"20px",    height: "44px",
-    width: "50%" }}
-            closeCalenderModal={() => setShowCalenderModal(false)}
-
-          onSave={handleSaveAppointment}
-
+    style={{
+      color: "#ebedefff",
+      backgroundColor: "#668db4ff",
+      borderRadius: "20px",
+      height: "44px",
+      width: "50%",
+    }}
+    onClick={() =>
+      handleSaveAppointment({
+        date: selectedAppointmentDate,
+        hour,
+        ampm,
+        note: appointmentNote,
+        provider: selectedProvider,
+        testId: selectedTest?.id,
+      })
+    }
   >
-    Save
+    Save Appointment
   </Button>
 </Modal.Footer>
 
       </Modal>
-
     </div>
   );
 };
 
-export default AiTestsPage; 
+export default AiTestsPage;

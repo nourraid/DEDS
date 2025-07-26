@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaPlus, FaRegEdit, FaTrashAlt, FaUserEdit } from "react-icons/fa";
-import { Table } from "react-bootstrap";
+import { Button, Form, Modal, Table } from "react-bootstrap";
   import { FaCalendarAlt , FaFileAlt} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { FaEdit, FaInfoCircle, FaTrash } from "react-icons/fa";
@@ -8,7 +8,34 @@ import { FaCircleInfo } from "react-icons/fa6";
 
 
 const Users = () => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [newUser, setNewUser] = useState({ name: "", email: "", phone: "", role: "" });
+  const [formErrors, setFormErrors] = useState({});
+
+  const rolesList = ["Admin", "Editor", "Viewer", "Moderator"];
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewUser((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateForm = () => {
+    const errors = {};
+    if (!newUser.name) errors.name = "Name is required.";
+    if (!newUser.email) errors.email = "Email is required.";
+    if (!newUser.phone) errors.phone = "Phone number is required.";
+    if (!newUser.role) errors.role = "Role is required.";
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSave = () => {
+    if (!validateForm()) return;
+    console.log("Saving user:", newUser);
+    setShowModal(false);
+    setNewUser({ name: "", email: "", phone: "", role: "" });
+  };
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
@@ -83,6 +110,7 @@ const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
     style={{ maxWidth: '400px' }} // تحكم بعرض البحث حسب رغبتك
   />
   <button
+    onClick={() => setShowModal(true)}
   className="btn d-flex align-items-center px-4 py-2"
   style={{
     fontWeight: 600,
@@ -284,7 +312,49 @@ const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
   </nav>
 </div>
 
+
       </div>
+
+      <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New User</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p className="mb-3">Please fill in the fields below</p>
+          <h6 className="mb-4"><strong>Date: {new Date().toLocaleDateString()}</strong></h6>
+          <hr />
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>User Name</Form.Label>
+              <Form.Control type="text" name="name" placeholder="Write here" value={newUser.name} onChange={handleInputChange} isInvalid={!!formErrors.name} />
+              <Form.Control.Feedback type="invalid">{formErrors.name}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Phone Number</Form.Label>
+              <Form.Control type="text" name="phone" placeholder="Write here" value={newUser.phone} onChange={handleInputChange} isInvalid={!!formErrors.phone} />
+              <Form.Control.Feedback type="invalid">{formErrors.phone}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control type="email" name="email" placeholder="Write here" value={newUser.email} onChange={handleInputChange} isInvalid={!!formErrors.email} />
+              <Form.Control.Feedback type="invalid">{formErrors.email}</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Role</Form.Label>
+              <Form.Select name="role" value={newUser.role} onChange={handleInputChange} isInvalid={!!formErrors.role}>
+                <option value="">Select a role</option>
+                {rolesList.map((role, index) => (
+                  <option key={index} value={role}>{role}</option>
+                ))}
+              </Form.Select>
+              <Form.Control.Feedback type="invalid">{formErrors.role}</Form.Control.Feedback>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer className="justify-content-center">
+          <Button variant="primary" onClick={handleSave} style={{ borderRadius: "50px", backgroundColor: "#003366", borderColor: "#003366", width: "120px", fontWeight: "600" }}>Add</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

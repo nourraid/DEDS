@@ -15,6 +15,8 @@ import UserDetails from "./pages/UserDetails";
 import Providers from "./pages/Providers";
 import Distributors from "./pages/Distributors ";
 import AreaDetails from "./pages/AreaDetails";
+import Settings from "./pages/Settings";
+import AdminsAndRoles from "./pages/AdminsAndRoles";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="areas" element={<Areas />} />
           <Route path="providers" element={<Providers />} />
           <Route path="distributors" element={<Distributors />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="admins" element={<AdminsAndRoles />} />
 
           <Route path="ai-test" element={<AiTestDetails />} />
           <Route path="user-details/:userId" element={<UserDetails />} />
