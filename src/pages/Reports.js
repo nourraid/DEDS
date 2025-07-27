@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { Button, Table, Form } from "react-bootstrap";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
+import { useTranslation } from "react-i18next";
+import '../fonts/Amiri-normal.js';
 
 const reportTypes = [
-  { value: "byCategory", label: "By Category" },
-  { value: "byCountry", label: "By Country" },
-  { value: "byGender", label: "By Gender" },
-  { value: "byDateRange", label: "By Date Range" },
-  { value: "patientReport", label: "Comprehensive Patient Report" },
+  { value: "byCategory", labelKey: "reports.category_header" },
+  { value: "byCountry", labelKey: "reports.country_header" },
+  { value: "byGender", labelKey: "reports.gender" },
+  { value: "byDateRange", labelKey: "reports.month" },
+  { value: "patientReport", labelKey: "reports.patient_report_title" },
 ];
 
 const categories = ["Type 1 Diabetes", "Type 2 Diabetes", "Gestational"];
 const countries = ["Saudi Arabia", "Egypt", "Palestine", "UAE", "Turkey"];
 
 const ReportsPage = () => {
+  const { t, i18n } = useTranslation();
+
   const [reportType, setReportType] = useState(reportTypes[0].value);
   const [category, setCategory] = useState(categories[0]);
   const [country, setCountry] = useState(countries[0]);
@@ -24,124 +28,167 @@ const ReportsPage = () => {
   const [patientId, setPatientId] = useState("");
   const [reportData, setReportData] = useState(null);
 
+  const isRTL = i18n.language === "ar";
+
   const handleGenerateReport = () => {
+    let newData = null;
+
     if (reportType === "patientReport") {
       if (!patientId.trim()) {
-        alert("Please enter a Patient ID.");
+        alert(t("reports.please_enter_patient_id"));
         return;
       }
-      // بيانات تقرير شامل المريض مع نتائج الفحوصات الطبية المطلوبة
-      setReportData({
+      newData = {
         patientId,
         name: "John Doe",
         age: 45,
-        gender: "Male",
+        gender: isRTL ? "ذكر" : "Male",
         medicalCenter: "Center A",
         tests: [
-          { name: "Urobilinogen", standard: "3.2-16" },
-          { name: "Bilirubin",  standard: "Negative" },
-          { name: "Ketone",  standard: "Negative" },
-          { name: "Creatinine", standard: ">0.9" },
-          { name: "Blood",  standard: "Negative" },
-          { name: "Protein", standard: "Negative" },
-          { name: "Micro Albumin",  standard: ">10.0" },
-          { name: "Nitrite",  standard: "Negative" },
-          { name: "Leukocytes",  standard: "Negative" },
-          { name: "Glucose", standard: "Negative" },
-          { name: "Specific Gravity", standard: "1000" },
-          { name: "PH",  standard: "7.0" },
-          { name: "Ascorbate",  standard: "0" },
-          { name: "Calcium",  standard: "0-3.0" },
+       { name: "Urobilinogen", result: "5", standard: "3.2-16" },
+          { name: "Bilirubin", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
+          { name: "Ketone", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
+          { name: "Creatinine", result: "1.0", standard: ">0.9" },
+          { name: "Blood", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
+          { name: "Protein", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
+          { name: "Micro Albumin", result: "15", standard: ">10.0" },
+          { name: "Nitrite", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
+          { name: "Leukocytes", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
+          { name: "Glucose", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
+          { name: "Specific Gravity", result: "1005", standard: "1000" },
+          { name: "PH", result: "7.0", standard: "7.0" },
+          { name: "Ascorbate", result: "0", standard: "0" },
+          { name: "Calcium", result: "2.5", standard: "0-3.0" },
         ],
-      });
+      };
     } else if (reportType === "byCategory") {
-      setReportData([
-        { category: "Type 1 Diabetes", cases: 500 },
-        { category: "Type 2 Diabetes", cases: 1500 },
-        { category: "Gestational", cases: 300 },
-      ]);
+      newData = [
+        { category: isRTL ? "النوع 1 من السكري" : "Type 1 Diabetes", cases: 500 },
+        { category: isRTL ? "النوع 2 من السكري" : "Type 2 Diabetes", cases: 1500 },
+        { category: isRTL ? "سكري الحمل" : "Gestational", cases: 300 },
+      ];
     } else if (reportType === "byCountry") {
-      setReportData([
-        { country: "Saudi Arabia", cases: 1200 },
-        { country: "Egypt", cases: 980 },
-        { country: "Palestine", cases: 450 },
-      ]);
+      newData = [
+        { country: isRTL ? "المملكة العربية السعودية" : "Saudi Arabia", cases: 1200 },
+        { country: isRTL ? "مصر" : "Egypt", cases: 980 },
+        { country: isRTL ? "فلسطين" : "Palestine", cases: 450 },
+      ];
     } else if (reportType === "byGender") {
-      setReportData([
-        { gender: "Male", count: 1800 },
-        { gender: "Female", count: 1950 },
-      ]);
+      newData = [
+        { gender: isRTL ? "ذكر" : "Male", count: 1800 },
+        { gender: isRTL ? "أنثى" : "Female", count: 1950 },
+      ];
     } else if (reportType === "byDateRange") {
-      setReportData([
-        { month: "January", count: 400 },
-        { month: "February", count: 520 },
-        { month: "March", count: 610 },
-      ]);
+      newData = [
+        { month: isRTL ? "يناير" : "January", count: 400 },
+        { month: isRTL ? "فبراير" : "February", count: 520 },
+        { month: isRTL ? "مارس" : "March", count: 610 },
+      ];
+    }
+
+    if (JSON.stringify(newData) !== JSON.stringify(reportData)) {
+      setReportData(newData);
     }
   };
 
   const exportPDF = () => {
     if (!reportData) return;
 
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+      putOnlyUsedFonts: true,
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+      hotfixes: ["px_scaling"],
+    });
+
+    doc.setFont("Amiri");
     doc.setFontSize(18);
-    doc.text("Report", 14, 22);
+    doc.text(t("reports.reports"), isRTL ? 200 : 14, 22, { align: isRTL ? "right" : "left" });
+
     doc.setFontSize(12);
     doc.setTextColor(99);
 
     if (reportType === "patientReport") {
-      doc.text(`Patient ID: ${reportData.patientId}`, 14, 32);
-      doc.text(`Name: ${reportData.name}`, 14, 40);
-      doc.text(`Age: ${reportData.age}`, 14, 48);
-      doc.text(`Gender: ${reportData.gender}`, 14, 56);
-      doc.text(`Medical Center: ${reportData.medicalCenter}`, 14, 64);
+      const x = isRTL ? 200 : 14;
+      const align = isRTL ? "right" : "left";
 
-      const tableColumn = ["Test Name", "Result", "Standard"];
+      doc.text(`${t("reports.patient_id")}: ${reportData.patientId}`, x, 32, { align });
+      doc.text(`${t("reports.name") || "Name"}: ${reportData.name}`, x, 40, { align });
+      doc.text(`${t("reports.age") || "Age"}: ${reportData.age}`, x, 48, { align });
+      doc.text(`${t("reports.gender")}: ${reportData.gender}`, x, 56, { align });
+      doc.text(`${t("reports.medical_center") || "Medical Center"}: ${reportData.medicalCenter}`, x, 64, { align });
+
+      const tableColumn = [t("reports.test_name"), t("reports.result"), t("reports.standard")];
       const tableRows = [];
 
       reportData.tests.forEach((test) => {
         tableRows.push([test.name, test.result, test.standard]);
       });
 
-      doc.autoTable({
+      autoTable(doc, {
         head: [tableColumn],
         body: tableRows,
         startY: 72,
-        styles: { font: "Arial", fontSize: 12 },
-        headStyles: { fillColor: [0, 51, 102] },
+        styles: {
+          font: "Amiri",
+          fontSize: 12,
+          halign: isRTL ? "right" : "left",
+        },
+        headStyles: {
+          fillColor: [0, 51, 102],
+          halign: isRTL ? "right" : "left",
+        },
+        didDrawCell: (data) => {
+          if (isRTL) {
+            data.cell.styles.cellPadding = { right: 5, left: 2 };
+          }
+        },
       });
     } else {
       let tableColumn = [];
       let tableRows = [];
 
       if (reportType === "byCategory") {
-        tableColumn = ["Category", "Number of Cases"];
+        tableColumn = [t("reports.category_header"), t("reports.number_of_cases")];
         reportData.forEach((item) => {
           tableRows.push([item.category, item.cases]);
         });
       } else if (reportType === "byCountry") {
-        tableColumn = ["Country", "Number of Cases"];
+        tableColumn = [t("reports.country_header"), t("reports.number_of_cases")];
         reportData.forEach((item) => {
           tableRows.push([item.country, item.cases]);
         });
       } else if (reportType === "byGender") {
-        tableColumn = ["Gender", "Count"];
+        tableColumn = [t("reports.gender"), t("reports.count")];
         reportData.forEach((item) => {
           tableRows.push([item.gender, item.count]);
         });
       } else if (reportType === "byDateRange") {
-        tableColumn = ["Month", "Number of Cases"];
+        tableColumn = [t("reports.month"), t("reports.number_of_cases")];
         reportData.forEach((item) => {
           tableRows.push([item.month, item.count]);
         });
       }
 
-      doc.autoTable({
+      autoTable(doc, {
         head: [tableColumn],
         body: tableRows,
         startY: 30,
-        styles: { font: "Arial", fontSize: 12 },
-        headStyles: { fillColor: [0, 51, 102] },
+        styles: {
+          font: "Amiri",
+          fontSize: 12,
+          halign: isRTL ? "right" : "left",
+        },
+        headStyles: {
+          fillColor: [0, 51, 102],
+          halign: isRTL ? "right" : "left",
+        },
+        didDrawCell: (data) => {
+          if (isRTL) {
+            data.cell.styles.cellPadding = { right: 5, left: 2 };
+          }
+        },
       });
     }
 
@@ -149,15 +196,23 @@ const ReportsPage = () => {
   };
 
   return (
-    <div className="container p-4" style={{ backgroundColor: "white", borderRadius: "5px" }}>
-      <h2 className="mb-4">Reports</h2>
+    <div
+      className="container p-4"
+      style={{
+        backgroundColor: "white",
+        borderRadius: "5px",
+        direction: isRTL ? "rtl" : "ltr",
+        textAlign: isRTL ? "right" : "left",
+      }}
+    >
+      <h2 className="mb-4">{t("reports.reports")}</h2>
 
       <Form.Group className="mb-3">
-        <Form.Label>Report Type:</Form.Label>
+        <Form.Label>{t("reports.report_type")}</Form.Label>
         <Form.Select value={reportType} onChange={(e) => setReportType(e.target.value)}>
           {reportTypes.map((type) => (
             <option key={type.value} value={type.value}>
-              {type.label}
+              {t(type.labelKey) || type.value}
             </option>
           ))}
         </Form.Select>
@@ -165,7 +220,7 @@ const ReportsPage = () => {
 
       {reportType === "byCategory" && (
         <Form.Group className="mb-3">
-          <Form.Label>Category:</Form.Label>
+          <Form.Label>{t("reports.category")}</Form.Label>
           <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
             {categories.map((c) => (
               <option key={c} value={c}>
@@ -178,7 +233,7 @@ const ReportsPage = () => {
 
       {reportType === "byCountry" && (
         <Form.Group className="mb-3">
-          <Form.Label>Country:</Form.Label>
+          <Form.Label>{t("reports.country")}</Form.Label>
           <Form.Select value={country} onChange={(e) => setCountry(e.target.value)}>
             {countries.map((c) => (
               <option key={c} value={c}>
@@ -191,11 +246,11 @@ const ReportsPage = () => {
 
       {reportType === "byGender" && (
         <Form.Group className="mb-3">
-          <Form.Label>Gender:</Form.Label>
+          <Form.Label>{t("reports.gender")}</Form.Label>
           <Form.Select value={gender} onChange={(e) => setGender(e.target.value)}>
-            <option value="all">All</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+            <option value="all">{t("reports.all")}</option>
+            <option value="Male">{isRTL ? "ذكر" : "Male"}</option>
+            <option value="Female">{isRTL ? "أنثى" : "Female"}</option>
           </Form.Select>
         </Form.Group>
       )}
@@ -203,11 +258,11 @@ const ReportsPage = () => {
       {reportType === "byDateRange" && (
         <>
           <Form.Group className="mb-3">
-            <Form.Label>From:</Form.Label>
+            <Form.Label>{t("reports.from")}</Form.Label>
             <Form.Control type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>To:</Form.Label>
+            <Form.Label>{t("reports.to")}</Form.Label>
             <Form.Control type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
           </Form.Group>
         </>
@@ -215,10 +270,10 @@ const ReportsPage = () => {
 
       {reportType === "patientReport" && (
         <Form.Group className="mb-3">
-          <Form.Label>Patient ID:</Form.Label>
+          <Form.Label>{t("reports.patient_id")}</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Patient ID"
+            placeholder={t("reports.enter_patient_id")}
             value={patientId}
             onChange={(e) => setPatientId(e.target.value)}
           />
@@ -227,28 +282,36 @@ const ReportsPage = () => {
 
       <div className="mb-3">
         <Button variant="primary" className="me-2" onClick={handleGenerateReport}>
-          Generate Report
+          {t("reports.generate_report")}
         </Button>
         <Button variant="outline-success" onClick={exportPDF} disabled={!reportData}>
-          Export PDF
+          {t("reports.export_pdf")}
         </Button>
       </div>
 
       {/* عرض تقرير المريض */}
       {reportData && reportType === "patientReport" && (
         <div>
-          <h4>Patient Report for ID: {reportData.patientId}</h4>
-          <p><strong>Name:</strong> {reportData.name}</p>
-          <p><strong>Age:</strong> {reportData.age}</p>
-          <p><strong>Gender:</strong> {reportData.gender}</p>
-          <p><strong>Medical Center:</strong> {reportData.medicalCenter}</p>
+          <h4>{t("reports.patient_report_title", { id: reportData.patientId })}</h4>
+          <p>
+            <strong>{t("reports.name")}:</strong> {reportData.name}
+          </p>
+          <p>
+            <strong>{t("reports.age")}:</strong> {reportData.age}
+          </p>
+          <p>
+            <strong>{t("reports.gender")}:</strong> {reportData.gender}
+          </p>
+          <p>
+            <strong>{t("reports.medical_center") || "Medical Center"}:</strong> {reportData.medicalCenter}
+          </p>
 
           <Table striped bordered hover responsive>
             <thead>
               <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Standard</th>
+                <th>{t("reports.test_name")}</th>
+                <th>{t("reports.result")}</th>
+                <th>{t("reports.standard")}</th>
               </tr>
             </thead>
             <tbody>
@@ -271,26 +334,26 @@ const ReportsPage = () => {
             <tr>
               {reportType === "byCategory" && (
                 <>
-                  <th>Category</th>
-                  <th>Number of Cases</th>
+                  <th>{t("reports.category_header")}</th>
+                  <th>{t("reports.number_of_cases")}</th>
                 </>
               )}
               {reportType === "byCountry" && (
                 <>
-                  <th>Country</th>
-                  <th>Number of Cases</th>
+                  <th>{t("reports.country_header")}</th>
+                  <th>{t("reports.number_of_cases")}</th>
                 </>
               )}
               {reportType === "byGender" && (
                 <>
-                  <th>Gender</th>
-                  <th>Count</th>
+                  <th>{t("reports.gender")}</th>
+                  <th>{t("reports.count")}</th>
                 </>
               )}
               {reportType === "byDateRange" && (
                 <>
-                  <th>Month</th>
-                  <th>Number of Cases</th>
+                  <th>{t("reports.month")}</th>
+                  <th>{t("reports.number_of_cases")}</th>
                 </>
               )}
             </tr>

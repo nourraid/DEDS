@@ -1,0 +1,444 @@
+{
+
+    "dashboard": {
+    "monthlyUsers": "المستخدمين الشهريين",
+    "totalPatients": "إجمالي المرضى",
+    "completedTests": "الفحوصات المكتملة",
+    "male": "ذكر",
+    "female": "أنثى",
+    "last6Months": "آخر 6 أشهر",
+    "last12Months": "آخر 12 شهر",
+    "totalUsers": "إجمالي المستخدمين",
+    "needMedicalFollowUpASAP": "بحاجة للمتابعة الطبية فوراً",
+    "noNeed": "لا حاجة",
+    "needMedicalFollowUp": "بحاجة للمتابعة الطبية"
+  }, 
+
+  "admin": {
+    "search_placeholder": "ابحث بالاسم",
+    "add_new_admin": "إضافة مشرف جديد",
+    "full_name": "الاسم الكامل",
+    "actions": "الإجراءات",
+    "email": "البريد الإلكتروني",
+    "role": "الصلاحية",
+    "no_admins_found": "لا يوجد مشرفون",
+    "edit_admin": "تعديل المشرف",
+    "enter_full_name": "أدخل الاسم الكامل",
+    "enter_email": "أدخل البريد الإلكتروني",
+    "add_admin": "إضافة مشرف",
+    "save_changes": "حفظ التغييرات"
+  },
+
+   "area_details": {
+        "stats_titles": {
+      "Positive_Cases": "الحالات الإيجابية",
+      "Negative_Cases": "الحالات السلبية",
+      "Pending_Cases": "الحالات قيد الانتظار"
+    },
+    "ai_results": {
+      "Positive": "إيجابي",
+      "Negative": "سلبي"
+    },
+    "countries": {
+      "Palestine": "فلسطين",
+      "Jordan": "الأردن"
+    },
+    "Statistics": "الإحصائيات",
+    "Total_Users": "إجمالي المستخدمين",
+    "Search": "ابحث برقم الحالة أو رقم المستخدم",
+    "Add_New_User": "إضافة مستخدم جديد",
+    "Country": "الدولة",
+    "Result": "النتيجة",
+    "Gender": "الجنس",
+    "Age": "العمر",
+    "Case_ID": "رقم الحالة",
+    "User_ID": "رقم المستخدم",
+    "Area": "المنطقة",
+    "Registration_Date": "تاريخ التسجيل",
+    "AI_Result": "نتيجة الذكاء الاصطناعي",
+    "AI_Test": "اختبار الذكاء الاصطناعي",
+    "Options": "خيارات",
+    "No_users_found": "لم يتم العثور على مستخدمين.",
+    "Filter_by": "تصفية حسب",
+    "Filter_by_Age": "تصفية حسب العمر",
+    "Select_Date": "اختر التاريخ",
+    "Go_to_AI_Test_details": "اذهب إلى تفاصيل اختبار الذكاء الاصطناعي",
+    "Go_to_AI_Test_details_for_user": "اذهب إلى تفاصيل اختبار الذكاء الاصطناعي للمستخدم",
+    "Edit": "تعديل",
+    "Edit_user": "تعديل المستخدم",
+    "Info": "معلومات",
+    "View_details_of_user": "عرض تفاصيل المستخدم",
+    "Delete": "حذف",
+    "Delete_user": "حذف المستخدم",
+    "countryDataNotFound": "بيانات الدولة غير موجودة. الرجاء التنقل من الصفحة الرئيسية.",
+    "User_pagination": "تصفح المستخدمين",
+    "Go_to_page": "اذهب إلى الصفحة"
+  },
+
+"area": {
+    "Search": "ابحث بالاسم",
+    "Add_New_Area": "إضافة منطقة جديدة",
+    "No_areas_found": "لا توجد مناطق.",
+    "More": "المزيد",
+    "Area_Name": "اسم المنطقة",
+    "Enter_area_name": "أدخل اسم المنطقة",
+    "Total_Users": "إجمالي المستخدمين",
+    "Enter_total_users": "أدخل عدد المستخدمين",
+    "Red_Count": "عدد المستخدمين (أحمر)",
+    "Enter_red_count": "أدخل عدد المستخدمين باللون الأحمر",
+    "Green_Count": "عدد المستخدمين (أخضر)",
+    "Enter_green_count": "أدخل عدد المستخدمين باللون الأخضر",
+    "Yellow_Count": "عدد المستخدمين (أصفر)",
+    "Enter_yellow_count": "أدخل عدد المستخدمين باللون الأصفر",
+    "Add_Area": "إضافة منطقة"
+  },
+
+  "distributors": {
+    "search_by_name": "ابحث بالاسم",
+    "add_distributor": "إضافة موزع",
+    "loading_distributors": "جارٍ تحميل الموزعين...",
+    "name": "الاسم",
+    "location": "الموقع",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "tests": "عدد الفحوصات",
+    "license": "الرخصة",
+    "actions": "الإجراءات",
+    "no_distributors_found": "لا يوجد موزعين.",
+    "add_new_distributor": "إضافة موزع جديد",
+    "please_fill_next_fields": "يرجى ملء الحقول التالية:",
+    "date": "التاريخ",
+    "distributor_name": "اسم الموزع",
+    "phone_number": "رقم الهاتف",
+    "email_address": "البريد الإلكتروني",
+    "country": "الدولة",
+    "location_address": "عنوان الموقع",
+    "license_upload": "رفع الرخصة",
+    "drag_drop_file": "اسحب الملف هنا أو اضغط للتحميل",
+    "save": "حفظ",
+    "name_required": "الاسم مطلوب",
+    "phone_required": "رقم الهاتف مطلوب",
+    "email_required": "البريد الإلكتروني مطلوب",
+    "country_required": "الدولة مطلوبة",
+    "location_required": "العنوان مطلوب",
+    "license_file_required": "ملف الرخصة مطلوب",
+    "edit": "تعديل",
+    "delete": "حذف"
+  },
+
+  "login": {
+    "Diabetes_Early_Detection_System": "نظام الكشف المبكر عن السكري",
+    "welcome_back": "مرحبًا بعودتك! الرجاء تسجيل الدخول إلى حسابك.",
+    "Email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "Login": "تسجيل الدخول"
+  },
+
+  "providersPage": {
+    "searchByName": "ابحث بالاسم",
+    "add_new_provider": "إضافة مزود جديد",
+    "pleaseFillFields": "يرجى تعبئة جميع الحقول المطلوبة",
+    "date": "التاريخ",
+    "providerName": "اسم المزود",
+    "phoneNumber": "رقم الهاتف",
+    "emailAddress": "البريد الإلكتروني",
+    "country": "الدولة",
+    "locationAddress": "الموقع / العنوان",
+    "license": "الرخصة",
+    "writeHere": "اكتب هنا...",
+    "name": "الاسم",
+    "location": "الموقع",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "tests": "عدد الفحوصات",
+    "actions": "الإجراءات",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "noProvidersFound": "لا يوجد مزودون",
+    "add": "إضافة",
+    "noLicense": "لا توجد رخصة مرفقة",
+    "validation": {
+      "nameRequired": "اسم المزود مطلوب",
+      "phoneRequired": "رقم الهاتف مطلوب",
+      "phoneInvalid": "رقم الهاتف غير صالح",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "countryRequired": "الدولة مطلوبة",
+      "locationRequired": "الموقع مطلوب",
+      "licenseRequired": "ملف الرخصة مطلوب"
+    }
+  },
+
+  "licenseDropzone": {
+    "dragDrop": "اسحب وأسقط ملف الرخصة هنا، أو انقر لاختيار الملف (PDF, JPG, PNG)",
+    "required": "ملف الرخصة مطلوب"
+  },
+
+  "report": {
+    "reports": "التقارير",
+    "reportType": "نوع التقرير:",
+    "category": "الفئة:",
+    "country": "الدولة:",
+    "gender": "الجنس:",
+    "from": "من:",
+    "to": "إلى:",
+    "patientId": "رقم المريض:",
+    "enterPatientId": "أدخل رقم المريض",
+    "generateReport": "إنشاء التقرير",
+    "exportPDF": "تصدير PDF",
+    "patientReportTitle": "تقرير المريض للرقم: {{id}}",
+    "name": "الاسم",
+    "age": "العمر",
+    "medicalCenter": "المركز الطبي",
+    "testName": "اسم الفحص",
+    "result": "النتيجة",
+    "standard": "المعيار",
+    "categoryHeader": "الفئة",
+    "numberOfCases": "عدد الحالات",
+    "countryHeader": "الدولة",
+    "count": "العدد",
+    "month": "الشهر",
+    "all": "الكل",
+    "pleaseEnterPatientId": "يرجى إدخال رقم المريض."
+  },
+
+  "settings": {
+    "language_settings": {
+      "title": "اللغة",
+      "search_placeholder": "ابحث باسم اللغة",
+      "add_button": "إضافة لغة جديدة",
+      "modal_title": "إضافة لغة جديدة",
+      "modal_input_placeholder": "أدخل اسم اللغة",
+      "modal_cancel": "إلغاء",
+      "modal_submit": "إضافة اللغة"
+    },
+    "privacy_settings": {
+      "title": "الخصوصية",
+      "send_statistics": "إرسال إحصائيات الاستخدام",
+      "delete_data": "حذف بيانات الحساب",
+      "delete_alert": "تم حذف جميع بياناتك!"
+    },
+    "data_settings": {
+      "title": "البيانات",
+      "send_statistics": "إرسال إحصائيات الاستخدام",
+      "delete_data": "حذف بيانات الحساب",
+      "delete_alert": "تم حذف جميع بياناتك!"
+    },
+    "actions": {
+      "edit": "تعديل",
+      "delete": "حذف"
+    }
+  },
+
+  "user": {
+    "medical_info": {
+      "title": "المعلومات الطبية",
+      "diseases": "الأمراض التي يعاني منها المستخدم",
+      "diabetes1": "مرض السكري",
+      "diabetes2": "السكري",
+      "kidney_family": "هل يوجد مرضى كلى في العائلة؟",
+      "heart_family": "هل يوجد مرضى قلب في العائلة؟",
+      "kidney_test": "هل أجريت فحص للكلى؟",
+      "comments": "تعليقات أخرى للمستخدم",
+      "no_comments": "لا توجد تعليقات"
+    },
+    "general_info": {
+      "title": "معلومات عامة",
+      "profile_picture": "صورة الملف الشخصي",
+      "full_name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "id_number": "رقم الهوية",
+      "phone": "رقم الهاتف",
+      "dob": "تاريخ الميلاد",
+      "gender": "الجنس",
+      "blood_type": "فصيلة الدم",
+      "country": "الدولة",
+      "city": "المدينة",
+      "area": "المنطقة",
+      "street": "الشارع",
+      "building_number": "رقم المبنى",
+      "weight": "الوزن"
+    },
+    "general": {
+      "yes": "نعم",
+      "no": "لا"
+    }
+  },
+
+  "usersPage": {
+    "searchPlaceholder": "ابحث برقم الحالة أو رقم المستخدم",
+    "addNewUser": "إضافة مستخدم جديد",
+    "filters": {
+      "country": "الدولة",
+      "result": "النتيجة",
+      "gender": "الجنس",
+      "age": "العمر",
+      "date": "التاريخ",
+      "countryOptions": {
+        "palestine": "فلسطين",
+        "jordan": "الأردن"
+      },
+      "resultOptions": {
+        "positive": "إيجابي",
+        "negative": "سلبي"
+      },
+      "genderOptions": {
+        "male": "ذكر",
+        "female": "أنثى"
+      }
+    },
+    "tableHeaders": {
+      "caseId": "رقم الحالة",
+      "userId": "رقم المستخدم",
+      "area": "المنطقة",
+      "registrationDate": "تاريخ التسجيل",
+      "aiResult": "نتيجة الذكاء الاصطناعي",
+      "aiTest": "اختبار الذكاء الاصطناعي",
+      "options": "خيارات"
+    },
+    "noUsersFound": "لا يوجد مستخدمون.",
+    "modal": {
+      "title": "إضافة مستخدم جديد",
+      "fillFields": "يرجى تعبئة الحقول أدناه",
+      "dateLabel": "التاريخ:",
+      "formLabels": {
+        "userName": "اسم المستخدم",
+        "phoneNumber": "رقم الهاتف",
+        "emailAddress": "البريد الإلكتروني",
+        "role": "الصلاحية"
+      },
+      "formPlaceholders": {
+        "userName": "اكتب هنا",
+        "phoneNumber": "اكتب هنا",
+        "emailAddress": "اكتب هنا",
+        "role": "اختر صلاحية"
+      },
+      "roles": {
+        "admin": "مشرف",
+        "editor": "محرر",
+        "viewer": "مشاهد",
+        "moderator": "مراقب"
+      },
+      "addButton": "إضافة",
+      "validationErrors": {
+        "nameRequired": "الاسم مطلوب.",
+        "emailRequired": "البريد الإلكتروني مطلوب.",
+        "phoneRequired": "رقم الهاتف مطلوب.",
+        "roleRequired": "الصلاحية مطلوبة."
+      }
+    },
+    "tooltips": {
+      "edit": "تعديل",
+      "info": "معلومات",
+      "delete": "حذف",
+      "goToAiTestDetails": "اذهب لتفاصيل اختبار الذكاء الاصطناعي"
+    }
+  },
+  "roles": {
+  "super_admin": "مشرف رئيسي",
+  "admin": "مشرف",
+  "moderator": "مراقب",
+  "viewer": "مشاهد"
+},
+"titles": {
+    "aiTests": "اختبارات الذكاء الاصطناعي"
+  },
+  "placeholders": {
+    "searchHere": "ابحث هنا ...",
+    "writeHere": "اكتب هنا",
+    "selectProvider": "اختر المزود"
+  },
+  "labels": {
+    "filter": "تصفية:",
+    "calendar": "التقويم",
+    "time": "الوقت",
+    "note": "ملاحظة",
+    "providers": "المزودون"
+  },
+  "tableHeaders": {
+    "testNumber": "رقم الفحص",
+    "testDate": "تاريخ الفحص",
+    "aiResult": "نتيجة الذكاء الاصطناعي",
+    "aiDetails": "تفاصيل الذكاء الاصطناعي",
+    "call": "مكالمة",
+    "notification": "إشعار",
+    "chat": "محادثة",
+    "appointment": "موعد",
+    "testName": "اسم الفحص",
+    "result": "النتيجة",
+    "standard": "المعيار"
+  },
+  "tableMessages": {
+    "noTests": "لا توجد فحوصات."
+  },
+  "tooltips": {
+    "details": "عرض التفاصيل",
+    "call": "اتصال بالمريض",
+    "notification": "إرسال إشعار",
+    "chat": "فتح المحادثة",
+    "appointment": "تحديد موعد"
+  },
+  "modals": {
+    "notification": "إشعار",
+    "pleaseFillNote": "يرجى تعبئة الملاحظة",
+    "sendToUser": "الإرسال إلى المستخدم",
+    "quickMessages": "رسائل سريعة",
+    "select": "اختر",
+    "bloodTestResult": "نتيجة فحص الدم",
+    "patientName": "اسم المريض",
+    "caseID": "رقم الحالة",
+    "reportDate": "تاريخ التقرير",
+    "appointment": "موعد"
+  },
+  "buttons": {
+    "add": "إضافة",
+    "sendReport": "إرسال التقرير",
+    "print": "طباعة",
+    "saveAppointment": "حفظ الموعد"
+  },
+  "alerts": {
+    "callTest": "جاري الاتصال بالفحص رقم: {{id}}",
+    "chatTest": "فتح المحادثة للفحص رقم: {{id}}",
+    "enterNote": "يرجى إدخال ملاحظة قبل الإضافة.",
+    "noteAdded": "تمت إضافة الملاحظة بنجاح!",
+    "appointmentSaved": "تم حفظ الموعد بنجاح!",
+    "sendReportClicked": "تم الضغط على إرسال التقرير!"
+  },
+  "messages": {
+    "testResultReady": "نتيجة فحصك جاهزة، يرجى المراجعة.",
+    "followUpRecommended": "يوصى بمتابعة بناءً على الفحص.",
+    "contactHealthCenter": "يرجى الاتصال بمركز الصحة فورًا."
+  },
+  "providers": {
+    "providerOne": "المزود الأول",
+    "providerTwo": "المزود الثاني"
+  },
+  "options":{
+    "allResults": "كل النتائج",
+    "positive":"ايجابي",
+    "negative":"سلبي"
+  },
+  "reports": {
+    "generate_report": "إنشاء التقرير",
+    "export_pdf": "تصدير PDF",
+    "patient_report_title": "تقرير المريض",
+    "report_type": "نوع التقرير",
+    "category": "الفئة",
+    "country": "الدولة",
+    "gender": "الجنس",
+    "from": "من",
+    "to": "إلى",
+    "patient_id": "رقم المريض",
+    "enter_patient_id": "أدخل رقم المريض",
+    "test_name": "اسم الفحص",
+    "result": "النتيجة",
+    "standard": "المعيار",
+    "number_of_cases": "عدد الحالات",
+    "month": "الشهر",
+    "all": "الكل",
+    "reports": "التقارير",
+    "please_enter_patient_id": "يرجى إدخال رقم المريض",
+    "category_header": "الفئة",
+    "country_header": "الدولة"
+  }
+}

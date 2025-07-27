@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Container,
   Table,
@@ -8,35 +8,37 @@ import {
   Form,
 } from "react-bootstrap";
 import { FaTrashAlt, FaEdit, FaPlus } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
-const roles = ["Super Admin", "Admin", "Moderator", "Viewer"];
+const roles = ["super_admin", "admin", "moderator", "viewer"];
 
 const AdminsAndRolesPage = () => {
+  const { t } = useTranslation();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [admins, setAdmins] = useState([
     {
       id: 1,
       name: "Ahmed Khalil",
       email: "ahmed@example.com",
-      role: "Super Admin",
+      role: "super_admin",
     },
     {
       id: 2,
       name: "Fatima Zahra",
       email: "fatima@example.com",
-      role: "Admin",
+      role: "admin",
     },
     {
       id: 3,
       name: "Omar Ali",
       email: "omar@example.com",
-      role: "Moderator",
+      role: "moderator",
     },
   ]);
   const [currentPage, setCurrentPage] = useState(1);
   const adminsPerPage = 5;
 
-  // Modal state
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -46,25 +48,24 @@ const AdminsAndRolesPage = () => {
     role: roles[0],
   });
 
-  // Filter admins by search term
-  const filteredAdmins = admins.filter(
-    (admin) =>
-      admin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      admin.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredAdmins = useMemo(() => {
+    return admins.filter(
+      (admin) =>
+        admin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        admin.email.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [admins, searchTerm]);
 
-  // Pagination calculations
   const totalPages = Math.ceil(filteredAdmins.length / adminsPerPage);
   const indexOfLastAdmin = currentPage * adminsPerPage;
   const indexOfFirstAdmin = indexOfLastAdmin - adminsPerPage;
-  const currentAdmins = filteredAdmins.slice(
-    indexOfFirstAdmin,
-    indexOfLastAdmin
-  );
+
+  const currentAdmins = useMemo(() => {
+    return filteredAdmins.slice(indexOfFirstAdmin, indexOfLastAdmin);
+  }, [filteredAdmins, indexOfFirstAdmin, indexOfLastAdmin]);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Handlers for modal open/close and input changes
   const openAddModal = () => {
     setIsEditing(false);
     setFormData({ id: null, name: "", email: "", role: roles[0] });
@@ -78,7 +79,7 @@ const AdminsAndRolesPage = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this admin?")) {
+    if (window.confirm(t("admin.confirm_delete") || "هل أنت متأكد من الحذف؟")) {
       setAdmins(admins.filter((admin) => admin.id !== id));
     }
   };
@@ -90,27 +91,21 @@ const AdminsAndRolesPage = () => {
 
   const handleSave = () => {
     if (!formData.name.trim() || !formData.email.trim()) {
-      alert("Please fill in all fields.");
+      alert(t("admin.fill_all_fields") || "يرجى ملء جميع الحقول");
       return;
     }
-    // Simple email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      alert("Please enter a valid email address.");
+      alert(t("admin.invalid_email") || "البريد الإلكتروني غير صالح");
       return;
     }
 
     if (isEditing) {
       setAdmins((prev) =>
-        prev.map((admin) =>
-          admin.id === formData.id ? { ...formData } : admin
-        )
+        prev.map((admin) => (admin.id === formData.id ? { ...formData } : admin))
       );
     } else {
-      setAdmins((prev) => [
-        ...prev,
-        { ...formData, id: Date.now() },
-      ]);
+      setAdmins((prev) => [...prev, { ...formData, id: Date.now() }]);
     }
     setShowModal(false);
   };
@@ -125,7 +120,7 @@ const AdminsAndRolesPage = () => {
         <input
           type="text"
           className="form-control flex-grow-1 me-3"
-          placeholder="Search by name or email"
+          placeholder={t("admin.search_placeholder")}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ maxWidth: "400px", minWidth: "250px" }}
@@ -145,7 +140,7 @@ const AdminsAndRolesPage = () => {
           }}
         >
           <FaPlus className="me-2" />
-          Add New Admin
+          {t("admin.add_new_admin")}
         </Button>
       </div>
 
@@ -170,10 +165,14 @@ const AdminsAndRolesPage = () => {
             }}
           >
             <tr>
-              <th style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>Full Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th style={{ borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>Actions</th>
+              <th style={{ borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
+                {t("admin.full_name")}
+              </th>
+              <th>{t("admin.email")}</th>
+              <th>{t("admin.role")}</th>
+              <th style={{ borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}>
+                {t("admin.actions")}
+              </th>
             </tr>
           </thead>
 
@@ -189,13 +188,23 @@ const AdminsAndRolesPage = () => {
                 >
                   <td className="py-3">{admin.name}</td>
                   <td className="py-3">{admin.email}</td>
-                  <td className="py-3">{admin.role}</td>
+                  <td className="py-3">{t(`roles.${admin.role}`)}</td>
                   <td className="py-3">
                     <div className="d-flex justify-content-center gap-2">
-                      <Button variant="outline-primary" size="sm" onClick={() => openEditModal(admin)}>
+                      <Button
+                        variant="outline-primary"
+                        size="sm"
+                        onClick={() => openEditModal(admin)}
+                        aria-label={t("admin.edit_admin") + ` ${admin.name}`}
+                      >
                         <FaEdit />
                       </Button>
-                      <Button variant="outline-danger" size="sm" onClick={() => handleDelete(admin.id)}>
+                      <Button
+                        variant="outline-danger"
+                        size="sm"
+                        onClick={() => handleDelete(admin.id)}
+                        aria-label={t("admin.delete_admin") + ` ${admin.name}`}
+                      >
                         <FaTrashAlt />
                       </Button>
                     </div>
@@ -205,7 +214,7 @@ const AdminsAndRolesPage = () => {
             ) : (
               <tr>
                 <td colSpan="4" className="py-4">
-                  No admins found.
+                  {t("admin.no_admins_found")}
                 </td>
               </tr>
             )}
@@ -231,38 +240,38 @@ const AdminsAndRolesPage = () => {
       {/* Modal */}
       <Modal size="md" show={showModal} onHide={() => setShowModal(false)} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{isEditing ? "Edit Admin" : "Add New Admin"}</Modal.Title>
+          <Modal.Title>{isEditing ? t("admin.edit_admin") : t("admin.add_new_admin")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="adminName">
-              <Form.Label>Full Name</Form.Label>
+              <Form.Label>{t("admin.full_name")}</Form.Label>
               <Form.Control
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                placeholder="Enter full name"
+                placeholder={t("admin.enter_full_name")}
               />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="adminEmail">
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>{t("admin.email")}</Form.Label>
               <Form.Control
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder="Enter email"
+                placeholder={t("admin.enter_email")}
               />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="adminRole">
-              <Form.Label>Role</Form.Label>
+              <Form.Label>{t("admin.role")}</Form.Label>
               <Form.Select name="role" value={formData.role} onChange={handleInputChange}>
                 {roles.map((roleOption) => (
                   <option key={roleOption} value={roleOption}>
-                    {roleOption}
+                    {t(`roles.${roleOption}`)}
                   </option>
                 ))}
               </Form.Select>
@@ -281,7 +290,7 @@ const AdminsAndRolesPage = () => {
               fontWeight: "600",
             }}
           >
-            {isEditing ? "Save Changes" : "Add Admin"}
+            {isEditing ? t("admin.save_changes") : t("admin.add_admin")}
           </Button>
         </Modal.Footer>
       </Modal>

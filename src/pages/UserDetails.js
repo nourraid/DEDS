@@ -1,5 +1,6 @@
 import React from "react";
 import { Accordion, Row, Col, Image } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const InfoRow = ({ label, value, isImage = false }) => (
   <Row className="mb-2">
@@ -42,9 +43,11 @@ const SingleColValue = ({ value }) => (
 
 const HalfColRow = ({ label, value }) => (
   <>
-    <Row className="mb-2">
-      <Col md={4}><strong>{label}</strong></Col>
-    </Row>
+    {label && (
+      <Row className="mb-2">
+        <Col md={4}><strong>{label}</strong></Col>
+      </Row>
+    )}
     <Row className="mb-2">
       <Col
         md={4}
@@ -62,6 +65,8 @@ const HalfColRow = ({ label, value }) => (
 );
 
 const UserDetailsAccordion = () => {
+  const { t } = useTranslation();
+
   return (
     <div
       className="container my-4"
@@ -70,19 +75,18 @@ const UserDetailsAccordion = () => {
       {/* Medical Information */}
       <Accordion defaultActiveKey="0" className="mb-4">
         <Accordion.Item eventKey="0">
-          <Accordion.Header>Medical Information</Accordion.Header>
+          <Accordion.Header>{t("user.medical_info.title")}</Accordion.Header>
           <Accordion.Body>
-            <SingleColRow label="Diseases user have" />
-            <SingleColValue value="Diabetes Disease" />
-            <SingleColValue value="Diabetes" />
+            <SingleColRow label={t("user.medical_info.diseases")} />
+            <SingleColValue value={t("user.medical_info.diabetes1")} />
+            <SingleColValue value={t("user.medical_info.diabetes2")} />
 
-            <SingleColRow label="Are there Kidney disease patients in the family?" />
-            <HalfColRow label="" value="Yes" />
+            <SingleColRow label={t("user.medical_info.kidney_family")} />
+            <HalfColRow value={t("user.general.yes")} />
 
-            <HalfColRow label="Are there heart disease patients in the family?" value="Yes" />
-            <HalfColRow label="Have you ever had a Kidney test?" value="Yes" />
-
-            <HalfColRow label="User other comments" value="No comments" />
+            <HalfColRow label={t("user.medical_info.heart_family")} value={t("user.general.yes")} />
+            <HalfColRow label={t("user.medical_info.kidney_test")} value={t("user.general.yes")} />
+            <HalfColRow label={t("user.medical_info.comments")} value={t("user.medical_info.no_comments")} />
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
@@ -90,22 +94,22 @@ const UserDetailsAccordion = () => {
       {/* General Information */}
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
-          <Accordion.Header>General Information</Accordion.Header>
+          <Accordion.Header>{t("user.general_info.title")}</Accordion.Header>
           <Accordion.Body>
-            <InfoRow label="Profile Picture" value="https://via.placeholder.com/100" isImage />
-            <InfoRow label="Full Name" value="John Doe" />
-            <InfoRow label="Email" value="john@example.com" />
-            <InfoRow label="ID Number" value="123456789" />
-            <InfoRow label="Phone" value="+972 599 000 000" />
-            <InfoRow label="Date of Birth" value="1990-01-01" />
-            <InfoRow label="Gender" value="Male" />
-            <InfoRow label="Blood Type" value="O+" />
-            <InfoRow label="Country" value="Palestine" />
-            <InfoRow label="City" value="Gaza" />
-            <InfoRow label="Area" value="Al-Rimal" />
-            <InfoRow label="Street" value="Main Street" />
-            <InfoRow label="Building Number" value="12" />
-            <InfoRow label="Weight" value="70kg" />
+            <InfoRow label={t("user.general_info.profile_picture")} value="https://via.placeholder.com/100" isImage />
+            <InfoRow label={t("user.general_info.full_name")} value="John Doe" />
+            <InfoRow label={t("user.general_info.email")} value="john@example.com" />
+            <InfoRow label={t("user.general_info.id_number")} value="123456789" />
+            <InfoRow label={t("user.general_info.phone")} value="+972 599 000 000" />
+            <InfoRow label={t("user.general_info.dob")} value="1990-01-01" />
+            <InfoRow label={t("user.general_info.gender")} value="Male" />
+            <InfoRow label={t("user.general_info.blood_type")} value="O+" />
+            <InfoRow label={t("user.general_info.country")} value="Palestine" />
+            <InfoRow label={t("user.general_info.city")} value="Gaza" />
+            <InfoRow label={t("user.general_info.area")} value="Al-Rimal" />
+            <InfoRow label={t("user.general_info.street")} value="Main Street" />
+            <InfoRow label={t("user.general_info.building_number")} value="12" />
+            <InfoRow label={t("user.general_info.weight")} value="70kg" />
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

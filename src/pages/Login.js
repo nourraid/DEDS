@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { t } from "i18next";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -31,13 +32,13 @@ function Login() {
            <div>
     {/* محتوى الـ div اللي جنب اللوجو */}
     <h4 className="mb-0">DEDS</h4>
-    <p className="mb-0" style={{ fontSize: "0.9rem" }}>Diabetes Early Detection System</p>
+    <p className="mb-0" style={{ fontSize: "0.9rem" }}>{t("Diabetes_Early_Detection_System")}</p>
   </div>
         
         </div>
 
         <p className="text-center" style={{ margin: 20 }}>
-          welcome back! Please login to your acccount. 
+          {t("welcome_back")}
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -61,7 +62,7 @@ function Login() {
               type="password"
               id="password"
               className="form-control border-0 border-bottom rounded-0"
-              placeholder="password"
+              placeholder={t("password")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -73,7 +74,7 @@ function Login() {
             className="btn btn-primary w-100 fw-bold"
             style={{marginTop:"40px" ,background:"#3561b3", borderRadius: "50px", padding: "12px", fontSize: "1.1rem" ,boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)" }}
           >
-            Login
+            {t("Login")}
           </button>
         </form>
       </div>

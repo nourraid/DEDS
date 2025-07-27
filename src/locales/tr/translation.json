@@ -1,0 +1,456 @@
+{
+  "dashboard": {
+    "monthlyUsers": "Aylık Kullanıcılar",
+    "totalPatients": "Toplam Hasta",
+    "completedTests": "Tamamlanan Testler",
+    "male": "Erkek",
+    "female": "Kadın",
+    "last6Months": "Son 6 Ay",
+    "last12Months": "Son 12 Ay",
+    "totalUsers": "Toplam Kullanıcılar",
+    "needMedicalFollowUpASAP": "Acil Tıbbi Takip Gerekiyor",
+    "noNeed": "Gerek Yok",
+    "needMedicalFollowUp": "Tıbbi Takip Gerekiyor"
+  },
+
+  "admin": {
+    "search_placeholder": "İsme göre ara",
+    "add_new_admin": "Yeni Yönetici Ekle",
+    "full_name": "Ad Soyad",
+    "actions": "İşlemler",
+    "email": "E-posta",
+    "role": "Rol",
+    "no_admins_found": "Yönetici bulunamadı",
+    "edit_admin": "Yöneticiyi Düzenle",
+    "enter_full_name": "Ad Soyad Giriniz",
+    "enter_email": "E-posta Giriniz",
+    "add_admin": "Yönetici Ekle",
+    "save_changes": "Değişiklikleri Kaydet"
+  },
+
+  "area_details": {
+    "stats_titles": {
+      "Positive Cases": "Pozitif Vakalar",
+      "Negative Cases": "Negatif Vakalar",
+      "Pending Cases": "Bekleyen Vakalar"
+    },
+    "ai_results": {
+      "Positive": "Pozitif",
+      "Negative": "Negatif"
+    },
+    "countries": {
+      "Palestine": "Filistin",
+      "Jordan": "Ürdün"
+    },
+    "Statistics": "İstatistikler",
+    "Total_Users": "Toplam Kullanıcı",
+    "Search": "Vaka ID veya Kullanıcı ID ile Ara",
+    "Add_New_User": "Yeni Kullanıcı Ekle",
+    "Country": "Ülke",
+    "Result": "Sonuç",
+    "Gender": "Cinsiyet",
+    "Age": "Yaş",
+    "Case_ID": "Vaka ID",
+    "User_ID": "Kullanıcı ID",
+    "Area": "Bölge",
+    "Registration_Date": "Kayıt Tarihi",
+    "AI_Result": "Yapay Zeka Sonucu",
+    "AI_Test": "Yapay Zeka Testi",
+    "Options": "Seçenekler",
+    "No_users_found": "Kullanıcı bulunamadı.",
+    "Filter_by": "Filtrele",
+    "Filter_by_Age": "Yaşa Göre Filtrele",
+    "Select_Date": "Tarih Seç",
+    "Go_to_AI_Test_details": "Yapay Zeka Test Detaylarına Git",
+    "Go_to_AI_Test_details_for_user": "Kullanıcı için Yapay Zeka Test Detaylarına Git",
+    "Edit": "Düzenle",
+    "Edit_user": "Kullanıcıyı Düzenle",
+    "Info": "Bilgi",
+    "View_details_of_user": "Kullanıcı Detaylarını Görüntüle",
+    "Delete": "Sil",
+    "Delete_user": "Kullanıcıyı Sil",
+    "countryDataNotFound": "Ülke verisi bulunamadı. Lütfen ana sayfadan ilerleyin.",
+    "User_pagination": "Kullanıcı Sayfalaması",
+    "Go_to_page": "Sayfaya Git"
+  },
+
+  "area": {
+    "Search": "İsme göre ara",
+    "Add_New_Area": "Yeni Bölge Ekle",
+    "No_areas_found": "Bölge bulunamadı.",
+    "More": "Daha Fazla",
+    "Area_Name": "Bölge Adı",
+    "Enter_area_name": "Bölge adını giriniz",
+    "Total_Users": "Toplam Kullanıcı",
+    "Enter_total_users": "Toplam kullanıcı sayısını giriniz",
+    "Red_Count": "Kırmızı Sayısı",
+    "Enter_red_count": "Kırmızı sayısını giriniz",
+    "Green_Count": "Yeşil Sayısı",
+    "Enter_green_count": "Yeşil sayısını giriniz",
+    "Yellow_Count": "Sarı Sayısı",
+    "Enter_yellow_count": "Sarı sayısını giriniz",
+    "Add_Area": "Bölge Ekle"
+  },
+
+  "distributors": {
+    "search_by_name": "İsme göre ara",
+    "add_distributor": "Distribütör Ekle",
+    "loading_distributors": "Distribütörler yükleniyor...",
+    "name": "İsim",
+    "location": "Konum",
+    "email": "E-posta",
+    "phone": "Telefon Numarası",
+    "tests": "Test Sayısı",
+    "license": "Lisans",
+    "actions": "İşlemler",
+    "no_distributors_found": "Distribütör bulunamadı.",
+    "add_new_distributor": "Yeni Distribütör Ekle",
+    "please_fill_next_fields": "Lütfen aşağıdaki alanları doldurun:",
+    "date": "Tarih",
+    "distributor_name": "Distribütör Adı",
+    "phone_number": "Telefon Numarası",
+    "email_address": "E-posta Adresi",
+    "country": "Ülke",
+    "location_address": "Adres",
+    "license_upload": "Lisans Yükle",
+    "drag_drop_file": "Dosyayı buraya sürükleyin veya yüklemek için tıklayın",
+    "save": "Kaydet",
+    "name_required": "İsim zorunludur",
+    "phone_required": "Telefon zorunludur",
+    "email_required": "E-posta zorunludur",
+    "country_required": "Ülke zorunludur",
+    "location_required": "Konum zorunludur",
+    "license_file_required": "Lisans dosyası zorunludur",
+    "edit": "Düzenle",
+    "delete": "Sil"
+  },
+
+  "login": {
+    "Diabetes_Early_Detection_System": "Diyabet Erken Tespit Sistemi",
+    "welcome_back": "Tekrar hoşgeldiniz! Lütfen hesabınıza giriş yapınız.",
+    "Email": "E-posta",
+    "password": "Parola",
+    "Login": "Giriş"
+  },
+
+  "providersPage": {
+    "searchByName": "İsme göre ara",
+    "add_new_provider": "Yeni Sağlayıcı Ekle",
+    "pleaseFillFields": "Lütfen gerekli tüm alanları doldurun",
+    "date": "Tarih",
+    "providerName": "Sağlayıcı Adı",
+    "phoneNumber": "Telefon Numarası",
+    "emailAddress": "E-posta Adresi",
+    "country": "Ülke",
+    "locationAddress": "Konum / Adres",
+    "license": "Lisans",
+    "writeHere": "Buraya yazınız...",
+    "name": "İsim",
+    "location": "Konum",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "tests": "Test Sayısı",
+    "actions": "İşlemler",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "noProvidersFound": "Sağlayıcı bulunamadı",
+    "add": "Ekle",
+    "noLicense": "Lisans eklenmemiş",
+    "validation": {
+      "nameRequired": "Sağlayıcı adı zorunludur",
+      "phoneRequired": "Telefon numarası zorunludur",
+      "phoneInvalid": "Geçersiz telefon numarası",
+      "emailRequired": "E-posta zorunludur",
+      "emailInvalid": "Geçersiz e-posta adresi",
+      "countryRequired": "Ülke zorunludur",
+      "locationRequired": "Konum zorunludur",
+      "licenseRequired": "Lisans dosyası zorunludur"
+    }
+  },
+
+  "licenseDropzone": {
+    "dragDrop": "Lisans dosyasını buraya sürükleyin veya dosya seçmek için tıklayın (PDF, JPG, PNG)",
+    "required": "Lisans dosyası zorunludur"
+  },
+
+  "report": {
+    "reports": "Raporlar",
+    "reportType": "Rapor Türü:",
+    "category": "Kategori:",
+    "country": "Ülke:",
+    "gender": "Cinsiyet:",
+    "from": "Başlangıç:",
+    "to": "Bitiş:",
+    "patientId": "Hasta ID:",
+    "enterPatientId": "Hasta ID giriniz",
+    "generateReport": "Raporu Oluştur",
+    "exportPDF": "PDF Olarak Dışa Aktar",
+    "patientReportTitle": "Hasta Raporu ID: {{id}}",
+    "name": "İsim",
+    "age": "Yaş",
+    "medicalCenter": "Sağlık Merkezi",
+    "testName": "Test Adı",
+    "result": "Sonuç",
+    "standard": "Standart",
+    "categoryHeader": "Kategori",
+    "numberOfCases": "Vaka Sayısı",
+    "countryHeader": "Ülke",
+    "count": "Sayım",
+    "month": "Ay",
+    "all": "Tümü",
+    "pleaseEnterPatientId": "Lütfen hasta ID giriniz."
+  },
+
+  "settings": {
+    "language_settings": {
+      "title": "Dil",
+      "search_placeholder": "Dil adına göre ara",
+      "add_button": "Yeni Dil Ekle",
+      "modal_title": "Yeni Dil Ekle",
+      "modal_input_placeholder": "Dil adını giriniz",
+      "modal_cancel": "İptal",
+      "modal_submit": "Dili Ekle"
+    },
+    "privacy_settings": {
+      "title": "Gizlilik",
+      "send_statistics": "Kullanım İstatistiklerini Gönder",
+      "delete_data": "Hesap Verilerini Sil",
+      "delete_alert": "Tüm verileriniz silindi!"
+    },
+    "data_settings": {
+      "title": "Veri",
+      "send_statistics": "Kullanım İstatistiklerini Gönder",
+      "delete_data": "Hesap Verilerini Sil",
+      "delete_alert": "Tüm verileriniz silindi!"
+    },
+    "actions": {
+      "edit": "Düzenle",
+      "delete": "Sil"
+    }
+  },
+
+  "user": {
+    "medical_info": {
+      "title": "Tıbbi Bilgiler",
+      "diseases": "Kullanıcının sahip olduğu hastalıklar",
+      "diabetes1": "Diyabet Hastalığı",
+      "diabetes2": "Diyabet",
+      "kidney_family": "Ailede böbrek hastalığı olan var mı?",
+      "heart_family": "Ailede kalp hastalığı olan var mı?",
+      "kidney_test": "Hiç böbrek testi yaptırdınız mı?",
+      "comments": "Kullanıcının diğer yorumları",
+      "no_comments": "Yorum yok"
+    },
+    "general_info": {
+      "title": "Genel Bilgiler",
+      "profile_picture": "Profil Fotoğrafı",
+      "full_name": "Ad Soyad",
+      "email": "E-posta",
+      "id_number": "Kimlik Numarası",
+      "phone": "Telefon",
+      "dob": "Doğum Tarihi",
+      "gender": "Cinsiyet",
+      "blood_type": "Kan Grubu",
+      "country": "Ülke",
+      "city": "Şehir",
+      "area": "Bölge",
+      "street": "Sokak",
+      "building_number": "Bina Numarası",
+      "weight": "Kilo"
+    },
+    "general": {
+      "yes": "Evet",
+      "no": "Hayır"
+    }
+  },
+
+  "usersPage": {
+    "searchPlaceholder": "Vaka ID veya Kullanıcı ID ile ara",
+    "addNewUser": "Yeni Kullanıcı Ekle",
+    "filters": {
+      "country": "Ülke",
+      "result": "Sonuç",
+      "gender": "Cinsiyet",
+      "age": "Yaş",
+      "date": "Tarih",
+      "countryOptions": {
+        "palestine": "Filistin",
+        "jordan": "Ürdün"
+      },
+      "resultOptions": {
+        "positive": "Pozitif",
+        "negative": "Negatif"
+      },
+      "genderOptions": {
+        "male": "Erkek",
+        "female": "Kadın"
+      }
+    },
+    "tableHeaders": {
+      "caseId": "Vaka ID",
+      "userId": "Kullanıcı ID",
+      "area": "Bölge",
+      "registrationDate": "Kayıt Tarihi",
+      "aiResult": "Yapay Zeka Sonucu",
+      "aiTest": "Yapay Zeka Testi",
+      "options": "Seçenekler"
+    },
+    "noUsersFound": "Kullanıcı bulunamadı.",
+    "modal": {
+      "title": "Yeni Kullanıcı Ekle",
+      "fillFields": "Lütfen aşağıdaki alanları doldurun",
+      "dateLabel": "Tarih:",
+      "formLabels": {
+        "userName": "Kullanıcı Adı",
+        "phoneNumber": "Telefon Numarası",
+        "emailAddress": "E-posta Adresi",
+        "role": "Rol"
+      },
+      "formPlaceholders": {
+        "userName": "Buraya yazınız",
+        "phoneNumber": "Buraya yazınız",
+        "emailAddress": "Buraya yazınız",
+        "role": "Bir rol seçiniz"
+      },
+      "roles": {
+        "admin": "Yönetici",
+        "editor": "Editör",
+        "viewer": "Görüntüleyici",
+        "moderator": "Moderatör"
+      },
+      "addButton": "Ekle",
+      "validationErrors": {
+        "nameRequired": "İsim zorunludur.",
+        "emailRequired": "E-posta zorunludur.",
+        "phoneRequired": "Telefon numarası zorunludur.",
+        "roleRequired": "Rol zorunludur."
+      }
+    },
+    "tooltips": {
+      "edit": "Düzenle",
+      "info": "Bilgi",
+      "delete": "Sil",
+      "goToAiTestDetails": "Yapay Zeka Test Detaylarına Git"
+    }
+  },
+
+  "roles": {
+    "super_admin": "süper yönetici",
+    "admin": "yönetici",
+    "moderator": "moderatör",
+    "viewer": "görüntüleyici"
+  },
+
+  "titles": {
+    "aiTests": "Yapay Zeka Testleri"
+  },
+
+  "placeholders": {
+    "searchHere": "Burada ara ...",
+    "writeHere": "Buraya yaz",
+    "selectProvider": "Sağlayıcı seç"
+  },
+
+  "labels": {
+    "filter": "Filtre:",
+    "calendar": "Takvim",
+    "time": "Zaman",
+    "note": "Not",
+    "providers": "Sağlayıcılar"
+  },
+
+  "tableHeaders": {
+    "testNumber": "Test Numarası",
+    "testDate": "Test Tarihi",
+    "aiResult": "Yapay Zeka Sonucu",
+    "aiDetails": "Yapay Zeka Detayları",
+    "call": "Ara",
+    "notification": "Bildirim",
+    "chat": "Sohbet",
+    "appointment": "Randevu",
+    "testName": "Test Adı",
+    "result": "Sonuç",
+    "standard": "Standart"
+  },
+
+  "tableMessages": {
+    "noTests": "Test bulunamadı."
+  },
+
+  "tooltips": {
+    "details": "Detayları Görüntüle",
+    "call": "Hastayı Ara",
+    "notification": "Bildirim Gönder",
+    "chat": "Sohbeti Aç",
+    "appointment": "Randevu Al"
+  },
+
+  "modals": {
+    "notification": "Bildirim",
+    "pleaseFillNote": "Lütfen notu doldurun",
+    "sendToUser": "Kullanıcıya Gönder",
+    "quickMessages": "Hızlı Mesajlar",
+    "select": "Seç",
+    "bloodTestResult": "Kan testi sonucu",
+    "patientName": "Hasta Adı",
+    "caseID": "Vaka ID",
+    "reportDate": "Rapor Tarihi",
+    "appointment": "Randevu"
+  },
+
+  "buttons": {
+    "add": "Ekle",
+    "sendReport": "Raporu Gönder",
+    "print": "Yazdır",
+    "saveAppointment": "Randevuyu Kaydet"
+  },
+
+  "alerts": {
+    "callTest": "Test ID: {{id}} aranıyor",
+    "chatTest": "Test ID: {{id}} için sohbet açılıyor",
+    "enterNote": "Lütfen eklemeden önce not giriniz.",
+    "noteAdded": "Not başarıyla eklendi!",
+    "appointmentSaved": "Randevu başarıyla kaydedildi!",
+    "sendReportClicked": "Rapor gönderme butonuna basıldı!"
+  },
+
+  "messages": {
+    "testResultReady": "Test sonucunuz hazır, lütfen kontrol ediniz.",
+    "followUpRecommended": "Testinize göre takip önerilmektedir.",
+    "contactHealthCenter": "Lütfen hemen sağlık merkezinizle iletişime geçiniz."
+  },
+
+  "providers": {
+    "providerOne": "Sağlayıcı Bir",
+    "providerTwo": "Sağlayıcı İki"
+  },
+
+  "options": {
+    "allResults": "Tüm Sonuçlar",
+    "positive": "Pozitif",
+    "negative": "Negatif"
+  },
+  "reports": {
+    "generate_report": "Raporu Oluştur",
+    "export_pdf": "PDF Olarak Dışa Aktar",
+    "patient_report_title": "Hasta Raporu",
+    "report_type": "Rapor Türü",
+    "category": "Kategori",
+    "country": "Ülke",
+    "gender": "Cinsiyet",
+    "from": "Başlangıç",
+    "to": "Bitiş",
+    "patient_id": "Hasta ID",
+    "enter_patient_id": "Hasta ID giriniz",
+    "test_name": "Test Adı",
+    "result": "Sonuç",
+    "standard": "Standart",
+    "number_of_cases": "Vaka Sayısı",
+    "month": "Ay",
+    "all": "Tümü",
+    "reports": "Raporlar",
+    "please_enter_patient_id": "Lütfen hasta ID giriniz",
+    "category_header": "Kategori",
+    "country_header": "Ülke"
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "dashboard": {
+    "monthlyUsers": "Usuarios mensuales",
+    "totalPatients": "Pacientes totales",
+    "completedTests": "Pruebas completadas",
+    "male": "Masculino",
+    "female": "Femenino",
+    "last6Months": "Últimos 6 meses",
+    "last12Months": "Últimos 12 meses",
+    "totalUsers": "Usuarios totales",
+    "needMedicalFollowUpASAP": "Necesita seguimiento médico urgente",
+    "noNeed": "No necesita",
+    "needMedicalFollowUp": "Necesita seguimiento médico"
+  },
+
+  "admin": {
+    "search_placeholder": "Buscar por nombre",
+    "add_new_admin": "Agregar nuevo administrador",
+    "full_name": "Nombre completo",
+    "actions": "Acciones",
+    "email": "Correo electrónico",
+    "role": "Rol",
+    "no_admins_found": "No se encontraron administradores",
+    "edit_admin": "Editar administrador",
+    "enter_full_name": "Ingrese nombre completo",
+    "enter_email": "Ingrese correo electrónico",
+    "add_admin": "Agregar administrador",
+    "save_changes": "Guardar cambios"
+  },
+
+  "area_details": {
+    "stats_titles": {
+      "Positive Cases": "Casos positivos",
+      "Negative Cases": "Casos negativos",
+      "Pending Cases": "Casos pendientes"
+    },
+    "ai_results": {
+      "Positive": "Positivo",
+      "Negative": "Negativo"
+    },
+    "countries": {
+      "Palestine": "Palestina",
+      "Jordan": "Jordania"
+    },
+    "Statistics": "Estadísticas",
+    "Total_Users": "Total de usuarios",
+    "Search": "Buscar por ID de caso o ID de usuario",
+    "Add_New_User": "Agregar nuevo usuario",
+    "Country": "País",
+    "Result": "Resultado",
+    "Gender": "Género",
+    "Age": "Edad",
+    "Case_ID": "ID de caso",
+    "User_ID": "ID de usuario",
+    "Area": "Área",
+    "Registration_Date": "Fecha de registro",
+    "AI_Result": "Resultado IA",
+    "AI_Test": "Prueba IA",
+    "Options": "Opciones",
+    "No_users_found": "No se encontraron usuarios.",
+    "Filter_by": "Filtrar por",
+    "Filter_by_Age": "Filtrar por edad",
+    "Select_Date": "Seleccionar fecha",
+    "Go_to_AI_Test_details": "Ir a detalles de la prueba IA",
+    "Go_to_AI_Test_details_for_user": "Ir a detalles de la prueba IA para el usuario",
+    "Edit": "Editar",
+    "Edit_user": "Editar usuario",
+    "Info": "Información",
+    "View_details_of_user": "Ver detalles del usuario",
+    "Delete": "Eliminar",
+    "Delete_user": "Eliminar usuario",
+    "countryDataNotFound": "Datos del país no encontrados. Por favor, navegue desde la página principal.",
+    "User_pagination": "Paginación de usuarios",
+    "Go_to_page": "Ir a la página"
+  },
+
+  "area": {
+    "Search": "Buscar por nombre",
+    "Add_New_Area": "Agregar nueva área",
+    "No_areas_found": "No se encontraron áreas.",
+    "More": "Más",
+    "Area_Name": "Nombre del área",
+    "Enter_area_name": "Ingrese el nombre del área",
+    "Total_Users": "Total de usuarios",
+    "Enter_total_users": "Ingrese total de usuarios",
+    "Red_Count": "Conteo rojo",
+    "Enter_red_count": "Ingrese conteo rojo",
+    "Green_Count": "Conteo verde",
+    "Enter_green_count": "Ingrese conteo verde",
+    "Yellow_Count": "Conteo amarillo",
+    "Enter_yellow_count": "Ingrese conteo amarillo",
+    "Add_Area": "Agregar área"
+  },
+
+  "distributors": {
+    "search_by_name": "Buscar por nombre",
+    "add_distributor": "Agregar distribuidor",
+    "loading_distributors": "Cargando distribuidores...",
+    "name": "Nombre",
+    "location": "Ubicación",
+    "email": "Correo electrónico",
+    "phone": "Número de teléfono",
+    "tests": "Cantidad de pruebas",
+    "license": "Licencia",
+    "actions": "Acciones",
+    "no_distributors_found": "No se encontraron distribuidores.",
+    "add_new_distributor": "Agregar nuevo distribuidor",
+    "please_fill_next_fields": "Por favor complete los siguientes campos:",
+    "date": "Fecha",
+    "distributor_name": "Nombre del distribuidor",
+    "phone_number": "Número de teléfono",
+    "email_address": "Dirección de correo electrónico",
+    "country": "País",
+    "location_address": "Dirección",
+    "license_upload": "Subir licencia",
+    "drag_drop_file": "Arrastre y suelte el archivo aquí o haga clic para subir",
+    "save": "Guardar",
+    "name_required": "El nombre es obligatorio",
+    "phone_required": "El teléfono es obligatorio",
+    "email_required": "El correo electrónico es obligatorio",
+    "country_required": "El país es obligatorio",
+    "location_required": "La ubicación es obligatoria",
+    "license_file_required": "El archivo de licencia es obligatorio",
+    "edit": "Editar",
+    "delete": "Eliminar"
+  },
+
+  "login": {
+    "Diabetes_Early_Detection_System": "Sistema de detección temprana de diabetes",
+    "welcome_back": "¡Bienvenido! Por favor inicie sesión en su cuenta.",
+    "Email": "Correo electrónico",
+    "password": "Contraseña",
+    "Login": "Iniciar sesión"
+  },
+
+  "providersPage": {
+    "searchByName": "Buscar por nombre",
+    "add_new_provider": "Agregar nuevo proveedor",
+    "pleaseFillFields": "Por favor complete todos los campos requeridos",
+    "date": "Fecha",
+    "providerName": "Nombre del proveedor",
+    "phoneNumber": "Número de teléfono",
+    "emailAddress": "Dirección de correo electrónico",
+    "country": "País",
+    "locationAddress": "Ubicación / Dirección",
+    "license": "Licencia",
+    "writeHere": "Escriba aquí...",
+    "name": "Nombre",
+    "location": "Ubicación",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "tests": "Número de pruebas",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "noProvidersFound": "No se encontraron proveedores",
+    "add": "Agregar",
+    "noLicense": "No hay licencia adjunta",
+    "validation": {
+      "nameRequired": "El nombre del proveedor es obligatorio",
+      "phoneRequired": "El número de teléfono es obligatorio",
+      "phoneInvalid": "Número de teléfono inválido",
+      "emailRequired": "El correo electrónico es obligatorio",
+      "emailInvalid": "Dirección de correo electrónico inválida",
+      "countryRequired": "El país es obligatorio",
+      "locationRequired": "La ubicación es obligatoria",
+      "licenseRequired": "El archivo de licencia es obligatorio"
+    }
+  },
+
+  "licenseDropzone": {
+    "dragDrop": "Arrastre y suelte el archivo de licencia aquí, o haga clic para seleccionar archivo (PDF, JPG, PNG)",
+    "required": "El archivo de licencia es obligatorio"
+  },
+
+  "report": {
+    "reports": "Reportes",
+    "reportType": "Tipo de reporte:",
+    "category": "Categoría:",
+    "country": "País:",
+    "gender": "Género:",
+    "from": "Desde:",
+    "to": "Hasta:",
+    "patientId": "ID del paciente:",
+    "enterPatientId": "Ingrese ID del paciente",
+    "generateReport": "Generar reporte",
+    "exportPDF": "Exportar PDF",
+    "patientReportTitle": "Reporte del paciente ID: {{id}}",
+    "name": "Nombre",
+    "age": "Edad",
+    "medicalCenter": "Centro médico",
+    "testName": "Nombre de la prueba",
+    "result": "Resultado",
+    "standard": "Estándar",
+    "categoryHeader": "Categoría",
+    "numberOfCases": "Número de casos",
+    "countryHeader": "País",
+    "count": "Cantidad",
+    "month": "Mes",
+    "all": "Todos",
+    "pleaseEnterPatientId": "Por favor ingrese el ID del paciente."
+  },
+
+  "settings": {
+    "language_settings": {
+      "title": "Idioma",
+      "search_placeholder": "Buscar por nombre de idioma",
+      "add_button": "Agregar nuevo idioma",
+      "modal_title": "Agregar nuevo idioma",
+      "modal_input_placeholder": "Ingrese el nombre del idioma",
+      "modal_cancel": "Cancelar",
+      "modal_submit": "Agregar idioma"
+    },
+    "privacy_settings": {
+      "title": "Privacidad",
+      "send_statistics": "Enviar estadísticas de uso",
+      "delete_data": "Eliminar datos de la cuenta",
+      "delete_alert": "¡Todos sus datos han sido eliminados!"
+    },
+    "data_settings": {
+      "title": "Datos",
+      "send_statistics": "Enviar estadísticas de uso",
+      "delete_data": "Eliminar datos de la cuenta",
+      "delete_alert": "¡Todos sus datos han sido eliminados!"
+    },
+    "actions": {
+      "edit": "Editar",
+      "delete": "Eliminar"
+    }
+  },
+
+  "user": {
+    "medical_info": {
+      "title": "Información médica",
+      "diseases": "Enfermedades que tiene el usuario",
+      "diabetes1": "Enfermedad de diabetes",
+      "diabetes2": "Diabetes",
+      "kidney_family": "¿Hay pacientes con enfermedad renal en la familia?",
+      "heart_family": "¿Hay pacientes con enfermedad cardíaca en la familia?",
+      "kidney_test": "¿Alguna vez se ha hecho un examen renal?",
+      "comments": "Otros comentarios del usuario",
+      "no_comments": "Sin comentarios"
+    },
+    "general_info": {
+      "title": "Información general",
+      "profile_picture": "Foto de perfil",
+      "full_name": "Nombre completo",
+      "email": "Correo electrónico",
+      "id_number": "Número de identificación",
+      "phone": "Teléfono",
+      "dob": "Fecha de nacimiento",
+      "gender": "Género",
+      "blood_type": "Tipo de sangre",
+      "country": "País",
+      "city": "Ciudad",
+      "area": "Área",
+      "street": "Calle",
+      "building_number": "Número de edificio",
+      "weight": "Peso"
+    },
+    "general": {
+      "yes": "Sí",
+      "no": "No"
+    }
+  },
+
+  "usersPage": {
+    "searchPlaceholder": "Buscar por ID de caso o ID de usuario",
+    "addNewUser": "Agregar nuevo usuario",
+    "filters": {
+      "country": "País",
+      "result": "Resultado",
+      "gender": "Género",
+      "age": "Edad",
+      "date": "Fecha",
+      "countryOptions": {
+        "palestine": "Palestina",
+        "jordan": "Jordania"
+      },
+      "resultOptions": {
+        "positive": "Positivo",
+        "negative": "Negativo"
+      },
+      "genderOptions": {
+        "male": "Masculino",
+        "female": "Femenino"
+      }
+    },
+    "tableHeaders": {
+      "caseId": "ID de caso",
+      "userId": "ID de usuario",
+      "area": "Área",
+      "registrationDate": "Fecha de registro",
+      "aiResult": "Resultado IA",
+      "aiTest": "Prueba IA",
+      "options": "Opciones"
+    },
+    "noUsersFound": "No se encontraron usuarios.",
+    "modal": {
+      "title": "Agregar nuevo usuario",
+      "fillFields": "Por favor complete los campos a continuación",
+      "dateLabel": "Fecha:",
+      "formLabels": {
+        "userName": "Nombre de usuario",
+        "phoneNumber": "Número de teléfono",
+        "emailAddress": "Correo electrónico",
+        "role": "Rol"
+      },
+      "formPlaceholders": {
+        "userName": "Escriba aquí",
+        "phoneNumber": "Escriba aquí",
+        "emailAddress": "Escriba aquí",
+        "role": "Seleccione un rol"
+      },
+      "roles": {
+        "admin": "Administrador",
+        "editor": "Editor",
+        "viewer": "Visualizador",
+        "moderator": "Moderador"
+      },
+      "addButton": "Agregar",
+      "validationErrors": {
+        "nameRequired": "El nombre es obligatorio.",
+        "emailRequired": "El correo electrónico es obligatorio.",
+        "phoneRequired": "El número de teléfono es obligatorio.",
+        "roleRequired": "El rol es obligatorio."
+      }
+    },
+    "tooltips": {
+      "edit": "Editar",
+      "info": "Información",
+      "delete": "Eliminar",
+      "goToAiTestDetails": "Ir a detalles de la prueba IA"
+    }
+  },
+
+  "roles": {
+    "super_admin": "super administrador",
+    "admin": "administrador",
+    "moderator": "moderador",
+    "viewer": "visualizador"
+  },
+
+  "titles": {
+    "aiTests": "Pruebas IA"
+  },
+
+  "placeholders": {
+    "searchHere": "Buscar aquí ...",
+    "writeHere": "Escriba aquí",
+    "selectProvider": "Seleccione proveedor"
+  },
+
+  "labels": {
+    "filter": "Filtrar:",
+    "calendar": "Calendario",
+    "time": "Hora",
+    "note": "Nota",
+    "providers": "Proveedores"
+  },
+
+  "tableHeaders": {
+    "testNumber": "Número de prueba",
+    "testDate": "Fecha de prueba",
+    "aiResult": "Resultado IA",
+    "aiDetails": "Detalles IA",
+    "call": "Llamar",
+    "notification": "Notificación",
+    "chat": "Chat",
+    "appointment": "Cita",
+    "testName": "Nombre de la prueba",
+    "result": "Resultado",
+    "standard": "Estándar"
+  },
+
+  "tableMessages": {
+    "noTests": "No se encontraron pruebas."
+  },
+
+  "tooltips": {
+    "details": "Ver detalles",
+    "call": "Llamar al paciente",
+    "notification": "Enviar notificación",
+    "chat": "Abrir chat",
+    "appointment": "Hacer cita"
+  },
+
+  "modals": {
+    "notification": "Notificación",
+    "pleaseFillNote": "Por favor complete la nota",
+    "sendToUser": "Enviar al usuario",
+    "quickMessages": "Mensajes rápidos",
+    "select": "Seleccionar",
+    "bloodTestResult": "Resultado del análisis de sangre",
+    "patientName": "Nombre del paciente",
+    "caseID": "ID de caso",
+    "reportDate": "Fecha del reporte",
+    "appointment": "Cita"
+  },
+
+  "buttons": {
+    "add": "Agregar",
+    "sendReport": "Enviar reporte",
+    "print": "Imprimir",
+    "saveAppointment": "Guardar cita"
+  },
+
+  "alerts": {
+    "callTest": "Llamando prueba ID: {{id}}",
+    "chatTest": "Abriendo chat para prueba ID: {{id}}",
+    "enterNote": "Por favor ingrese una nota antes de agregar.",
+    "noteAdded": "¡Nota agregada con éxito!",
+    "appointmentSaved": "¡Cita guardada con éxito!",
+    "sendReportClicked": "¡Botón de enviar reporte presionado!"
+  },
+
+  "messages": {
+    "testResultReady": "Su resultado de la prueba está listo, por favor verifique.",
+    "followUpRecommended": "Se recomienda seguimiento basado en su prueba.",
+    "contactHealthCenter": "Por favor contacte inmediatamente su centro de salud."
+  },
+
+  "providers": {
+    "providerOne": "Proveedor Uno",
+    "providerTwo": "Proveedor Dos"
+  },
+
+  "options": {
+    "allResults": "Todos los resultados",
+    "positive": "Positivo",
+    "negative": "Negativo"
+  },
+
+  "reports": {
+    "generate_report": "Generar reporte",
+    "export_pdf": "Exportar PDF",
+    "patient_report_title": "Reporte del paciente",
+    "report_type": "Tipo de reporte",
+    "category": "Categoría",
+    "country": "País",
+    "gender": "Género",
+    "from": "Desde",
+    "to": "Hasta",
+    "patient_id": "ID del paciente",
+    "enter_patient_id": "Ingrese ID del paciente",
+    "test_name": "Nombre de la prueba",
+    "result": "Resultado",
+    "standard": "Estándar",
+    "number_of_cases": "Número de casos",
+    "month": "Mes",
+    "all": "Todos",
+    "reports": "Reportes",
+    "please_enter_patient_id": "Por favor ingrese el ID del paciente",
+    "category_header": "Categoría",
+    "country_header": "País"
+  }
+}

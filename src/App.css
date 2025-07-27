@@ -77,3 +77,41 @@
   border-radius: 50% !important;
   cursor: pointer;
 }
+
+.dashboard-wrapper.light-mode {
+  background-color: #dee9f1;
+  color: #000;
+}
+
+.dashboard-wrapper.dark-mode {
+  background-color: #121212;
+  color: #ddd;
+}
+
+.dashboard-wrapper.dark-mode nav.navbar {
+  background-color: #1f1f1f;
+  color: #ddd;
+  border-bottom: 1px solid #333;
+}
+
+.dashboard-wrapper.light-mode nav.navbar {
+  background-color: white;
+  color: black;
+  border-bottom: 1px solid #ddd;
+}
+
+.dashboard-wrapper.dark-mode aside {
+  background-color: #222;
+  color: #ddd;
+  border-right: 1px solid #333;
+}
+
+.dashboard-wrapper.light-mode aside {
+  background-color: white;
+  color: black;
+  border-right: 1px solid #ddd;
+}
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
