@@ -42,6 +42,7 @@
       "Palestine": "Palestina",
       "Jordan": "Jordania"
     },
+        "No_Result":"no tests yet",
     "Statistics": "Estadísticas",
     "Total_Users": "Total de usuarios",
     "Search": "Buscar por ID de caso o ID de usuario",
@@ -174,6 +175,7 @@
   },
 
   "report": {
+
     "reports": "Reportes",
     "reportType": "Tipo de reporte:",
     "category": "Categoría:",

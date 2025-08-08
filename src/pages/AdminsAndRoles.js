@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from "react";
-import {
+import React, { useState, useMemo, useEffect } from "react";
+import axios from "axios";import {
   Container,
   Table,
   Button,
@@ -15,27 +15,22 @@ const roles = ["super_admin", "admin", "moderator", "viewer"];
 const AdminsAndRolesPage = () => {
   const { t } = useTranslation();
 
+  
   const [searchTerm, setSearchTerm] = useState("");
-  const [admins, setAdmins] = useState([
-    {
-      id: 1,
-      name: "Ahmed Khalil",
-      email: "ahmed@example.com",
-      role: "super_admin",
-    },
-    {
-      id: 2,
-      name: "Fatima Zahra",
-      email: "fatima@example.com",
-      role: "admin",
-    },
-    {
-      id: 3,
-      name: "Omar Ali",
-      email: "omar@example.com",
-      role: "moderator",
-    },
-  ]);
+  const [admins, setAdmins] = useState([]);
+
+  useEffect(() => {
+  axios
+    .get("http://localhost:8000/api/admins") // رابط ال API حق جلب المشرفين
+    .then((response) => {
+      setAdmins(response.data);
+    })
+    .catch((error) => {
+      console.error("Failed to fetch admins:", error);
+      // ممكن تظهر رسالة خطأ للمستخدم
+    });
+}, []);
+
   const [currentPage, setCurrentPage] = useState(1);
   const adminsPerPage = 5;
 
@@ -51,9 +46,7 @@ const AdminsAndRolesPage = () => {
   const filteredAdmins = useMemo(() => {
     return admins.filter(
       (admin) =>
-        admin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        admin.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+        admin.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }, [admins, searchTerm]);
 
   const totalPages = Math.ceil(filteredAdmins.length / adminsPerPage);
@@ -78,37 +71,78 @@ const AdminsAndRolesPage = () => {
     setShowModal(true);
   };
 
-  const handleDelete = (id) => {
-    if (window.confirm(t("admin.confirm_delete") || "هل أنت متأكد من الحذف؟")) {
-      setAdmins(admins.filter((admin) => admin.id !== id));
-    }
-  };
+const handleDelete = (id) => {
+  if (window.confirm(t("admin.confirm_delete") || "هل أنت متأكد من الحذف؟")) {
+    axios
+      .delete(`http://localhost:8000/api/admins/${id}`)
+      .then(() => {
+        setAdmins((prev) => prev.filter((admin) => admin.id !== id));
+      })
+      .catch((err) => {
+        if (err.response) {
+          // الخطأ من السيرفر مع رسالة واضحة
+          console.error("Delete error response data:", err.response.data);
+          alert(`فشل الحذف: ${err.response.data.message || "خطأ غير معروف"}`);
+        } else if (err.request) {
+          // لم يتم استلام رد من السيرفر
+          console.error("Delete error no response received:", err.request);
+          alert("فشل الحذف: لم يتم استقبال رد من الخادم");
+        } else {
+          // خطأ في الإعداد أو شيء آخر
+          console.error("Delete error", err.message);
+          alert(`فشل الحذف: ${err.message}`);
+        }
+      });
+  }
+};
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
-    if (!formData.name.trim() || !formData.email.trim()) {
-      alert(t("admin.fill_all_fields") || "يرجى ملء جميع الحقول");
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      alert(t("admin.invalid_email") || "البريد الإلكتروني غير صالح");
-      return;
-    }
+ const handleSave = () => {
+  if (!formData.name.trim() || !formData.email.trim()) {
+    alert(t("admin.fill_all_fields") || "يرجى ملء جميع الحقول");
+    return;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    alert(t("admin.invalid_email") || "البريد الإلكتروني غير صالح");
+    return;
+  }
 
-    if (isEditing) {
-      setAdmins((prev) =>
-        prev.map((admin) => (admin.id === formData.id ? { ...formData } : admin))
-      );
-    } else {
-      setAdmins((prev) => [...prev, { ...formData, id: Date.now() }]);
-    }
-    setShowModal(false);
-  };
+  if (isEditing) {
+    // تحديث مشرف موجود - PUT أو PATCH
+    axios
+      .put(`http://localhost:8000/api/admins/${formData.id}`, formData)
+      .then((res) => {
+        setAdmins((prev) =>
+          prev.map((admin) => (admin.id === formData.id ? res.data : admin))
+        );
+        setShowModal(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("فشل التحديث");
+      });
+  } else {
+    // إضافة مشرف جديد - POST
+    axios
+      .post("http://localhost:8000/api/admins", formData)
+      .then((res) => {
+        setAdmins((prev) => [...prev, res.data]);
+        setShowModal(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("فشل الإضافة");
+      });
+  }
+};
+
 
   return (
     <Container

@@ -34,7 +34,7 @@
     "stats_titles": {
       "Positive Cases": "Positive Cases",
       "Negative Cases": "Negative Cases",
-      "Pending Cases": "Pending Cases"
+      "Pending Cases": "need_review Cases"
     },
     "ai_results": {
       "Positive": "Positive",
@@ -44,9 +44,10 @@
       "Palestine": "Palestine",
       "Jordan": "Jordan"
     },
+    "No_Result":"no tests yet",
     "Statistics": "Statistics",
     "Total_Users": "Total Users",
-    "Search": "Search by Case ID or User ID",
+    "Search": "Search by User ID",
     "Add_New_User": "Add New User",
     "Country": "Country",
     "Result": "Result",
@@ -95,6 +96,15 @@
     "Add_Area": "Add Area"
   },
     "distributors": {
+      "gender":"gender",
+            "male":"male",
+      "female":"female",
+      "select_gender":"select gender",
+      "select_area":"select area",
+      "age":"age",
+            "area":"area",
+
+
     "search_by_name": "Search by name",
     "add_distributor": "Add Distributor",
     "loading_distributors": "Loading distributors...",
@@ -135,6 +145,13 @@
   },
  
   "providersPage": {
+    "gender" :"gender",
+    "age":"age",
+    "areaId":"area",
+    "male":"male",
+        "female":"female",
+        "selectGender":"select gender",
+
     "searchByName": "Search by name",
     "add_new_provider": "Add New Provider",
     "pleaseFillFields": "Please fill all required fields",
@@ -230,6 +247,34 @@
     }
   },
 
+
+
+
+    "add_user": "إضافة مستخدم",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "phone": "رقم الهاتف",
+  "password": "كلمة المرور",
+  "id_number": "رقم الهوية",
+  "dob": "تاريخ الميلاد",
+  "gender": "الجنس",
+  "male": "ذكر",
+  "female": "أنثى",
+  "blood_type": "فصيلة الدم",
+  "weight": "الوزن",
+  "country": "الدولة",
+  "city": "المدينة",
+  "street": "الشارع",
+  "building_number": "رقم البناء",
+  "role": "الدور",
+  "user": "مستخدم",
+  "admin": "مشرف",
+  "area": "المنطقة",
+  "profile_picture": "صورة البروفايل",
+  "upload_picture": "اضغط هنا لرفع صورة",
+  "select": "اختر",
+  "save": "حفظ",
+  "cancel": "إلغاء",
 
   "user": {
     "medical_info": {
@@ -425,6 +470,10 @@
   },
 
   "reports": {
+  "select_dates": "Please select a date range",
+    "failed_to_fetch_data": "Failed to fetch data",
+
+    "all_countries":"all",
     "generate_report": "Generate Report",
     "export_pdf": "Export PDF",
     "patient_report_title": "Patient Report",

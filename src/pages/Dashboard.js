@@ -7,19 +7,10 @@ import { useTranslation } from "react-i18next";
 function Dashboard() {
   const { i18n } = useTranslation();
 
-  useEffect(() => {
-    if (i18n.language === "ar") {
-      document.documentElement.dir = "rtl";  // ضبط الاتجاه ليمين لليسار
-      document.documentElement.lang = "ar";
-    } else {
-      document.documentElement.dir = "ltr";  // ضبط الاتجاه لليسار لليمين
-      document.documentElement.lang = "en";
-    }
-  }, [i18n.language]);
-
+  // إذا تبي تغير اتجاه الصفحة فوراً مع تغيير اللغة خلي هذا
 
   const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("darkMode") === "true" || false;
+    return localStorage.getItem("darkMode") === "true";
   });
 
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -53,6 +44,7 @@ function Dashboard() {
             <aside
               style={{ minWidth: "250px", maxWidth: "300px" }}
               aria-label="Sidebar navigation"
+              aria-hidden={!sidebarOpen}
             >
               <Sidebar darkMode={darkMode} />
             </aside>

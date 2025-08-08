@@ -1,6 +1,6 @@
 import { t } from "i18next";
-import React, { useState } from "react";
-import { Container, Row, Col, Modal, Button, Form } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Modal, Button, Form, Alert } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa";
 
 const ColoredCircle = ({ color }) => (
@@ -64,27 +64,24 @@ const AreaCard = ({ name, totalUsers, redCount, greenCount, yellowCount }) => (
 );
 
 const AreasPage = () => {
-  const initialAreas = [
-    { id: 1, name: "Al-Rimal", totalUsers: 120, redCount: 5, greenCount: 100, yellowCount: 15 },
-    { id: 2, name: "Al-Shuja'iya", totalUsers: 90, redCount: 7, greenCount: 70, yellowCount: 13 },
-    { id: 3, name: "Deir al-Balah", totalUsers: 60, redCount: 2, greenCount: 50, yellowCount: 8 },
-    { id: 4, name: "Jabalia", totalUsers: 80, redCount: 6, greenCount: 65, yellowCount: 9 },
-    { id: 5, name: "Beach Camp", totalUsers: 55, redCount: 3, greenCount: 45, yellowCount: 7 },
-    { id: 6, name: "Nuseirat", totalUsers: 40, redCount: 1, greenCount: 30, yellowCount: 9 },
-  ];
-
-  const [areas, setAreas] = useState(initialAreas);
+  const [areas, setAreas] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(3);
-
   const [showModal, setShowModal] = useState(false);
   const [newAreaData, setNewAreaData] = useState({
     name: "",
-    totalUsers: "",
-    redCount: "",
-    greenCount: "",
-    yellowCount: "",
+    description: "",
+    map_image: null,
+    flag_image: null,
   });
+  const [successMessage, setSuccessMessage] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/areas")
+      .then((res) => res.json())
+      .then((data) => setAreas(data))
+      .catch((err) => console.error("Failed to fetch areas:", err));
+  }, []);
 
   const filteredAreas = areas.filter((area) =>
     area.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -99,52 +96,64 @@ const AreasPage = () => {
   const openAddModal = () => {
     setNewAreaData({
       name: "",
-      totalUsers: "",
-      redCount: "",
-      greenCount: "",
-      yellowCount: "",
+      description: "",
+      map_image: null,
+      flag_image: null,
     });
     setShowModal(true);
+    setSuccessMessage("");
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewAreaData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, files } = e.target;
+    if (files) {
+      setNewAreaData((prev) => ({ ...prev, [name]: files[0] }));
+    } else {
+      setNewAreaData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSaveNewArea = () => {
-    const { name, totalUsers, redCount, greenCount, yellowCount } = newAreaData;
-
-    if (!name.trim()) {
+    if (!newAreaData.name.trim()) {
       alert(t("area.Enter_area_name"));
       return;
     }
 
-    if (
-      [totalUsers, redCount, greenCount, yellowCount].some(
-        (val) => val === "" || isNaN(val) || Number(val) < 0
-      )
-    ) {
-      alert("Please enter valid non-negative numbers.");
-      return;
+    const formData = new FormData();
+    formData.append("name", newAreaData.name.trim());
+    formData.append("description", newAreaData.description.trim());
+    if (newAreaData.map_image) {
+      formData.append("map_image", newAreaData.map_image);
+    }
+    if (newAreaData.flag_image) {
+      formData.append("flag_image", newAreaData.flag_image);
     }
 
-    const newArea = {
-      id: Date.now(),
-      name: name.trim(),
-      totalUsers: Number(totalUsers),
-      redCount: Number(redCount),
-      greenCount: Number(greenCount),
-      yellowCount: Number(yellowCount),
-    };
-
-    setAreas((prev) => [newArea, ...prev]);
-    setShowModal(false);
-    setVisibleCount((prev) => prev + 1);
+    fetch("http://localhost:8000/api/areas", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to add area");
+        return res.json();
+      })
+      .then((newArea) => {
+        setAreas((prev) => [newArea, ...prev]);
+        setShowModal(false);
+        setVisibleCount((prev) => prev + 1);
+        setSuccessMessage("تمت إضافة المنطقة بنجاح!");
+      })
+      .catch((err) => alert(err.message));
   };
 
   return (
     <Container className="my-4" style={{ backgroundColor: "white", padding: "30px", borderRadius: "10px" }}>
+      {successMessage && (
+        <Alert variant="success" onClose={() => setSuccessMessage("")} dismissible>
+          {successMessage}
+        </Alert>
+      )}
+
       <div className="d-flex justify-content-between align-items-center gap-3 mb-3 flex-wrap">
         <input
           type="text"
@@ -178,7 +187,17 @@ const AreasPage = () => {
 
       <Row className="g-3">
         {visibleAreas.length > 0 ? (
-          visibleAreas.map((area) => <Col md={4} key={area.id}><AreaCard {...area} /></Col>)
+          visibleAreas.map((area) => (
+            <Col md={4} key={area.id}>
+              <AreaCard
+                name={area.name}
+                totalUsers={area.totalUsers || 0}
+                redCount={area.redCount || 0}
+                greenCount={area.greenCount || 0}
+                yellowCount={area.yellowCount || 0}
+              />
+            </Col>
+          ))
         ) : (
           <p className="text-center w-100">{t("area.No_areas_found")}</p>
         )}
@@ -218,51 +237,35 @@ const AreasPage = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="totalUsers">
-              <Form.Label>{t("area.Total_Users")}</Form.Label>
+            <Form.Group className="mb-3" controlId="description">
+              <Form.Label>{t("area.Description")}</Form.Label>
               <Form.Control
-                type="number"
-                min="0"
-                name="totalUsers"
-                value={newAreaData.totalUsers}
+                as="textarea"
+                rows={3}
+                name="description"
+                value={newAreaData.description}
                 onChange={handleInputChange}
-                placeholder={t("area.Enter_total_users")}
+                placeholder={t("area.Enter_description")}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="redCount">
-              <Form.Label>{t("area.Red_Count")}</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Map Image</Form.Label>
               <Form.Control
-                type="number"
-                min="0"
-                name="redCount"
-                value={newAreaData.redCount}
+                type="file"
+                name="map_image"
+                accept="image/*"
                 onChange={handleInputChange}
-                placeholder={t("area.Enter_red_count")}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="greenCount">
-              <Form.Label>{t("area.Green_Count")}</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Flag Image</Form.Label>
               <Form.Control
-                type="number"
-                min="0"
-                name="greenCount"
-                value={newAreaData.greenCount}
+                type="file"
+                name="flag_image"
+                accept="image/*"
                 onChange={handleInputChange}
-                placeholder={t("area.Enter_green_count")}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="yellowCount">
-              <Form.Label>{t("area.Yellow_Count")}</Form.Label>
-              <Form.Control
-                type="number"
-                min="0"
-                name="yellowCount"
-                value={newAreaData.yellowCount}
-                onChange={handleInputChange}
-                placeholder={t("area.Enter_yellow_count")}
               />
             </Form.Group>
           </Form>

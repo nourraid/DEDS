@@ -1,23 +1,46 @@
-import React from "react";
-import { FaBell, FaBars, FaMoon, FaSun } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaBell, FaBars, FaMoon, FaSun, FaSignOutAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { startTransition } from "react";
 
 const Navbar = ({ onToggleSidebar, darkMode, onToggleDarkMode }) => {
+  const [username, setUsername] = useState("");
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      try {
+        const user = JSON.parse(userData);
+        setUsername(user.name || "Guest");
+      } catch {
+        setUsername("Guest");
+      }
+    } else {
+      setUsername("Guest");
+    }
+  }, []);
+
+  useEffect(() => {
+    const lang = i18n.language;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  }, [i18n.language]);
 
   const handleLanguageChange = (e) => {
     const lang = e.target.value;
-    i18n.changeLanguage(lang);
+    startTransition(() => {
+      i18n.changeLanguage(lang);
+    });
+  };
 
-    // اتجاه الصفحة حسب اللغة
-    if (lang === "ar") {
-      document.documentElement.dir = "rtl";
-      document.documentElement.lang = "ar";
-    } else {
-      // كل اللغات الأخرى من اليسار لليمين
-      document.documentElement.dir = "ltr";
-      document.documentElement.lang = lang;
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("user");
+    navigate("/login");
   };
 
   return (
@@ -45,7 +68,7 @@ const Navbar = ({ onToggleSidebar, darkMode, onToggleDarkMode }) => {
         style={{ borderColor: darkMode ? "#555" : "#ddd" }}
       >
         <img
-          src={darkMode ? "/images/logo.png" : "/images/logo.png"}
+          src="/images/logo.png"
           alt="Logo"
           width="40"
           height="40"
@@ -53,10 +76,7 @@ const Navbar = ({ onToggleSidebar, darkMode, onToggleDarkMode }) => {
           style={{ objectFit: "contain" }}
         />
         <div className="d-none d-md-block">
-          <h5
-            className="mb-0 fw-bold"
-            style={{ color: darkMode ? "#eee" : "#000" }}
-          >
+          <h5 className="mb-0 fw-bold" style={{ color: darkMode ? "#eee" : "#000" }}>
             DEDS
           </h5>
           <small style={{ color: darkMode ? "#aaa" : undefined }}>
@@ -66,11 +86,7 @@ const Navbar = ({ onToggleSidebar, darkMode, onToggleDarkMode }) => {
       </div>
 
       <div className="d-flex align-items-center gap-3">
-        {/* اختيار اللغة مع تغيير */}
-        <div
-          className="border-start ps-3"
-          style={{ borderColor: darkMode ? "#555" : "#ddd" }}
-        >
+        <div className="border-start ps-3" style={{ borderColor: darkMode ? "#555" : "#ddd" }}>
           <select
             className={`form-select form-select-sm w-auto ${
               darkMode ? "bg-dark text-light border-secondary" : ""
@@ -129,8 +145,22 @@ const Navbar = ({ onToggleSidebar, darkMode, onToggleDarkMode }) => {
           >
             Welcome,
             <br />
-            <span className="fw-bold">Nour Shaheen</span>
+            <span className="fw-bold">{username}</span>
           </div>
+        </div>
+
+        <div
+          className="border-start ps-3 d-flex align-items-center"
+          style={{ borderColor: darkMode ? "#555" : "#ddd" }}
+        >
+          <button
+            onClick={handleLogout}
+            className="btn btn-outline-danger btn-sm"
+            title="تسجيل خروج"
+            disabled={false}
+          >
+            <FaSignOutAlt />
+          </button>
         </div>
       </div>
     </nav>

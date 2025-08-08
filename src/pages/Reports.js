@@ -1,95 +1,106 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table, Form } from "react-bootstrap";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import { useTranslation } from "react-i18next";
 import '../fonts/Amiri-normal.js';
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const reportTypes = [
-  { value: "byCategory", labelKey: "reports.category_header" },
   { value: "byCountry", labelKey: "reports.country_header" },
   { value: "byGender", labelKey: "reports.gender" },
   { value: "byDateRange", labelKey: "reports.month" },
   { value: "patientReport", labelKey: "reports.patient_report_title" },
 ];
 
-const categories = ["Type 1 Diabetes", "Type 2 Diabetes", "Gestational"];
-const countries = ["Saudi Arabia", "Egypt", "Palestine", "UAE", "Turkey"];
+// const categories = ["Type 1 Diabetes", "Type 2 Diabetes", "Gestational"];
+// const countries = ["Saudi Arabia", "Egypt", "Palestine", "UAE", "Turkey"];
 
 const ReportsPage = () => {
   const { t, i18n } = useTranslation();
+const { id } = useParams();
 
   const [reportType, setReportType] = useState(reportTypes[0].value);
-  const [category, setCategory] = useState(categories[0]);
-  const [country, setCountry] = useState(countries[0]);
+  const [countries, setCountries] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState("");
+
   const [gender, setGender] = useState("all");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [patientId, setPatientId] = useState("");
   const [reportData, setReportData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const isRTL = i18n.language === "ar";
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const res = await axios.get("/api/reports/countries");
+        setCountries(res.data);
+        if (res.data.length > 0) setSelectedCountry(res.data[0]);
+      } catch (error) {
+        console.error("Failed to fetch countries:", error);
+      }
+    };
+    fetchCountries();
+  }, []);
 
-  const handleGenerateReport = () => {
-    let newData = null;
+
+const handleGenerateReport = async () => {
+  if (loading) return;
+  setLoading(true);
+
+  try {
+    let response;
 
     if (reportType === "patientReport") {
-      if (!patientId.trim()) {
-        alert(t("reports.please_enter_patient_id"));
+     setLoading(true);
+  try {
+    const res = await axios.get(`/api/reports/patient-report/${patientId}`);
+    setReportData(res.data);
+  } catch (error) {
+    console.error("Failed to fetch patient report:", error);
+    setReportData(null); // Clear if failed
+  } finally {
+    setLoading(false);
+  }
+    } else if (reportType === "byCountry") {
+      response = await axios.get(`/api/reports/by-country`, {
+        params: { country: selectedCountry },
+      });
+      setReportData(response.data);
+
+    } else if (reportType === "byDateRange") {
+      if (!startDate || !endDate) {
+        alert(t("reports.select_dates"));
+        setLoading(false);
         return;
       }
-      newData = {
-        patientId,
-        name: "John Doe",
-        age: 45,
-        gender: isRTL ? "ذكر" : "Male",
-        medicalCenter: "Center A",
-        tests: [
-       { name: "Urobilinogen", result: "5", standard: "3.2-16" },
-          { name: "Bilirubin", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
-          { name: "Ketone", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
-          { name: "Creatinine", result: "1.0", standard: ">0.9" },
-          { name: "Blood", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
-          { name: "Protein", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
-          { name: "Micro Albumin", result: "15", standard: ">10.0" },
-          { name: "Nitrite", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
-          { name: "Leukocytes", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
-          { name: "Glucose", result: isRTL ? "سلبي" : "Negative", standard: isRTL ? "سلبي" : "Negative" },
-          { name: "Specific Gravity", result: "1005", standard: "1000" },
-          { name: "PH", result: "7.0", standard: "7.0" },
-          { name: "Ascorbate", result: "0", standard: "0" },
-          { name: "Calcium", result: "2.5", standard: "0-3.0" },
-        ],
-      };
-    } else if (reportType === "byCategory") {
-      newData = [
-        { category: isRTL ? "النوع 1 من السكري" : "Type 1 Diabetes", cases: 500 },
-        { category: isRTL ? "النوع 2 من السكري" : "Type 2 Diabetes", cases: 1500 },
-        { category: isRTL ? "سكري الحمل" : "Gestational", cases: 300 },
-      ];
-    } else if (reportType === "byCountry") {
-      newData = [
-        { country: isRTL ? "المملكة العربية السعودية" : "Saudi Arabia", cases: 1200 },
-        { country: isRTL ? "مصر" : "Egypt", cases: 980 },
-        { country: isRTL ? "فلسطين" : "Palestine", cases: 450 },
-      ];
-    } else if (reportType === "byGender") {
-      newData = [
-        { gender: isRTL ? "ذكر" : "Male", count: 1800 },
-        { gender: isRTL ? "أنثى" : "Female", count: 1950 },
-      ];
-    } else if (reportType === "byDateRange") {
-      newData = [
-        { month: isRTL ? "يناير" : "January", count: 400 },
-        { month: isRTL ? "فبراير" : "February", count: 520 },
-        { month: isRTL ? "مارس" : "March", count: 610 },
-      ];
-    }
+      response = await axios.get("/api/reports/date-range", {
+        params: {
+          from: startDate,
+          to: endDate,
+          granularity: granularity,
+        },
+      });
+      setReportData(response.data);
 
-    if (JSON.stringify(newData) !== JSON.stringify(reportData)) {
-      setReportData(newData);
+    } else if (reportType === "byGender") {
+      response = await axios.get(`/api/reports/by-gender`, {
+        params: { gender: gender },
+      });
+      setReportData(response.data);
     }
-  };
+  } catch (error) {
+    console.error("Failed to fetch report data:", error);
+    alert(t("reports.failed_to_fetch_data"));
+  } finally {
+    setLoading(false);
+  }
+};
+
+const [granularity, setGranularity] = useState('monthly');
 
   const exportPDF = () => {
     if (!reportData) return;
@@ -149,12 +160,7 @@ const ReportsPage = () => {
       let tableColumn = [];
       let tableRows = [];
 
-      if (reportType === "byCategory") {
-        tableColumn = [t("reports.category_header"), t("reports.number_of_cases")];
-        reportData.forEach((item) => {
-          tableRows.push([item.category, item.cases]);
-        });
-      } else if (reportType === "byCountry") {
+      if (reportType === "byCountry") {
         tableColumn = [t("reports.country_header"), t("reports.number_of_cases")];
         reportData.forEach((item) => {
           tableRows.push([item.country, item.cases]);
@@ -218,23 +224,14 @@ const ReportsPage = () => {
         </Form.Select>
       </Form.Group>
 
-      {reportType === "byCategory" && (
-        <Form.Group className="mb-3">
-          <Form.Label>{t("reports.category")}</Form.Label>
-          <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>
-            {categories.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </Form.Select>
-        </Form.Group>
-      )}
+     
 
       {reportType === "byCountry" && (
         <Form.Group className="mb-3">
           <Form.Label>{t("reports.country")}</Form.Label>
-          <Form.Select value={country} onChange={(e) => setCountry(e.target.value)}>
+          <Form.Select value={selectedCountry} onChange={(e) => setSelectedCountry (e.target.value)}>
+               <option value="all">{t("reports.all_countries") || "All Countries"}</option>
+
             {countries.map((c) => (
               <option key={c} value={c}>
                 {c}
@@ -249,24 +246,43 @@ const ReportsPage = () => {
           <Form.Label>{t("reports.gender")}</Form.Label>
           <Form.Select value={gender} onChange={(e) => setGender(e.target.value)}>
             <option value="all">{t("reports.all")}</option>
-            <option value="Male">{isRTL ? "ذكر" : "Male"}</option>
-            <option value="Female">{isRTL ? "أنثى" : "Female"}</option>
+            <option value="male">{isRTL ? "ذكر" : "Male"}</option>
+            <option value="female">{isRTL ? "أنثى" : "Female"}</option>
           </Form.Select>
         </Form.Group>
       )}
 
-      {reportType === "byDateRange" && (
-        <>
-          <Form.Group className="mb-3">
-            <Form.Label>{t("reports.from")}</Form.Label>
-            <Form.Control type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>{t("reports.to")}</Form.Label>
-            <Form.Control type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-          </Form.Group>
-        </>
-      )}
+    {reportType === "byDateRange" && (
+  <>
+    <Form.Group className="mb-3">
+      <Form.Label>{t("reports.from")}</Form.Label>
+      <Form.Control
+        type="date"
+        value={startDate}
+        onChange={(e) => setStartDate(e.target.value)}
+      />
+    </Form.Group>
+
+
+    <Form.Group className="mb-3">
+      <Form.Label>{t("reports.to")}</Form.Label>
+      <Form.Control
+        type="date"
+        value={endDate}
+        onChange={(e) => setEndDate(e.target.value)}
+      />
+    </Form.Group>
+    <Form.Group>
+      <Form.Label>{t("reports.granularity")}</Form.Label>
+      <Form.Select value={granularity} onChange={(e) => setGranularity(e.target.value)}>
+        <option value="daily">{t("reports.daily")}</option>
+        <option value="monthly">{t("reports.monthly")}</option>
+        <option value="yearly">{t("reports.yearly")}</option>
+      </Form.Select>
+    </Form.Group>
+  </>
+)}
+
 
       {reportType === "patientReport" && (
         <Form.Group className="mb-3">
@@ -290,82 +306,84 @@ const ReportsPage = () => {
       </div>
 
       {/* عرض تقرير المريض */}
-      {reportData && reportType === "patientReport" && (
-        <div>
-          <h4>{t("reports.patient_report_title", { id: reportData.patientId })}</h4>
-          <p>
-            <strong>{t("reports.name")}:</strong> {reportData.name}
-          </p>
-          <p>
-            <strong>{t("reports.age")}:</strong> {reportData.age}
-          </p>
-          <p>
-            <strong>{t("reports.gender")}:</strong> {reportData.gender}
-          </p>
-          <p>
-            <strong>{t("reports.medical_center") || "Medical Center"}:</strong> {reportData.medicalCenter}
-          </p>
 
-          <Table striped bordered hover responsive>
-            <thead>
-              <tr>
-                <th>{t("reports.test_name")}</th>
-                <th>{t("reports.result")}</th>
-                <th>{t("reports.standard")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reportData.tests.map((test, idx) => (
-                <tr key={idx}>
-                  <td>{test.name}</td>
-                  <td>{test.result}</td>
-                  <td>{test.standard}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-      )}
+{reportData && reportType === "patientReport" && (
+  <div>
+    <h4>{t("reports.patient_report_title", { id: reportData.patientId })}</h4>
+    <p><strong>{t("reports.name")}:</strong> {reportData.name}</p>
+    <p><strong>{t("reports.age")}:</strong> {reportData.age}</p>
+    <p><strong>{t("reports.gender")}:</strong> {reportData.gender}</p>
+    <p><strong>{t("reports.medical_center") || "area"}:</strong> {reportData.medicalCenter}</p>
+
+    <Table striped bordered hover responsive>
+      <thead>
+        <tr>
+          <th>{t("reports.test_name")}</th>
+          <th>{t("reports.result")}</th>
+          <th>{t("reports.standard")}</th>
+        </tr>
+      </thead>
+      <tbody>
+{reportData && Array.isArray(reportData.tests) && reportData.tests.length > 0 ? (
+  reportData.tests.map((test, index) => (
+    <tr key={index}>
+      <td>{test.name}</td>
+      <td>{test.result}</td>
+      <td>{test.standard}</td>
+    </tr>
+  ))
+) : (
+  <tr>
+    <td colSpan="3">Loading...</td>
+  </tr>
+)}
+
+
+      </tbody>
+    </Table>
+  </div>
+)}
+
 
       {/* عرض بقية التقارير */}
-      {reportData && reportType !== "patientReport" && (
+      {Array.isArray(reportData) && reportType !== "patientReport" && (
         <Table hover striped bordered responsive style={{ fontSize: "0.95rem" }}>
           <thead className="text-center" style={{ backgroundColor: "#f0f0f0", color: "#4a4a4a" }}>
             <tr>
-              {reportType === "byCategory" && (
-                <>
-                  <th>{t("reports.category_header")}</th>
-                  <th>{t("reports.number_of_cases")}</th>
-                </>
-              )}
               {reportType === "byCountry" && (
                 <>
                   <th>{t("reports.country_header")}</th>
                   <th>{t("reports.number_of_cases")}</th>
                 </>
               )}
+
               {reportType === "byGender" && (
                 <>
                   <th>{t("reports.gender")}</th>
                   <th>{t("reports.count")}</th>
                 </>
               )}
-              {reportType === "byDateRange" && (
-                <>
-                  <th>{t("reports.month")}</th>
-                  <th>{t("reports.number_of_cases")}</th>
-                </>
+
+                {reportType === "byDateRange" && (
+                  <>
+                    <th>
+                      {granularity === 'daily'
+                        ? t("reports.day")
+                        : granularity === 'monthly'
+                        ? t("reports.month")
+                        : t("reports.year")}
+                    </th>
+                    <th>{t("reports.number_of_cases")}</th>
+                  </>
               )}
+
             </tr>
           </thead>
+
+
+
           <tbody className="text-center">
-            {reportType === "byCategory" &&
-              reportData.map((row, idx) => (
-                <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "#ffffff" : "#f9f9fb" }}>
-                  <td>{row.category}</td>
-                  <td>{row.cases}</td>
-                </tr>
-              ))}
+        
             {reportType === "byCountry" &&
               reportData.map((row, idx) => (
                 <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "#ffffff" : "#f9f9fb" }}>
@@ -380,16 +398,19 @@ const ReportsPage = () => {
                   <td>{row.count}</td>
                 </tr>
               ))}
-            {reportType === "byDateRange" &&
+                    {reportType === "byDateRange" &&
               reportData.map((row, idx) => (
-                <tr key={idx} style={{ backgroundColor: idx % 2 === 0 ? "#ffffff" : "#f9f9fb" }}>
-                  <td>{row.month}</td>
+                <tr key={idx}>
+                  <td>{row.period}</td>
                   <td>{row.count}</td>
                 </tr>
-              ))}
+            ))}
+
           </tbody>
         </Table>
       )}
+
+
     </div>
   );
 };
