@@ -163,10 +163,16 @@
 
   "login": {
     "Diabetes_Early_Detection_System": "Diyabet Erken Tespit Sistemi",
-    "welcome_back": "Tekrar hoş geldiniz! Lütfen hesabınıza giriş yapın.",
-    "Email": "E-posta",
+    "welcome_back": "Tekrar hoşgeldiniz!",
+    "email": "E-posta",
     "password": "Şifre",
-    "Login": "Giriş Yap"
+    "loading": "Yükleniyor...",
+    "Login": "Giriş Yap",
+    "error": {
+      "server_error": "Sunucu hatası oluştu",
+      "connection_error": "Sunucuya bağlanırken hata oluştu",
+      "invalid_credentials": "Geçersiz e-posta veya şifre"
+    }
   },
 
   "providersPage": {

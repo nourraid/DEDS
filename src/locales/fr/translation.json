@@ -161,12 +161,18 @@
     "select_area": "Sélectionner une zone"
   },
 
-  "login": {
-    "Diabetes_Early_Detection_System": "Système de détection précoce du diabète",
-    "welcome_back": "Bon retour ! Veuillez vous connecter à votre compte.",
-    "Email": "Email",
+   "login": {
+    "Diabetes_Early_Detection_System": "Système de Détection Précoce du Diabète",
+    "welcome_back": "Bon retour!",
+    "email": "Email",
     "password": "Mot de passe",
-    "Login": "Connexion"
+    "loading": "Chargement...",
+    "Login": "Connexion",
+    "error": {
+      "server_error": "Erreur serveur",
+      "connection_error": "Erreur de connexion au serveur",
+      "invalid_credentials": "Email ou mot de passe invalide"
+    }
   },
 
   "providersPage": {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../api/axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 // دالة التوجيه حسب الدور
@@ -22,6 +22,8 @@ const redirectByRole = (role, navigate) => {
 };
 
 function Login() {
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -55,9 +57,14 @@ function Login() {
       redirectByRole(role, navigate);
     } catch (error) {
       if (error.response) {
-        setMessage(`❌ ${error.response.data.message || "خطأ من السيرفر"}`);
+        const serverMsg = error.response.data.message;
+        if (serverMsg === "Invalid credentials") {
+          setMessage(`❌ ${t("login.error.invalid_credentials")}`);
+        } else {
+          setMessage(`❌ ${serverMsg || t("login.error.server_error")}`);
+        }
       } else {
-        setMessage("❌ حدث خطأ أثناء الاتصال بالسيرفر");
+        setMessage(`❌ ${t("login.error.connection_error")}`);
       }
     } finally {
       setLoading(false);
@@ -77,17 +84,21 @@ function Login() {
         style={{ width: "500px", borderRadius: "20px", marginBottom: "100px" }}
       >
         <div className="d-flex mb-4 align-items-center">
-          <img src="/images/logo.png" alt="Logo" style={{ width: "70px", marginRight: "5px" }} />
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            style={{ width: "70px", marginRight: "5px" }}
+          />
           <div>
             <h4 className="mb-0">DEDS</h4>
             <p className="mb-0" style={{ fontSize: "0.9rem" }}>
-              {t("Diabetes_Early_Detection_System")}
+              {t("login.Diabetes_Early_Detection_System")}
             </p>
           </div>
         </div>
 
         <p className="text-center" style={{ margin: 20 }}>
-          {t("welcome_back")}
+          {t("login.welcome_back")}
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -95,7 +106,7 @@ function Login() {
             <input
               type="email"
               className="form-control border-0 border-bottom rounded-0"
-              placeholder="Email"
+              placeholder={t("login.email")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -106,7 +117,7 @@ function Login() {
             <input
               type="password"
               className="form-control border-0 border-bottom rounded-0"
-              placeholder={t("password")}
+              placeholder={t("login.password")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -125,12 +136,15 @@ function Login() {
             }}
             disabled={loading}
           >
-            {loading ? t("loading") : t("Login")}
+            {loading ? t("login.loading") : t("login.Login")}
           </button>
         </form>
 
         {message && (
-          <p className="text-center mt-3" style={{ color: message.includes("❌") ? "red" : "green" }}>
+          <p
+            className="text-center mt-3"
+            style={{ color: message.includes("❌") ? "red" : "green" }}
+          >
             {message}
           </p>
         )}

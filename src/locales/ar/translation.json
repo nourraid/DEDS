@@ -161,11 +161,17 @@
   },
 
   "login": {
-    "Diabetes_Early_Detection_System": "نظام الكشف المبكر عن السكري",
-    "welcome_back": "مرحباً بعودتك! يرجى تسجيل الدخول إلى حسابك.",
-    "Email": "البريد الإلكتروني",
+    "Diabetes_Early_Detection_System": "نظام الكشف المبكر للسكري",
+    "welcome_back": "مرحباً بعودتك!",
+    "email" : "البريد الإلكتروني",
     "password": "كلمة المرور",
-    "Login": "تسجيل الدخول"
+    "loading": "جاري التحميل...",
+    "Login": "تسجيل الدخول",
+    "error": {
+      "server_error": "حدث خطأ من السيرفر",
+      "connection_error": "حدث خطأ أثناء الاتصال بالسيرفر",
+      "invalid_credentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة"
+    }
   },
 
   "providersPage": {

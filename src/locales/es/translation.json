@@ -162,11 +162,17 @@
   },
 
   "login": {
-    "Diabetes_Early_Detection_System": "Sistema de detección temprana de diabetes",
-    "welcome_back": "¡Bienvenido de nuevo! Por favor, inicie sesión en su cuenta.",
-    "Email": "Correo electrónico",
+    "Diabetes_Early_Detection_System": "Sistema de Detección Temprana de Diabetes",
+    "welcome_back": "¡Bienvenido de nuevo!",
+    "email": "Correo electrónico",
     "password": "Contraseña",
-    "Login": "Iniciar sesión"
+    "loading": "Cargando...",
+    "Login": "Iniciar sesión",
+    "error": {
+      "server_error": "Error del servidor",
+      "connection_error": "Error al conectar con el servidor",
+      "invalid_credentials": "Correo o contraseña inválidos"
+    }
   },
 
   "providersPage": {

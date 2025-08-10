@@ -160,12 +160,18 @@
   "form": {
     "select_area": "Select Area"
   },
-  "login":{
-    "Diabetes_Early_Detection_System":"Diabetes Early Detection System",
-    "welcome_back":"welcome back! Please login to your acccount. ",
-    "Email":"Email",
-    "password":"password",
-    "Login":"Login"
+  "login": {
+    "Diabetes_Early_Detection_System": "Diabetes Early Detection System",
+    "welcome_back": "Welcome back!",
+    "email":"Email",
+    "password": "Password",
+    "loading": "Loading...",
+    "Login": "Login",
+    "error": {
+      "server_error": "Server error occurred",
+      "connection_error": "Error connecting to the server",
+      "invalid_credentials": "Invalid email or password"
+    }
   },
  
   "providersPage": {
