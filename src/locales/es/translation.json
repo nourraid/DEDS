@@ -1,57 +1,76 @@
 {
   "dashboard": {
     "monthlyUsers": "Usuarios mensuales",
-    "totalPatients": "Pacientes totales",
+    "totalPatients": "Total de pacientes",
     "completedTests": "Pruebas completadas",
     "male": "Masculino",
     "female": "Femenino",
     "last6Months": "Últimos 6 meses",
     "last12Months": "Últimos 12 meses",
-    "totalUsers": "Usuarios totales",
+    "totalUsers": "Número total de usuarios",
     "needMedicalFollowUpASAP": "Necesita seguimiento médico urgente",
     "noNeed": "No necesita",
     "needMedicalFollowUp": "Necesita seguimiento médico"
   },
 
   "admin": {
-    "search_placeholder": "Buscar por nombre",
+    "search_placeholder": "Buscar administrador",
     "add_new_admin": "Agregar nuevo administrador",
     "full_name": "Nombre completo",
-    "actions": "Acciones",
     "email": "Correo electrónico",
     "role": "Rol",
+    "actions": "Acciones",
     "no_admins_found": "No se encontraron administradores",
     "edit_admin": "Editar administrador",
-    "enter_full_name": "Ingrese nombre completo",
-    "enter_email": "Ingrese correo electrónico",
+    "delete_admin": "Eliminar administrador",
+    "confirm_delete": "¿Está seguro de eliminar?",
+    "fill_all_fields": "Por favor, complete todos los campos",
+    "invalid_email": "Correo electrónico inválido",
+    "enter_full_name": "Ingrese el nombre completo",
+    "enter_email": "Ingrese el correo electrónico",
     "add_admin": "Agregar administrador",
-    "save_changes": "Guardar cambios"
+    "save_changes": "Guardar cambios",
+    "delete_success": "Administrador eliminado con éxito",
+    "delete_fail": "Error al eliminar administrador",
+    "update_fail": "Error al actualizar administrador",
+    "add_fail": "Error al agregar administrador",
+    "loading_error": "Error al cargar datos",
+    "delete_confirm_title": "Confirmación de eliminación",
+    "delete_confirm_message": "¿Realmente desea eliminar este administrador?"
+  },
+
+  "roles": {
+    "super_admin": "Superadministrador",
+    "admin": "Administrador",
+    "moderator": "Moderador",
+    "viewer": "Visualizador"
   },
 
   "area_details": {
     "stats_titles": {
       "Positive Cases": "Casos positivos",
       "Negative Cases": "Casos negativos",
-      "Pending Cases": "Casos pendientes"
+      "Pending Cases": "Casos pendientes de revisión"
     },
     "ai_results": {
       "Positive": "Positivo",
-      "Negative": "Negativo"
+      "Negative": "Negativo",
+      "needs_review": "Necesita revisión"
     },
-    "countries": {
-      "Palestine": "Palestina",
-      "Jordan": "Jordania"
+    "genders": {
+      "male": "Masculino",
+      "female": "Femenino"
     },
-        "No_Result":"no tests yet",
+    "No_Result": "Aún no hay pruebas",
     "Statistics": "Estadísticas",
-    "Total_Users": "Total de usuarios",
-    "Search": "Buscar por ID de caso o ID de usuario",
+    "Total_Users": "Número total de usuarios",
+    "Search": "Buscar por ID de usuario",
     "Add_New_User": "Agregar nuevo usuario",
     "Country": "País",
     "Result": "Resultado",
     "Gender": "Género",
     "Age": "Edad",
-    "Case_ID": "ID de caso",
+    "Case_ID": "ID del caso",
     "User_ID": "ID de usuario",
     "Area": "Área",
     "Registration_Date": "Fecha de registro",
@@ -62,63 +81,75 @@
     "Filter_by": "Filtrar por",
     "Filter_by_Age": "Filtrar por edad",
     "Select_Date": "Seleccionar fecha",
-    "Go_to_AI_Test_details": "Ir a detalles de la prueba IA",
-    "Go_to_AI_Test_details_for_user": "Ir a detalles de la prueba IA para el usuario",
-    "Edit": "Editar",
-    "Edit_user": "Editar usuario",
-    "Info": "Información",
-    "View_details_of_user": "Ver detalles del usuario",
-    "Delete": "Eliminar",
-    "Delete_user": "Eliminar usuario",
+    "View_AITest": "Ver prueba IA",
+    "View_Details": "Ver detalles",
     "countryDataNotFound": "Datos del país no encontrados. Por favor, navegue desde la página principal.",
     "User_pagination": "Paginación de usuarios",
     "Go_to_page": "Ir a la página"
   },
 
   "area": {
-    "Search": "Buscar por nombre",
+    "Total_Users": "Número total de usuarios",
+    "Enter_area_name": "Ingrese el nombre del área",
+    "Search": "Buscar",
     "Add_New_Area": "Agregar nueva área",
-    "No_areas_found": "No se encontraron áreas.",
+    "No_areas_found": "No se encontraron áreas",
     "More": "Más",
     "Area_Name": "Nombre del área",
-    "Enter_area_name": "Ingrese el nombre del área",
-    "Total_Users": "Total de usuarios",
-    "Enter_total_users": "Ingrese total de usuarios",
-    "Red_Count": "Conteo rojo",
-    "Enter_red_count": "Ingrese conteo rojo",
-    "Green_Count": "Conteo verde",
-    "Enter_green_count": "Ingrese conteo verde",
-    "Yellow_Count": "Conteo amarillo",
-    "Enter_yellow_count": "Ingrese conteo amarillo",
-    "Add_Area": "Agregar área"
+    "Description": "Descripción",
+    "Enter_description": "Ingrese la descripción",
+    "Add_Area": "Agregar área",
+    "Map_Image": "Imagen del mapa",
+    "Flag_Image": "Imagen de la bandera",
+    "Fetch_Error": "Error al obtener áreas",
+    "Add_Area_Error": "Error al agregar área",
+    "Add_Success": "¡Área agregada con éxito!"
   },
 
   "distributors": {
+    "gender_required": "El género es obligatorio",
+    "age_required": "La edad es obligatoria",
+    "area_required": "El área es obligatoria",
+    "license_required": "El archivo de licencia es obligatorio",
+    "select_gender": "Seleccionar género",
+    "male": "Masculino",
+    "female": "Femenino",
+    "select_area": "Seleccionar área",
+    "current_license": "Licencia actual",
+    "save": "Guardar",
+    "gender": "género",
+    "male": "masculino",
+    "female": "femenino",
+    "select_gender": "seleccionar género",
+    "select_area": "seleccionar área",
+    "age": "edad",
+    "area": "área",
+
     "search_by_name": "Buscar por nombre",
     "add_distributor": "Agregar distribuidor",
     "loading_distributors": "Cargando distribuidores...",
     "name": "Nombre",
     "location": "Ubicación",
     "email": "Correo electrónico",
-    "phone": "Número de teléfono",
-    "tests": "Cantidad de pruebas",
+    "phone": "Número telefónico",
+    "tests": "Número de pruebas",
     "license": "Licencia",
     "actions": "Acciones",
     "no_distributors_found": "No se encontraron distribuidores.",
     "add_new_distributor": "Agregar nuevo distribuidor",
-    "please_fill_next_fields": "Por favor complete los siguientes campos:",
+    "please_fill_next_fields": "Por favor, complete los siguientes campos:",
     "date": "Fecha",
     "distributor_name": "Nombre del distribuidor",
-    "phone_number": "Número de teléfono",
-    "email_address": "Dirección de correo electrónico",
+    "phone_number": "Número telefónico",
+    "email_address": "Correo electrónico",
     "country": "País",
-    "location_address": "Dirección",
+    "location_address": "Dirección / ubicación",
     "license_upload": "Subir licencia",
     "drag_drop_file": "Arrastre y suelte el archivo aquí o haga clic para subir",
     "save": "Guardar",
     "name_required": "El nombre es obligatorio",
     "phone_required": "El teléfono es obligatorio",
-    "email_required": "El correo electrónico es obligatorio",
+    "email_required": "El correo es obligatorio",
     "country_required": "El país es obligatorio",
     "location_required": "La ubicación es obligatoria",
     "license_file_required": "El archivo de licencia es obligatorio",
@@ -126,29 +157,40 @@
     "delete": "Eliminar"
   },
 
+  "form": {
+    "select_area": "Seleccionar área"
+  },
+
   "login": {
     "Diabetes_Early_Detection_System": "Sistema de detección temprana de diabetes",
-    "welcome_back": "¡Bienvenido! Por favor inicie sesión en su cuenta.",
+    "welcome_back": "¡Bienvenido de nuevo! Por favor, inicie sesión en su cuenta.",
     "Email": "Correo electrónico",
     "password": "Contraseña",
     "Login": "Iniciar sesión"
   },
 
   "providersPage": {
+    "gender": "género",
+    "age": "edad",
+    "areaId": "área",
+    "male": "masculino",
+    "female": "femenino",
+    "selectGender": "seleccionar género",
+
     "searchByName": "Buscar por nombre",
     "add_new_provider": "Agregar nuevo proveedor",
-    "pleaseFillFields": "Por favor complete todos los campos requeridos",
+    "pleaseFillFields": "Por favor, complete todos los campos obligatorios",
     "date": "Fecha",
     "providerName": "Nombre del proveedor",
-    "phoneNumber": "Número de teléfono",
-    "emailAddress": "Dirección de correo electrónico",
+    "phoneNumber": "Número telefónico",
+    "emailAddress": "Correo electrónico",
     "country": "País",
-    "locationAddress": "Ubicación / Dirección",
+    "locationAddress": "Dirección / ubicación",
     "license": "Licencia",
-    "writeHere": "Escriba aquí...",
+    "writeHere": "Escribir aquí...",
     "name": "Nombre",
     "location": "Ubicación",
-    "email": "Correo electrónico",
+    "email": "Correo",
     "phone": "Teléfono",
     "tests": "Número de pruebas",
     "actions": "Acciones",
@@ -156,74 +198,123 @@
     "delete": "Eliminar",
     "noProvidersFound": "No se encontraron proveedores",
     "add": "Agregar",
-    "noLicense": "No hay licencia adjunta",
+    "noLicense": "Sin licencia adjunta",
+    "unknown": "Desconocido",
+    "viewLicense": "Ver licencia",
+    "confirmDelete": "¿Está seguro que desea eliminar este proveedor?",
+    "deleteError": "Ocurrió un error al eliminar el proveedor",
+    "saveError": "Ocurrió un error al guardar los datos",
+    "editSuccess": "Proveedor actualizado con éxito",
+    "addSuccess": "Proveedor agregado con éxito",
+    "editProvider": "Editar proveedor",
+    "select": "Seleccionar",
+    "selectArea": "Seleccionar área",
+    "enterAge": "Ingrese la edad",
+
+    "licenseDropzone": {
+      "dragDrop": "Arrastre y suelte el archivo de licencia aquí, o haga clic para seleccionar",
+      "required": "El archivo de licencia es obligatorio"
+    },
+
     "validation": {
       "nameRequired": "El nombre del proveedor es obligatorio",
-      "phoneRequired": "El número de teléfono es obligatorio",
-      "phoneInvalid": "Número de teléfono inválido",
+      "phoneRequired": "El número telefónico es obligatorio",
+      "phoneInvalid": "Número telefónico inválido",
       "emailRequired": "El correo electrónico es obligatorio",
-      "emailInvalid": "Dirección de correo electrónico inválida",
+      "emailInvalid": "Correo electrónico inválido",
       "countryRequired": "El país es obligatorio",
       "locationRequired": "La ubicación es obligatoria",
-      "licenseRequired": "El archivo de licencia es obligatorio"
+      "licenseRequired": "El archivo de licencia es obligatorio",
+      "ageRequired": "La edad es obligatoria",
+      "genderRequired": "El género es obligatorio",
+      "areaRequired": "El área es obligatoria"
     }
   },
 
   "licenseDropzone": {
-    "dragDrop": "Arrastre y suelte el archivo de licencia aquí, o haga clic para seleccionar archivo (PDF, JPG, PNG)",
+    "dragDrop": "Arrastre y suelte el archivo de licencia aquí, o haga clic para seleccionar un archivo (PDF, JPG, PNG)",
     "required": "El archivo de licencia es obligatorio"
   },
 
-  "report": {
-
+  "reports": {
     "reports": "Reportes",
-    "reportType": "Tipo de reporte:",
-    "category": "Categoría:",
-    "country": "País:",
-    "gender": "Género:",
-    "from": "Desde:",
-    "to": "Hasta:",
-    "patientId": "ID del paciente:",
-    "enterPatientId": "Ingrese ID del paciente",
-    "generateReport": "Generar reporte",
-    "exportPDF": "Exportar PDF",
-    "patientReportTitle": "Reporte del paciente ID: {{id}}",
+    "report_type": "Tipo de reporte:",
+    "country": "País",
+    "all_countries": "Todos los países",
+    "gender": "Género",
+    "all": "Todos",
+    "male": "Masculino",
+    "female": "Femenino",
+    "from": "Desde",
+    "to": "Hasta",
+    "granularity": "Granularidad:",
+    "daily": "Diario",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "patient_id": "ID del paciente:",
+    "enter_patient_id": "Ingrese el ID del paciente",
+    "generate_report": "Generar reporte",
+    "export_pdf": "Exportar a PDF",
+    "failed_to_fetch_data": "Error al obtener los datos. Por favor, inténtelo de nuevo.",
+    "select_dates": "Por favor seleccione las fechas de inicio y fin.",
+    "patient_report_title": "Reporte del paciente con ID",
     "name": "Nombre",
     "age": "Edad",
-    "medicalCenter": "Centro médico",
-    "testName": "Nombre de la prueba",
+    "medical_center": "Centro médico",
+    "test_name": "Nombre de la prueba",
     "result": "Resultado",
     "standard": "Estándar",
-    "categoryHeader": "Categoría",
-    "numberOfCases": "Número de casos",
-    "countryHeader": "País",
-    "count": "Cantidad",
+    "country_header": "País",
+    "number_of_cases": "Número de casos",
+    "count": "Conteo",
     "month": "Mes",
-    "all": "Todos",
-    "pleaseEnterPatientId": "Por favor ingrese el ID del paciente."
+    "day": "Día",
+    "year": "Año",
+    "loading": "Cargando...",
+    "period": "Periodo"
   },
 
   "settings": {
     "language_settings": {
-      "title": "Idioma",
+      "title": "Configuración de idioma",
       "search_placeholder": "Buscar por nombre de idioma",
       "add_button": "Agregar nuevo idioma",
       "modal_title": "Agregar nuevo idioma",
-      "modal_input_placeholder": "Ingrese el nombre del idioma",
+      "modal_edit_title": "Editar idioma",
+      "modal_input_name": "Ingrese el nombre del idioma",
+      "modal_input_code": "Ingrese el código del idioma",
       "modal_cancel": "Cancelar",
-      "modal_submit": "Agregar idioma"
+      "modal_submit": "Guardar idioma",
+      "name": "Nombre del idioma",
+      "code": "Código del idioma",
+      "direction": "Dirección",
+      "ltr": "De izquierda a derecha (LTR)",
+      "rtl": "De derecha a izquierda (RTL)",
+      "default": "Por defecto",
+      "set_default": "Establecer por defecto",
+      "fill_required": "Por favor complete todos los campos obligatorios.",
+      "confirm_delete": "¿Está seguro de eliminar este idioma?",
+      "error_saving": "Error al guardar el idioma.",
+      "error_deleting": "Error al eliminar el idioma.",
+      "error_setting_default": "Error al establecer el idioma predeterminado.",
+      "no_languages": "No se encontraron idiomas."
     },
     "privacy_settings": {
-      "title": "Privacidad",
-      "send_statistics": "Enviar estadísticas de uso",
-      "delete_data": "Eliminar datos de la cuenta",
-      "delete_alert": "¡Todos sus datos han sido eliminados!"
+      "title": "Configuración de privacidad",
+      "privacy_policy": "Política de privacidad",
+      "can_download_reports": "Permitir a los usuarios descargar reportes",
+      "save": "Guardar",
+      "saved_successfully": "Configuración guardada con éxito",
+      "error_saving": "Error al guardar la configuración de privacidad"
     },
     "data_settings": {
-      "title": "Datos",
-      "send_statistics": "Enviar estadísticas de uso",
-      "delete_data": "Eliminar datos de la cuenta",
-      "delete_alert": "¡Todos sus datos han sido eliminados!"
+      "title": "Configuración de datos",
+      "allow_data_sharing": "Permitir compartir datos",
+      "allow_account_deletion": "Permitir eliminación de cuenta",
+      "data_retention_days": "Duración de retención de datos (días)",
+      "save": "Guardar",
+      "saved_successfully": "Configuración de datos guardada con éxito",
+      "error_saving": "Error al guardar la configuración de datos"
     },
     "actions": {
       "edit": "Editar",
@@ -231,15 +322,19 @@
     }
   },
 
+  "Saved successfully": "Guardado exitosamente",
+  "Error saving data": "Error al guardar los datos",
+  "Save": "Guardar",
+
   "user": {
     "medical_info": {
       "title": "Información médica",
-      "diseases": "Enfermedades que tiene el usuario",
-      "diabetes1": "Enfermedad de diabetes",
+      "diseases": "Enfermedades del usuario",
+      "diabetes1": "Enfermedad diabética",
       "diabetes2": "Diabetes",
       "kidney_family": "¿Hay pacientes con enfermedad renal en la familia?",
       "heart_family": "¿Hay pacientes con enfermedad cardíaca en la familia?",
-      "kidney_test": "¿Alguna vez se ha hecho un examen renal?",
+      "kidney_test": "¿Ha realizado alguna prueba renal?",
       "comments": "Otros comentarios del usuario",
       "no_comments": "Sin comentarios"
     },
@@ -255,7 +350,6 @@
       "blood_type": "Tipo de sangre",
       "country": "País",
       "city": "Ciudad",
-      "area": "Área",
       "street": "Calle",
       "building_number": "Número de edificio",
       "weight": "Peso"
@@ -263,11 +357,43 @@
     "general": {
       "yes": "Sí",
       "no": "No"
+    },
+    "errors": {
+      "user_not_found": "Usuario no encontrado..."
     }
   },
 
+  "loading": "Cargando...",
+
+  "default": {
+    "empty_value": "-"
+  },
+
   "usersPage": {
-    "searchPlaceholder": "Buscar por ID de caso o ID de usuario",
+    "modal": {
+      "validationErrors": {
+        "nameRequired": "El nombre es obligatorio",
+        "emailRequired": "El correo electrónico es obligatorio",
+        "emailInvalid": "Correo electrónico inválido",
+        "phoneRequired": "El teléfono es obligatorio",
+        "roleRequired": "El rol es obligatorio",
+        "passwordRequired": "La contraseña es obligatoria",
+        "passwordTooShort": "La contraseña es demasiado corta",
+        "dobInvalid": "Fecha de nacimiento inválida",
+        "idNumberRequired": "El número de identificación es obligatorio",
+        "genderRequired": "El género es obligatorio",
+        "bloodTypeRequired": "El tipo de sangre es obligatorio",
+        "weightRequired": "El peso es obligatorio",
+        "weightInvalid": "Peso inválido",
+        "countryRequired": "El país es obligatorio",
+        "cityRequired": "La ciudad es obligatoria",
+        "streetRequired": "La calle es obligatoria",
+        "buildingNumberRequired": "El número de edificio es obligatorio",
+        "areaRequired": "El área es obligatoria",
+        "profilePictureInvalid": "Tipo de archivo no soportado, use jpg o png"
+      }
+    },
+    "searchPlaceholder": "Buscar por ID del caso o ID de usuario",
     "addNewUser": "Agregar nuevo usuario",
     "filters": {
       "country": "País",
@@ -289,7 +415,6 @@
       }
     },
     "tableHeaders": {
-      "caseId": "ID de caso",
       "userId": "ID de usuario",
       "area": "Área",
       "registrationDate": "Fecha de registro",
@@ -298,21 +423,42 @@
       "options": "Opciones"
     },
     "noUsersFound": "No se encontraron usuarios.",
+    "tooltips": {
+      "edit": "Editar",
+      "info": "Info",
+      "delete": "Eliminar",
+      "goToAiTestDetails": "Ir a detalles de prueba IA"
+    },
     "modal": {
       "title": "Agregar nuevo usuario",
-      "fillFields": "Por favor complete los campos a continuación",
+      "fillFields": "Por favor, complete los campos a continuación",
       "dateLabel": "Fecha:",
       "formLabels": {
         "userName": "Nombre de usuario",
-        "phoneNumber": "Número de teléfono",
+        "phoneNumber": "Número telefónico",
         "emailAddress": "Correo electrónico",
-        "role": "Rol"
+        "role": "Rol",
+        "password": "Contraseña",
+        "dob": "Fecha de nacimiento",
+        "idNumber": "Número de identificación",
+        "gender": "Género",
+        "bloodType": "Tipo de sangre",
+        "weight": "Peso",
+        "country": "País",
+        "city": "Ciudad",
+        "street": "Calle",
+        "buildingNumber": "Número de edificio",
+        "area": "Área",
+        "profilePicture": "Foto de perfil"
       },
       "formPlaceholders": {
-        "userName": "Escriba aquí",
-        "phoneNumber": "Escriba aquí",
-        "emailAddress": "Escriba aquí",
-        "role": "Seleccione un rol"
+        "userName": "Escribir aquí",
+        "phoneNumber": "Escribir aquí",
+        "emailAddress": "Escribir aquí",
+        "role": "Seleccionar rol",
+        "gender": "Seleccionar género",
+        "area": "Seleccionar área",
+        "dropzonePlaceholder": "Arrastre y suelte una imagen o haga clic para cargar"
       },
       "roles": {
         "admin": "Administrador",
@@ -321,139 +467,110 @@
         "moderator": "Moderador"
       },
       "addButton": "Agregar",
+      "saving": "Guardando...",
       "validationErrors": {
         "nameRequired": "El nombre es obligatorio.",
-        "emailRequired": "El correo electrónico es obligatorio.",
-        "phoneRequired": "El número de teléfono es obligatorio.",
-        "roleRequired": "El rol es obligatorio."
+        "emailRequired": "El correo es obligatorio.",
+        "phoneRequired": "El teléfono es obligatorio.",
+        "roleRequired": "El rol es obligatorio.",
+        "passwordRequired": "La contraseña es obligatoria.",
+        "dobRequired": "La fecha de nacimiento es obligatoria.",
+        "idNumberRequired": "El número de identificación es obligatorio.",
+        "genderRequired": "El género es obligatorio.",
+        "bloodTypeRequired": "El tipo de sangre es obligatorio.",
+        "weightRequired": "El peso es obligatorio.",
+        "countryRequired": "El país es obligatorio.",
+        "cityRequired": "La ciudad es obligatoria.",
+        "streetRequired": "La calle es obligatoria.",
+        "buildingNumberRequired": "El número de edificio es obligatorio.",
+        "areaRequired": "El área es obligatoria.",
+        "profilePictureRequired": "La foto de perfil es obligatoria."
       }
-    },
-    "tooltips": {
-      "edit": "Editar",
-      "info": "Información",
-      "delete": "Eliminar",
-      "goToAiTestDetails": "Ir a detalles de la prueba IA"
     }
   },
 
+  "common": {
+    "cancel": "Cancelar"
+  },
+
   "roles": {
-    "super_admin": "super administrador",
-    "admin": "administrador",
-    "moderator": "moderador",
-    "viewer": "visualizador"
+    "super_admin": "Superadministrador",
+    "admin": "Administrador",
+    "moderator": "Moderador",
+    "viewer": "Visualizador"
   },
 
-  "titles": {
-    "aiTests": "Pruebas IA"
-  },
-
-  "placeholders": {
-    "searchHere": "Buscar aquí ...",
-    "writeHere": "Escriba aquí",
-    "selectProvider": "Seleccione proveedor"
-  },
-
-  "labels": {
-    "filter": "Filtrar:",
-    "calendar": "Calendario",
-    "time": "Hora",
-    "note": "Nota",
-    "providers": "Proveedores"
-  },
-
-  "tableHeaders": {
-    "testNumber": "Número de prueba",
-    "testDate": "Fecha de prueba",
-    "aiResult": "Resultado IA",
-    "aiDetails": "Detalles IA",
-    "call": "Llamar",
-    "notification": "Notificación",
-    "chat": "Chat",
-    "appointment": "Cita",
-    "testName": "Nombre de la prueba",
-    "result": "Resultado",
-    "standard": "Estándar"
-  },
-
-  "tableMessages": {
-    "noTests": "No se encontraron pruebas."
-  },
-
-  "tooltips": {
-    "details": "Ver detalles",
-    "call": "Llamar al paciente",
-    "notification": "Enviar notificación",
-    "chat": "Abrir chat",
-    "appointment": "Hacer cita"
-  },
-
-  "modals": {
-    "notification": "Notificación",
-    "pleaseFillNote": "Por favor complete la nota",
-    "sendToUser": "Enviar al usuario",
-    "quickMessages": "Mensajes rápidos",
-    "select": "Seleccionar",
-    "bloodTestResult": "Resultado del análisis de sangre",
-    "patientName": "Nombre del paciente",
-    "caseID": "ID de caso",
-    "reportDate": "Fecha del reporte",
-    "appointment": "Cita"
-  },
-
-  "buttons": {
-    "add": "Agregar",
-    "sendReport": "Enviar reporte",
-    "print": "Imprimir",
-    "saveAppointment": "Guardar cita"
-  },
-
-  "alerts": {
-    "callTest": "Llamando prueba ID: {{id}}",
-    "chatTest": "Abriendo chat para prueba ID: {{id}}",
-    "enterNote": "Por favor ingrese una nota antes de agregar.",
-    "noteAdded": "¡Nota agregada con éxito!",
-    "appointmentSaved": "¡Cita guardada con éxito!",
-    "sendReportClicked": "¡Botón de enviar reporte presionado!"
-  },
-
-  "messages": {
-    "testResultReady": "Su resultado de la prueba está listo, por favor verifique.",
-    "followUpRecommended": "Se recomienda seguimiento basado en su prueba.",
-    "contactHealthCenter": "Por favor contacte inmediatamente su centro de salud."
-  },
-
-  "providers": {
-    "providerOne": "Proveedor Uno",
-    "providerTwo": "Proveedor Dos"
-  },
-
-  "options": {
-    "allResults": "Todos los resultados",
-    "positive": "Positivo",
-    "negative": "Negativo"
-  },
-
-  "reports": {
-    "generate_report": "Generar reporte",
-    "export_pdf": "Exportar PDF",
-    "patient_report_title": "Reporte del paciente",
-    "report_type": "Tipo de reporte",
-    "category": "Categoría",
-    "country": "País",
-    "gender": "Género",
-    "from": "Desde",
-    "to": "Hasta",
-    "patient_id": "ID del paciente",
-    "enter_patient_id": "Ingrese ID del paciente",
-    "test_name": "Nombre de la prueba",
-    "result": "Resultado",
-    "standard": "Estándar",
-    "number_of_cases": "Número de casos",
-    "month": "Mes",
-    "all": "Todos",
-    "reports": "Reportes",
-    "please_enter_patient_id": "Por favor ingrese el ID del paciente",
-    "category_header": "Categoría",
-    "country_header": "País"
+  "aitests": {
+    "titles": {
+      "aiTests": "Pruebas IA"
+    },
+    "placeholders": {
+      "searchHere": "Buscar aquí...",
+      "writeHere": "Escribir aquí...",
+      "selectProvider": "Seleccionar proveedor"
+    },
+    "labels": {
+      "filter": "Filtrar",
+      "calendar": "Calendario",
+      "time": "Hora",
+      "note": "Nota",
+      "providers": "Proveedores"
+    },
+    "options": {
+      "allResults": "Todos los resultados",
+      "positive": "Positivo",
+      "negative": "Negativo"
+    },
+    "tableHeaders": {
+      "testNumber": "Número de prueba",
+      "testDate": "Fecha de la prueba",
+      "aiResult": "Resultado IA",
+      "aiDetails": "Detalles IA",
+      "call": "Llamar",
+      "notification": "Notificación",
+      "chat": "Chat",
+      "appointment": "Cita",
+      "testName": "Nombre de la prueba",
+      "result": "Resultado",
+      "standard": "Estándar"
+    },
+    "tableMessages": {
+      "noTests": "No hay pruebas para mostrar"
+    },
+    "tooltips": {
+      "details": "Ver detalles",
+      "call": "Realizar llamada",
+      "notification": "Enviar notificación",
+      "chat": "Abrir chat",
+      "appointment": "Agendar cita"
+    },
+    "modals": {
+      "notification": "Notificación",
+      "pleaseFillNote": "Por favor complete la nota para enviar",
+      "sendToUser": "Enviar al usuario",
+      "quickMessages": {
+        "testResultReady": "El resultado de la prueba está listo",
+        "followUpRecommended": "Se recomienda seguimiento",
+        "contactHealthCenter": "Por favor contacte al centro de salud"
+      },
+      "quickMessage": "Mensajes rápidos",
+      "bloodTestResult": "Resultado de prueba de sangre",
+      "patientName": "Nombre del paciente",
+      "caseID": "ID del caso",
+      "reportDate": "Fecha del reporte",
+      "appointment": "Cita",
+      "select": "Seleccionar"
+    },
+    "buttons": {
+      "add": "Agregar",
+      "sendReport": "Enviar reporte",
+      "print": "Imprimir",
+      "saveAppointment": "Guardar cita"
+    },
+    "alerts": {
+      "callTest": "Llamando a la prueba #{{id}}",
+      "chatTest": "Abriendo chat para la prueba #{{id}}",
+      "sendReportClicked": "Botón de enviar reporte clickeado"
+    }
   }
 }

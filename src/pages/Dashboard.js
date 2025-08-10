@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 function Dashboard() {
   const { i18n } = useTranslation();
 
-  // إذا تبي تغير اتجاه الصفحة فوراً مع تغيير اللغة خلي هذا
 
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("darkMode") === "true";

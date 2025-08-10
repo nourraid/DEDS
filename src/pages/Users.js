@@ -145,50 +145,50 @@ const handleDeleteUser = async (userId) => {
 const validateForm = () => {
   const errors = {};
 
-  if (!newUser.name) errors.name = "الاسم مطلوب";
+  if (!newUser.name) errors.name = t("usersPage.modal.validationErrors.nameRequired");
   
-  if (!newUser.email) errors.email = "البريد الإلكتروني مطلوب";
-  else if (!/\S+@\S+\.\S+/.test(newUser.email)) errors.email = "البريد الإلكتروني غير صالح";
+  if (!newUser.email) errors.email = t("usersPage.modal.validationErrors.emailRequired");
+  else if (!/\S+@\S+\.\S+/.test(newUser.email)) errors.email = t("usersPage.modal.validationErrors.emailInvalid");
 
-  if (!newUser.phone) errors.phone = "رقم الهاتف مطلوب";
+  if (!newUser.phone) errors.phone = t("usersPage.modal.validationErrors.phoneRequired");
 
-  if (!newUser.role) errors.role = "الدور مطلوب";
+  if (!newUser.role) errors.role = t("usersPage.modal.validationErrors.roleRequired");
 
-  if (!newUser.password) errors.password = "كلمة المرور مطلوبة";
-  else if (newUser.password.length < 6) errors.password = "كلمة المرور قصيرة جداً";
+  if (!newUser.password) errors.password = t("usersPage.modal.validationErrors.passwordRequired");
+  else if (newUser.password.length < 6) errors.password = t("usersPage.modal.validationErrors.passwordTooShort");
 
-  if (newUser.dob && isNaN(Date.parse(newUser.dob))) errors.dob = "تاريخ الميلاد غير صالح";
+  if (newUser.dob && isNaN(Date.parse(newUser.dob))) errors.dob = t("usersPage.modal.validationErrors.dobInvalid");
 
-  if (!newUser.id_number) errors.id_number = "الرقم الوطني مطلوب";
+  if (!newUser.id_number) errors.id_number = t("usersPage.modal.validationErrors.idNumberRequired");
 
-  if (!newUser.gender) errors.gender = "الجنس مطلوب";
+  if (!newUser.gender) errors.gender = t("usersPage.modal.validationErrors.genderRequired");
 
-  if (!newUser.blood_type) errors.blood_type = "فصيلة الدم مطلوبة";
+  if (!newUser.blood_type) errors.blood_type = t("usersPage.modal.validationErrors.bloodTypeRequired");
 
-  if (!newUser.weight) errors.weight = "الوزن مطلوب";
-  else if (isNaN(newUser.weight) || newUser.weight <= 0) errors.weight = "الوزن غير صالح";
+  if (!newUser.weight) errors.weight = t("usersPage.modal.validationErrors.weightRequired");
+  else if (isNaN(newUser.weight) || newUser.weight <= 0) errors.weight = t("usersPage.modal.validationErrors.weightInvalid");
 
-  if (!newUser.country) errors.country = "الدولة مطلوبة";
+  if (!newUser.country) errors.country = t("usersPage.modal.validationErrors.countryRequired");
 
-  if (!newUser.city) errors.city = "المدينة مطلوبة";
+  if (!newUser.city) errors.city = t("usersPage.modal.validationErrors.cityRequired");
 
-  if (!newUser.street) errors.street = "الشارع مطلوب";
+  if (!newUser.street) errors.street = t("usersPage.modal.validationErrors.streetRequired");
 
-  if (!newUser.building_number) errors.building_number = "رقم المبنى مطلوب";
+  if (!newUser.building_number) errors.building_number = t("usersPage.modal.validationErrors.buildingNumberRequired");
 
-  if (!newUser.area_id) errors.area_id = "المنطقة مطلوبة";
+  if (!newUser.area_id) errors.area_id = t("usersPage.modal.validationErrors.areaRequired");
 
-  // ممكن تضيف تحقق للملف المرفوع إذا حابب
   if (newUser.profile_picture) {
     const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
     if (!allowedTypes.includes(newUser.profile_picture.type)) {
-      errors.profile_picture = "نوع الملف غير مدعوم، استخدم jpg أو png";
+      errors.profile_picture = t("usersPage.modal.validationErrors.profilePictureInvalid");
     }
   }
 
   setFormErrors(errors);
   return Object.keys(errors).length === 0;
 };
+
 
   // حفظ المستخدم الجديد
 const handleSaveUser = async () => {
@@ -302,7 +302,7 @@ useEffect(() => {
   fetchAreas();
 }, []);
   return (
-    <div
+<div
       className="container mt-4"
       style={{ padding: "30px", backgroundColor: "white", borderRadius: "5px" }}
     >
@@ -344,7 +344,7 @@ useEffect(() => {
             onChange={(e) => handleFilterChange("area", e.target.value)}
           >
             <option value="">{t("usersPage.filters.country")}</option>
-            {uniqueAreas.map((area, idx) => (
+            {uniqueAreas.map((area) => (
               <option key={area} value={area}>
                 {area}
               </option>
@@ -565,13 +565,12 @@ useEffect(() => {
                             <FaInfo />
                           </button>
                           <button
-  className="btn btn-sm"
-  title={t("usersPage.tooltips.delete")}
-  onClick={() => handleDeleteUser(user.user_id)}
->
-  <FaTrashAlt />
-</button>
-
+                            className="btn btn-sm"
+                            title={t("usersPage.tooltips.delete")}
+                            onClick={() => handleDeleteUser(user.user_id)}
+                          >
+                            <FaTrashAlt />
+                          </button>
                         </div>
                       </td>
                     </tr>
@@ -629,308 +628,306 @@ useEffect(() => {
           </h6>
           <hr />
 
-<Form>
-  <div className="row">
-    {/* الاسم */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>{t("usersPage.modal.formLabels.userName")}</Form.Label>
-      <Form.Control
-        type="text"
-        name="name"
-        value={newUser.name}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.name}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.name}
-      </Form.Control.Feedback>
-    </Form.Group>
+          <Form>
+            <div className="row">
+              {/* الاسم */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.userName")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={newUser.name}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.name}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.name || t("usersPage.modal.validationErrors.nameRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* البريد */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>{t("usersPage.modal.formLabels.emailAddress")}</Form.Label>
-      <Form.Control
-        type="email"
-        name="email"
-        value={newUser.email}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.email}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.email}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* البريد */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.emailAddress")}</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={newUser.email}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.email}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.email || t("usersPage.modal.validationErrors.emailRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* الهاتف */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>{t("usersPage.modal.formLabels.phoneNumber")}</Form.Label>
-      <Form.Control
-        type="text"
-        name="phone"
-        value={newUser.phone}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.phone}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.phone}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* الهاتف */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.phoneNumber")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="phone"
+                  value={newUser.phone}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.phone}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.phone || t("usersPage.modal.validationErrors.phoneRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* الدور */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>{t("usersPage.modal.formLabels.role")}</Form.Label>
-      <Form.Select
-        name="role"
-        value={newUser.role}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.role}
-      >
-        <option value="">{t("usersPage.modal.formPlaceholders.role")}</option>
-        {rolesList.map((r) => (
-          <option key={r} value={r}>
-            {r}
-          </option>
-        ))}
-      </Form.Select>
-      <Form.Control.Feedback type="invalid">
-        {formErrors.role}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* الدور */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.role")}</Form.Label>
+                <Form.Select
+                  name="role"
+                  value={newUser.role}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.role}
+                >
+                  <option value="">{t("usersPage.modal.formPlaceholders.role")}</option>
+                  {rolesList.map((r) => (
+                    <option key={r} value={r}>
+                      {t(`usersPage.modal.roles.${r}`) || r}
+                    </option>
+                  ))}
+                </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.role || t("usersPage.modal.validationErrors.roleRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* كلمة المرور */}
- <Form.Group className="mb-3 col-md-6">
-  <Form.Label>كلمة المرور</Form.Label>
-  <Form.Control
-    type="password"
-    name="password"
-    value={newUser.password}
-    onChange={handleInputChange}
-    isInvalid={!!formErrors.password}
-    readOnly={!!editingUserId}   // إذا في تعديل، الحقل يصبح قراءة فقط
-    placeholder={editingUserId ? "غير قابل للتعديل أثناء التعديل" : ""}
-  />
-  <Form.Control.Feedback type="invalid">
-    {formErrors.password}
-  </Form.Control.Feedback>
-</Form.Group>
+              {/* كلمة المرور */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.password")}</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={newUser.password}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.password}
+                  readOnly={!!editingUserId} // إذا في تعديل، الحقل يصبح قراءة فقط
+                  placeholder={
+                    editingUserId
+                      ? "Read only while editing"
+                      : ""
+                  }
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.password || t("usersPage.modal.validationErrors.passwordRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
+              {/* تاريخ الميلاد */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.dob")}</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="dob"
+                  value={newUser.dob}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.dob}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.dob || t("usersPage.modal.validationErrors.dobRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* باقي الحقول بنفس الطريقة: */}
-    {/* تاريخ الميلاد */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>تاريخ الميلاد</Form.Label>
-      <Form.Control
-        type="date"
-        name="dob"
-        value={newUser.dob}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.dob}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.dob}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* الرقم الوطني */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.idNumber")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="id_number"
+                  value={newUser.id_number}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.id_number}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.id_number || t("usersPage.modal.validationErrors.idNumberRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* الرقم الوطني */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>الرقم الوطني</Form.Label>
-      <Form.Control
-        type="text"
-        name="id_number"
-        value={newUser.id_number}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.id_number}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.id_number}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* الجنس */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.gender")}</Form.Label>
+                <Form.Select
+                  name="gender"
+                  value={newUser.gender}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.gender}
+                >
+                  <option value="">{t("usersPage.modal.formPlaceholders.gender")}</option>
+                  <option value="Male">{t("usersPage.filters.genderOptions.male")}</option>
+                  <option value="Female">{t("usersPage.filters.genderOptions.female")}</option>
+                </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.gender || t("usersPage.modal.validationErrors.genderRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* الجنس */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>الجنس</Form.Label>
-      <Form.Select
-        name="gender"
-        value={newUser.gender}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.gender}
-      >
-        <option value="">اختر الجنس</option>
-        <option value="Male">ذكر</option>
-        <option value="Female">أنثى</option>
-      </Form.Select>
-      <Form.Control.Feedback type="invalid">
-        {formErrors.gender}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* فصيلة الدم */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.bloodType")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="blood_type"
+                  value={newUser.blood_type}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.blood_type}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.blood_type || t("usersPage.modal.validationErrors.bloodTypeRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* فصيلة الدم */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>فصيلة الدم</Form.Label>
-      <Form.Control
-        type="text"
-        name="blood_type"
-        value={newUser.blood_type}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.blood_type}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.blood_type}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* الوزن */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.weight")}</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="weight"
+                  value={newUser.weight}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.weight}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.weight || t("usersPage.modal.validationErrors.weightRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* الوزن */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>الوزن</Form.Label>
-      <Form.Control
-        type="number"
-        name="weight"
-        value={newUser.weight}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.weight}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.weight}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* الدولة */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.country")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="country"
+                  value={newUser.country}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.country}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.country || t("usersPage.modal.validationErrors.countryRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* الدولة */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>الدولة</Form.Label>
-      <Form.Control
-        type="text"
-        name="country"
-        value={newUser.country}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.country}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.country}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* المدينة */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.city")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="city"
+                  value={newUser.city}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.city}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.city || t("usersPage.modal.validationErrors.cityRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* المدينة */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>المدينة</Form.Label>
-      <Form.Control
-        type="text"
-        name="city"
-        value={newUser.city}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.city}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.city}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* الشارع */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.street")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="street"
+                  value={newUser.street}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.street}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.street || t("usersPage.modal.validationErrors.streetRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* الشارع */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>الشارع</Form.Label>
-      <Form.Control
-        type="text"
-        name="street"
-        value={newUser.street}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.street}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.street}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* رقم المبنى */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.buildingNumber")}</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="building_number"
+                  value={newUser.building_number}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.building_number}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.building_number || t("usersPage.modal.validationErrors.buildingNumberRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* رقم المبنى */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>رقم المبنى</Form.Label>
-      <Form.Control
-        type="text"
-        name="building_number"
-        value={newUser.building_number}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.building_number}
-      />
-      <Form.Control.Feedback type="invalid">
-        {formErrors.building_number}
-      </Form.Control.Feedback>
-    </Form.Group>
+              {/* المنطقة */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.area")}</Form.Label>
+                <Form.Select
+                  name="area"
+                  value={newUser.area}
+                  onChange={handleInputChange}
+                  isInvalid={!!formErrors.area}
+                >
+                  <option value="">{t("usersPage.modal.formPlaceholders.area")}</option>
+                  {areas.map((area) => (
+                    <option key={area.id} value={area.name}>
+                      {area.name}
+                    </option>
+                  ))}
+                </Form.Select>
+                <Form.Control.Feedback type="invalid">
+                  {formErrors.area || t("usersPage.modal.validationErrors.areaRequired")}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-    {/* المنطقة */}
-    <Form.Group className="mb-3 col-md-6">
-      <Form.Label>المنطقة</Form.Label>
-      <Form.Select
-        name="area_id"
-        value={newUser.area_id}
-        onChange={handleInputChange}
-        isInvalid={!!formErrors.area_id}
-      >
-        <option value="">اختر منطقة</option>
-        {areas.map((area) => (
-          <option key={area.id} value={area.id}>
-            {area.name}
-          </option>
-        ))}
-      </Form.Select>
-      <Form.Control.Feedback type="invalid">
-        {formErrors.area_id}
-      </Form.Control.Feedback>
-    </Form.Group>
-
-    {/* رفع الصورة */}
-    <Form.Group className="mb-3 col-12">
-      <Form.Label>الصورة الشخصية</Form.Label>
-      <div
-        {...getRootProps()}
-        className={`border rounded p-3 text-center ${isDragActive ? "bg-light" : ""}`}
-        style={{ cursor: "pointer" }}
-      >
-        <input {...getInputProps()} />
-        {newUser.profile_picture ? (
-          <>
-            <p>{newUser.profile_picture.name}</p>
-            <img
-              src={URL.createObjectURL(newUser.profile_picture)}
-              alt="Profile Preview"
-              style={{ maxWidth: "100px", maxHeight: "100px", marginTop: "10px", borderRadius: "10px" }}
-            />
-          </>
-        ) : (
-          <span>{t("usersPage.modal.dropzonePlaceholder") || "اسحب الصورة أو اضغط هنا للرفع"}</span>
-        )}
-      </div>
-      {formErrors.profile_picture && (
-        <div className="text-danger mt-1">{formErrors.profile_picture}</div>
-      )}
-    </Form.Group>
-  </div>
-</Form>
-
+              {/* صورة البروفايل */}
+              <Form.Group className="mb-3 col-md-6">
+                <Form.Label>{t("usersPage.modal.formLabels.profilePicture")}</Form.Label>
+                <div
+                  {...getRootProps()}
+                  className={`dropzone p-3 border rounded text-center ${
+                    isDragActive ? "bg-light" : ""
+                  }`}
+                  style={{ cursor: "pointer" }}
+                >
+                  <input {...getInputProps()} />
+                  {isDragActive ? (
+                    <p>Drop the files here ...</p>
+                  ) : (
+                    <p>{t("usersPage.modal.formPlaceholders.dropzonePlaceholder")}</p>
+                  )}
+                </div>
+                {formErrors.profile_picture && (
+                  <div className="text-danger mt-1">{formErrors.profile_picture}</div>
+                )}
+              </Form.Group>
+            </div>
+          </Form>
         </Modal.Body>
+
         <Modal.Footer>
           <Button
             variant="secondary"
             onClick={() => setShowModal(false)}
-            disabled={saving}
-            style={{
-              borderRadius: "50px",
-              fontWeight: "600",
-              width: "120px",
-            }}
           >
-            {t("common.cancel") || "إلغاء"}
+            {t("common.cancel")}
           </Button>
           <Button
             variant="primary"
             onClick={handleSaveUser}
             disabled={saving}
-            style={{
-              borderRadius: "50px",
-              backgroundColor: "#003366",
-              borderColor: "#003366",
-              width: "120px",
-              fontWeight: "600",
-            }}
           >
-            {saving ? (t("usersPage.modal.saving") || "جارٍ الحفظ...") : t("usersPage.modal.addButton")}
+            {saving ? (
+              <>
+                <Spinner
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                  className="me-2"
+                />
+                {t("usersPage.modal.saving")}
+              </>
+            ) : (
+              t("usersPage.modal.addButton")
+            )}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -939,93 +936,3 @@ useEffect(() => {
 };
 
 export default Users;
-
-
-
-/*
- 
-        <Accordion.Item eventKey="0" style={{ margin: "10px" }}>
-          <Accordion.Header>{t("settings.language_settings.title")}</Accordion.Header>
-          <Accordion.Body>
-            <div className="d-flex justify-content-between align-items-center gap-3 mb-4 flex-wrap">
-              <input
-                type="text"
-                className="form-control flex-grow-1 me-3"
-                placeholder={t("settings.language_settings.search_placeholder")}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                style={{ maxWidth: "400px", minWidth: "250px" }}
-              />
-              <button
-                onClick={openAddModal}
-                className="btn d-flex align-items-center px-4 py-2"
-                style={{
-                  fontWeight: 600,
-                  fontSize: "0.8rem",
-                  height: "42px",
-                  borderRadius: "100px",
-                  backgroundColor: "#5085c1ff",
-                  color: "white",
-                  width: "100%",
-                  maxWidth: "200px",
-                }}
-              >
-                <FaPlus className="me-2" />
-                {t("settings.language_settings.add_button")}
-              </button>
-            </div>
-
-            {filteredLanguages.length === 0 && (
-              <p>{t("settings.language_settings.no_languages")}</p>
-            )}
-
-            {filteredLanguages.map((lang) => (
-              <Row
-                key={lang.id}
-                className="mb-2 align-items-center"
-                style={{
-                  backgroundColor: "#e9e7e766",
-                  padding: "12px 20px",
-                  borderRadius: "5px",
-                  color: "#4586cbff",
-                  fontWeight: 500,
-                }}
-              >
-                <Col md={4}>{lang.name} ({lang.code})</Col>
-                <Col md={3}>{lang.direction}</Col>
-                <Col md={2}>
-                  {lang.is_default && <strong>{t("settings.language_settings.default")}</strong>}
-                </Col>
-                <Col md={3} className="text-end d-flex justify-content-end gap-2">
-                  {!lang.is_default && (
-                    <Button
-                      variant="outline-success"
-                      size="sm"
-                      onClick={() => handleSetDefault(lang.id)}
-                      title={t("settings.language_settings.set_default")}
-                    >
-                      {t("settings.language_settings.set_default")}
-                    </Button>
-                  )}
-                  <Button
-                    variant="outline-primary"
-                    size="sm"
-                    onClick={() => openEditModal(lang)}
-                  >
-                    <FaEdit className="me-1" />
-                    {t("settings.actions.edit")}
-                  </Button>
-                  <Button
-                    variant="outline-danger"
-                    size="sm"
-                    onClick={() => handleDeleteLanguage(lang.id)}
-                  >
-                    <FaTrash className="me-1" />
-                    {t("settings.actions.delete")}
-                  </Button>
-                </Col>
-              </Row>
-            ))}
-          </Accordion.Body>
-        </Accordion.Item>
-*/

@@ -13,38 +13,54 @@
     "needMedicalFollowUp": "Need medical follow-up"
   },
 
-  "admin":{
-      "search_placeholder": "Search by name",
-      "add_new_admin" :"Add New Admin",
-      "full_name":"Name",
-      "actions":"Actions",
-      "email" : "Email",
-      "role" :"Role",
-      "no_admins_found":"No Admin Found",
-      "edit_admin" :"Edit Admin",
-      "enter_full_name":"Enter Full Name",
-      "enter_email":"Enter Email",
-      "add_admin" : "Add Admin",
-      "save_changes":"Save"
-
+   "admin": {
+    "search_placeholder": "Search for admin",
+    "add_new_admin": "Add New Admin",
+    "full_name": "Full Name",
+    "email": "Email",
+    "role": "Role",
+    "actions": "Actions",
+    "no_admins_found": "No admins found",
+    "edit_admin": "Edit Admin",
+    "delete_admin": "Delete Admin",
+    "confirm_delete": "Are you sure you want to delete?",
+    "fill_all_fields": "Please fill all fields",
+    "invalid_email": "Invalid email address",
+    "enter_full_name": "Enter full name",
+    "enter_email": "Enter email",
+    "add_admin": "Add Admin",
+    "save_changes": "Save Changes",
+    "delete_success": "Admin deleted successfully",
+    "delete_fail": "Failed to delete admin",
+    "update_fail": "Failed to update admin",
+    "add_fail": "Failed to add admin",
+    "loading_error": "Failed to load data",
+    "delete_confirm_title": "Delete Confirmation",
+    "delete_confirm_message": "Do you really want to delete this admin?"
+  },
+  "roles": {
+    "super_admin": "Super Admin",
+    "admin": "Admin",
+    "moderator": "Moderator",
+    "viewer": "Viewer"
   },
 
-"area_details": {
-  
+  "area_details": {
     "stats_titles": {
       "Positive Cases": "Positive Cases",
       "Negative Cases": "Negative Cases",
-      "Pending Cases": "need_review Cases"
+      "Pending Cases": "Needs Review Cases"
     },
     "ai_results": {
       "Positive": "Positive",
-      "Negative": "Negative"
+      "Negative": "Negative",
+      "needs_review": "Needs Review"
     },
-    "countries": {
-      "Palestine": "Palestine",
-      "Jordan": "Jordan"
+    "genders": {
+      "male": "Male",
+      "female": "Female"
     },
-    "No_Result":"no tests yet",
+    "No_Result": "No tests yet",
     "Statistics": "Statistics",
     "Total_Users": "Total Users",
     "Search": "Search by User ID",
@@ -64,40 +80,45 @@
     "Filter_by": "Filter by",
     "Filter_by_Age": "Filter by Age",
     "Select_Date": "Select Date",
-    "Go_to_AI_Test_details": "Go to AI Test details",
-    "Go_to_AI_Test_details_for_user": "Go to AI Test details for user",
-    "Edit": "Edit",
-    "Edit_user": "Edit user",
-    "Info": "Info",
-    "View_details_of_user": "View details of user",
-    "Delete": "Delete",
-    "Delete_user": "Delete user",
+    "View_AITest": "View AI Test",
+    "View_Details": "View Details",
     "countryDataNotFound": "Country data not found. Please navigate from the main page.",
     "User_pagination": "User pagination",
     "Go_to_page": "Go to page"
   },
 
 
-   "area": {
-    "Search": "Search by name",
-    "Add_New_Area": "Add New Area",
-    "No_areas_found": "No areas found.",
-    "More": "More",
-    "Area_Name": "Area Name",
-    "Enter_area_name": "Enter area name",
-    "Total_Users": "Total Users",
-    "Enter_total_users": "Enter total users",
-    "Red_Count": "Red Count",
-    "Enter_red_count": "Enter red count",
-    "Green_Count": "Green Count",
-    "Enter_green_count": "Enter green count",
-    "Yellow_Count": "Yellow Count",
-    "Enter_yellow_count": "Enter yellow count",
-    "Add_Area": "Add Area"
-  },
+"area": {
+  "Total_Users": "Total Users",
+  "Enter_area_name": "Enter area name",
+  "Search": "Search",
+  "Add_New_Area": "Add New Area",
+  "No_areas_found": "No areas found",
+  "More": "More",
+  "Area_Name": "Area Name",
+  "Description": "Description",
+  "Enter_description": "Enter description",
+  "Add_Area": "Add Area",
+  "Map_Image": "Map Image",
+  "Flag_Image": "Flag Image",
+  "Fetch_Error": "Failed to fetch areas",
+  "Add_Area_Error": "Failed to add area",
+  "Add_Success": "Area added successfully!"
+},
+
     "distributors": {
+          "gender_required": "Gender is required",
+    "age_required": "Age is required",
+    "area_required": "Area is required",
+    "license_required": "License file is required",
+    "select_gender": "Select Gender",
+    "male": "Male",
+    "female": "Female",
+    "select_area": "Select Area",
+    "current_license": "Current License",
+    "save": "Save",
       "gender":"gender",
-            "male":"male",
+        "male":"male",
       "female":"female",
       "select_gender":"select gender",
       "select_area":"select area",
@@ -136,6 +157,9 @@
     "edit": "Edit",
     "delete": "Delete"
   },
+  "form": {
+    "select_area": "Select Area"
+  },
   "login":{
     "Diabetes_Early_Detection_System":"Diabetes Early Detection System",
     "welcome_back":"welcome back! Please login to your acccount. ",
@@ -145,6 +169,7 @@
   },
  
   "providersPage": {
+    
     "gender" :"gender",
     "age":"age",
     "areaId":"area",
@@ -174,6 +199,26 @@
     "noProvidersFound": "No providers found",
     "add": "Add",
     "noLicense": "No license attached",
+        "unknown": "Unknown",
+    "viewLicense": "View License",
+    "confirmDelete": "Are you sure you want to delete this provider?",
+    "deleteError": "An error occurred while deleting the provider",
+    "saveError": "An error occurred while saving the data",
+    "editSuccess": "Provider updated successfully",
+    "addSuccess": "Provider added successfully",
+    "editProvider": "Edit Provider",
+    "select": "Select",
+    "selectArea": "Select Area",
+    "enterAge": "Enter age",
+
+    "licenseDropzone": {
+      "dragDrop": "Drag and drop license file here, or click to select",
+      "required": "License file is required"
+    },
+
+
+
+    
     "validation": {
       "nameRequired": "Provider name is required",
       "phoneRequired": "Phone number is required",
@@ -182,99 +227,112 @@
       "emailInvalid": "Invalid email address",
       "countryRequired": "Country is required",
       "locationRequired": "Location is required",
-      "licenseRequired": "License file is required"
+      "licenseRequired": "License file is required",
+         "ageRequired": "Age is required",
+      "genderRequired": "Gender is required",
+      "areaRequired": "Area is required"
     }
   },
+
+
   "licenseDropzone": {
     "dragDrop": "Drag & drop license file here, or click to select file (PDF, JPG, PNG)",
     "required": "License file is required"
   },
 
-  "report":{
-
-  "reports": "Reports",
-  "reportType": "Report Type:",
-  "category": "Category:",
-  "country": "Country:",
-  "gender": "Gender:",
-  "from": "From:",
-  "to": "To:",
-  "patientId": "Patient ID:",
-  "enterPatientId": "Enter Patient ID",
-  "generateReport": "Generate Report",
-  "exportPDF": "Export PDF",
-  "patientReportTitle": "Patient Report for ID: {{id}}",
-  "name": "Name",
-  "age": "Age",
-  "medicalCenter": "Medical Center",
-  "testName": "Test Name",
-  "result": "Result",
-  "standard": "Standard",
-  "categoryHeader": "Category",
-  "numberOfCases": "Number of Cases",
-  "countryHeader": "Country",
-  "count": "Count",
-  "month": "Month",
-  "all": "All",
-  "pleaseEnterPatientId": "Please enter a Patient ID."
+    "reports": {
+    "reports": "Reports",
+    "report_type": "Report Type:",
+    "country": "Country",
+    "all_countries": "All Countries",
+    "gender": "Gender",
+    "all": "All",
+    "male": "Male",
+    "female": "Female",
+    "from": "From",
+    "to": "To",
+    "granularity": "Granularity:",
+    "daily": "Daily",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "patient_id": "Patient ID:",
+    "enter_patient_id": "Enter Patient ID",
+    "generate_report": "Generate Report",
+    "export_pdf": "Export PDF",
+    "failed_to_fetch_data": "Failed to fetch data. Please try again.",
+    "select_dates": "Please select both start and end dates.",
+    "patient_report_title": "Patient Report for ID",
+    "name": "Name",
+    "age": "Age",
+    "medical_center": "Medical Center",
+    "test_name": "Test Name",
+    "result": "Result",
+    "standard": "Standard",
+    "country_header": "Country",
+    "number_of_cases": "Number of Cases",
+    "count": "Count",
+    "month": "Month",
+    "day": "Day",
+    "year": "Year",
+    "loading": "Loading...",
+    "period": "Period"
   },
   
-  "settings": {
+   "settings": {
     "language_settings": {
-      "title": "Language",
+      "title": "Language Settings",
       "search_placeholder": "Search by language name",
       "add_button": "Add New Language",
       "modal_title": "Add New Language",
-      "modal_input_placeholder": "Enter language name",
+      "modal_edit_title": "Edit Language",
+      "modal_input_name": "Enter language name",
+      "modal_input_code": "Enter language code",
       "modal_cancel": "Cancel",
-      "modal_submit": "Add Language"
+      "modal_submit": "Save Language",
+      "name": "Language Name",
+      "code": "Language Code",
+      "direction": "Direction",
+      "ltr": "Left to Right (LTR)",
+      "rtl": "Right to Left (RTL)",
+      "default": "Default",
+      "set_default": "Default",
+      "fill_required": "Please fill in all required fields.",
+      "confirm_delete": "Are you sure you want to delete this language?",
+      "error_saving": "Error saving language.",
+      "error_deleting": "Error deleting language.",
+      "error_setting_default": "Error setting default language.",
+      "no_languages": "No languages found."
     },
     "privacy_settings": {
-      "title": "Privacy",
-      "send_statistics": "Send Usage Statistics",
-      "delete_data": "Delete Account Data",
-      "delete_alert": "All your data has been deleted!"
+      "title": "Privacy Settings",
+      "privacy_policy": "Privacy Policy",
+      "can_download_reports": "Allow users to download reports",
+      "save": "Save",
+      "saved_successfully": "Settings saved successfully",
+      "error_saving": "Error saving privacy settings"
     },
     "data_settings": {
-      "title": "Data",
-      "send_statistics": "Send Usage Statistics", 
-      "delete_data": "Delete Account Data",
-      "delete_alert": "All your data has been deleted!"
+      "title": "Data Settings",
+      "allow_data_sharing": "Allow Data Sharing",
+      "allow_account_deletion": "Allow Account Deletion",
+      "data_retention_days": "Data Retention Period (Days)",
+      "save": "Save",
+      "saved_successfully": "Data settings saved successfully",
+      "error_saving": "Error saving data settings"
     },
     "actions": {
       "edit": "Edit",
       "delete": "Delete"
     }
   },
+  "Saved successfully": "Saved successfully",
+  "Error saving data": "Error saving data",
+  "Save": "Save",
 
 
 
 
-    "add_user": "إضافة مستخدم",
-  "name": "الاسم",
-  "email": "البريد الإلكتروني",
-  "phone": "رقم الهاتف",
-  "password": "كلمة المرور",
-  "id_number": "رقم الهوية",
-  "dob": "تاريخ الميلاد",
-  "gender": "الجنس",
-  "male": "ذكر",
-  "female": "أنثى",
-  "blood_type": "فصيلة الدم",
-  "weight": "الوزن",
-  "country": "الدولة",
-  "city": "المدينة",
-  "street": "الشارع",
-  "building_number": "رقم البناء",
-  "role": "الدور",
-  "user": "مستخدم",
-  "admin": "مشرف",
-  "area": "المنطقة",
-  "profile_picture": "صورة البروفايل",
-  "upload_picture": "اضغط هنا لرفع صورة",
-  "select": "اختر",
-  "save": "حفظ",
-  "cancel": "إلغاء",
+
 
   "user": {
     "medical_info": {
@@ -289,7 +347,7 @@
       "no_comments": "No comments"
     },
     "general_info": {
-      "title": "General Information",
+   "title": "General Information",
       "profile_picture": "Profile Picture",
       "full_name": "Full Name",
       "email": "Email",
@@ -300,7 +358,6 @@
       "blood_type": "Blood Type",
       "country": "Country",
       "city": "City",
-      "area": "Area",
       "street": "Street",
       "building_number": "Building Number",
       "weight": "Weight"
@@ -308,11 +365,42 @@
     "general": {
       "yes": "Yes",
       "no": "No"
+    },  "errors": {
+      "user_not_found": "User not found..."
     }
+  },
+    "loading": "Loading...",
+  "default": {
+    "empty_value": "-"
   },
   
 
+
+
   "usersPage": {
+        "modal": {
+      "validationErrors": {
+        "nameRequired": "الاسم مطلوب",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "البريد الإلكتروني غير صالح",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "roleRequired": "الدور مطلوب",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "passwordTooShort": "كلمة المرور قصيرة جداً",
+        "dobInvalid": "تاريخ الميلاد غير صالح",
+        "idNumberRequired": "الرقم الوطني مطلوب",
+        "genderRequired": "الجنس مطلوب",
+        "bloodTypeRequired": "فصيلة الدم مطلوبة",
+        "weightRequired": "الوزن مطلوب",
+        "weightInvalid": "الوزن غير صالح",
+        "countryRequired": "الدولة مطلوبة",
+        "cityRequired": "المدينة مطلوبة",
+        "streetRequired": "الشارع مطلوب",
+        "buildingNumberRequired": "رقم المبنى مطلوب",
+        "areaRequired": "المنطقة مطلوبة",
+        "profilePictureInvalid": "نوع الملف غير مدعوم، استخدم jpg أو png"
+      }
+    },
     "searchPlaceholder": "Search by Case ID or User ID",
     "addNewUser": "Add New User",
     "filters": {
@@ -335,7 +423,6 @@
       }
     },
     "tableHeaders": {
-      "caseId": "Case ID",
       "userId": "User ID",
       "area": "Area",
       "registrationDate": "Registration Date",
@@ -344,6 +431,12 @@
       "options": "Options"
     },
     "noUsersFound": "No users found.",
+    "tooltips": {
+      "edit": "Edit",
+      "info": "Info",
+      "delete": "Delete",
+      "goToAiTestDetails": "Go to AI Test details"
+    },
     "modal": {
       "title": "Add New User",
       "fillFields": "Please fill in the fields below",
@@ -352,13 +445,28 @@
         "userName": "User Name",
         "phoneNumber": "Phone Number",
         "emailAddress": "Email Address",
-        "role": "Role"
+        "role": "Role",
+        "password": "Password",
+        "dob": "Date of Birth",
+        "idNumber": "ID Number",
+        "gender": "Gender",
+        "bloodType": "Blood Type",
+        "weight": "Weight",
+        "country": "Country",
+        "city": "City",
+        "street": "Street",
+        "buildingNumber": "Building Number",
+        "area": "Area",
+        "profilePicture": "Profile Picture"
       },
       "formPlaceholders": {
         "userName": "Write here",
         "phoneNumber": "Write here",
         "emailAddress": "Write here",
-        "role": "Select a role"
+        "role": "Select a role",
+        "gender": "Select gender",
+        "area": "Select area",
+        "dropzonePlaceholder": "Drag and drop an image or click to upload"
       },
       "roles": {
         "admin": "Admin",
@@ -367,20 +475,31 @@
         "moderator": "Moderator"
       },
       "addButton": "Add",
+      "saving": "Saving...",
       "validationErrors": {
         "nameRequired": "Name is required.",
         "emailRequired": "Email is required.",
         "phoneRequired": "Phone number is required.",
-        "roleRequired": "Role is required."
+        "roleRequired": "Role is required.",
+        "passwordRequired": "Password is required.",
+        "dobRequired": "Date of birth is required.",
+        "idNumberRequired": "ID number is required.",
+        "genderRequired": "Gender is required.",
+        "bloodTypeRequired": "Blood type is required.",
+        "weightRequired": "Weight is required.",
+        "countryRequired": "Country is required.",
+        "cityRequired": "City is required.",
+        "streetRequired": "Street is required.",
+        "buildingNumberRequired": "Building number is required.",
+        "areaRequired": "Area is required.",
+        "profilePictureRequired": "Profile picture is required."
       }
-    },
-    "tooltips": {
-      "edit": "Edit",
-      "info": "Info",
-      "delete": "Delete",
-      "goToAiTestDetails": "Go to AI Test details"
     }
   },
+  "common": {
+    "cancel": "Cancel"
+  },
+
   "roles": {
   "super_admin": "suprt admin",
   "admin": "admin",
@@ -389,114 +508,84 @@
 },
 
 
+  "aitests": {
+    "titles": {
+      "aiTests": "AI Tests"
+    },
+    "placeholders": {
+      "searchHere": "Search here...",
+      "writeHere": "Write here...",
+      "selectProvider": "Select Provider"
+    },
+    "labels": {
+      "filter": "Filter",
+      "calendar": "Calendar",
+      "time": "Time",
+      "note": "Note",
+      "providers": "Providers"
+    },
+    "options": {
+      "allResults": "All Results",
+      "positive": "Positive",
+      "negative": "Negative"
+    },
+    "tableHeaders": {
+      "testNumber": "Test Number",
+      "testDate": "Test Date",
+      "aiResult": "AI Result",
+      "aiDetails": "AI Details",
+      "call": "Call",
+      "notification": "Notification",
+      "chat": "Chat",
+      "appointment": "Appointment",
+      "testName": "Test Name",
+      "result": "Result",
+      "standard": "Standard"
+    },
+    "tableMessages": {
+      "noTests": "No tests to display"
+    },
+    "tooltips": {
+      "details": "View Details",
+      "call": "Make Call",
+      "notification": "Send Notification",
+      "chat": "Open Chat",
+      "appointment": "Set Appointment"
+    },
+    "modals": {
+      "notification": "Notification",
+      "pleaseFillNote": "Please fill the note to send",
+      "sendToUser": "Send to user",
+         "quickMessages": {
+      "testResultReady": "Test result is ready",
+      "followUpRecommended": "Follow-up is recommended",
+      "contactHealthCenter": "Please contact the health center"
+    },
+          "quickMessage": "quick Messages",
 
-"titles": {
-    "aiTests": "AI Tests"
-  },
-  "placeholders": {
-    "searchHere": "Search here ...",
-    "writeHere": "Write here",
-    "selectProvider": "Select provider"
-  },
-  "labels": {
-    "filter": "Filter:",
-    "calendar": "Calendar",
-    "time": "Time",
-    "note": "Note",
-    "providers": "Providers"
-  },
-  "tableHeaders": {
-    "testNumber": "Test Number",
-    "testDate": "Test Date",
-    "aiResult": "AI Result",
-    "aiDetails": "AI Details",
-    "call": "Call",
-    "notification": "Notification",
-    "chat": "Chat",
-    "appointment": "Appointment",
-    "testName": "Test Name",
-    "result": "Result",
-    "standard": "Standard"
-  },
-  "tableMessages": {
-    "noTests": "No tests found."
-  },
-  "tooltips": {
-    "details": "View Details",
-    "call": "Call Patient",
-    "notification": "Send Notification",
-    "chat": "Open Chat",
-    "appointment": "Make Appointment"
-  },
-  "modals": {
-    "notification": "Notification",
-    "pleaseFillNote": "Please fill out the note",
-    "sendToUser": "Send to user",
-    "quickMessages": "Quick Messages",
-    "select": "Select",
-    "bloodTestResult": "Blood test result",
-    "patientName": "Patient Name",
-    "caseID": "Case ID",
-    "reportDate": "Report Date",
-    "appointment": "Appointment"
-  },
-  "buttons": {
-    "add": "Add",
-    "sendReport": "Send Report",
-    "print": "Print",
-    "saveAppointment": "Save Appointment"
-  },
-  "alerts": {
-    "callTest": "Calling test ID: {{id}}",
-    "chatTest": "Opening chat for test ID: {{id}}",
-    "enterNote": "Please enter a note before adding.",
-    "noteAdded": "Note added successfully!",
-    "appointmentSaved": "Appointment saved successfully!",
-    "sendReportClicked": "Send Report clicked!"
-  },
-  "messages": {
-    "testResultReady": "Your test result is ready, please check.",
-    "followUpRecommended": "Follow-up is recommended based on your test.",
-    "contactHealthCenter": "Please contact your health center immediately."
-  },
-  "providers": {
-    "providerOne": "Provider One",
-    "providerTwo": "Provider Two"
-  },
-  "options":{
-    "allResults": "All Result",
-    "positive":"Positive",
-    "negative":"Negative"
-  },
-
-  "reports": {
-  "select_dates": "Please select a date range",
-    "failed_to_fetch_data": "Failed to fetch data",
-
-    "all_countries":"all",
-    "generate_report": "Generate Report",
-    "export_pdf": "Export PDF",
-    "patient_report_title": "Patient Report",
-    "report_type": "Report Type",
-    "category": "Category",
-    "country": "Country",
-    "gender": "Gender",
-    "from": "From",
-    "to": "To",
-    "patient_id": "Patient ID",
-    "enter_patient_id": "Enter Patient ID",
-    "test_name": "Test Name",
-    "result": "Result",
-    "standard": "Standard",
-    "number_of_cases": "Number of Cases",
-    "month": "Month",
-    "all": "All",
-    "reports": "Reports",
-    "please_enter_patient_id": "Please enter patient ID",
-    "category_header": "Category",
-    "country_header": "Country"
+      "bloodTestResult": "Blood Test Result",
+      "patientName": "Patient Name",
+      "caseID": "Case ID",
+      "reportDate": "Report Date",
+      "appointment": "Appointment",
+      "select": "Select"
+    },
+    "buttons": {
+      "add": "Add",
+      "sendReport": "Send Report",
+      "print": "Print",
+      "saveAppointment": "Save Appointment"
+    },
+    "alerts": {
+      "callTest": "Making a call for test #{{id}}",
+      "chatTest": "Opening chat for test #{{id}}",
+      "sendReportClicked": "Send report button clicked"
+    }
   }
 
 
 
-}
+
+
+
+ }
